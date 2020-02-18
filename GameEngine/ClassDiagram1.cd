@@ -21,12 +21,5 @@
       <FileName>Cell.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GameEngine.Music">
-    <Position X="5.25" Y="1.25" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAIAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Music.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

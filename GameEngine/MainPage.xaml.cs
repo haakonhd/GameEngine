@@ -22,14 +22,14 @@ namespace GameEngine
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private Music song;
+        private MediaHandler song;
         private bool isPlaying;
 
         public MainPage()
         {
             InitializeComponent();
             btn.Content = "Shake it";
-            song = new Music();
+            song = new MediaHandler("shake.mp3");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -42,6 +42,7 @@ namespace GameEngine
             }
             else
             {
+                //song.PauseMusic();
                 song.PauseMusic();
                 btn.Content = "Shake it";
                 isPlaying = false;

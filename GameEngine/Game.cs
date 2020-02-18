@@ -7,7 +7,7 @@ namespace GameEngine
 {
     public class Game
     {
-        public Music CurrentlyPlayingMusic
+        public MediaHandler CurrentlyPlayingMusic
         {
             get => default;
             set

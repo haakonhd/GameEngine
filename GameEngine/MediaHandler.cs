@@ -7,16 +7,16 @@ using Windows.Media.Playback;
 
 namespace GameEngine
 {
-    public class Music
+    public class MediaHandler : IDisposable
     {
         private MediaPlayer _mediaPlayer;
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Reliability", "CA2000:Dispose objects before losing scope", Justification = "<Pending>")]
-        public Music()
+        public MediaHandler(string fileName)
         {
-            _mediaPlayer = new MediaPlayer
-            {
-                Source = MediaSource.CreateFromUri(new Uri("ms-appx:///Assets/shake.mp3"))
-            };
+            _mediaPlayer = new MediaPlayer();
+            string musicPath = "ms-appx:///Assets/" + fileName;
+            _mediaPlayer.Source = MediaSource.CreateFromUri(new Uri(musicPath));
         }
 
         public void PlayMusic()
@@ -28,6 +28,11 @@ namespace GameEngine
         public void PauseMusic()
         {
             _mediaPlayer.Pause();
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -9,6 +9,8 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <Button Content="Shake it" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click" x:Name="btn">
+            
+        </Button>
     </Grid>
 </Page>

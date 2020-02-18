@@ -7,15 +7,20 @@ namespace GameEngine
 {
     public class Game
     {
-
-        public void SetMusic()
+        public Music CurrentlyPlayingMusic
         {
-            throw new System.NotImplementedException();
+            get => default;
+            set
+            {
+            }
         }
 
-        public void SetGameName(string name)
+        public string GameName
         {
-            throw new System.NotImplementedException();
+            get => default;
+            set
+            {
+            }
         }
     }
 }

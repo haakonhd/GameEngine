@@ -22,9 +22,31 @@ namespace GameEngine
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private Music song;
+        private bool isPlaying;
+
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+            btn.Content = "Shake it";
+            song = new Music();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (!isPlaying)
+            {
+                song.PlayMusic();
+                btn.Content = "Stop shaking";
+                isPlaying = true;
+            }
+            else
+            {
+                song.PauseMusic();
+                btn.Content = "Shake it";
+                isPlaying = false;
+            }
+        }
+
     }
 }

@@ -1,18 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+using System.Diagnostics;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
+using Windows.UI.Xaml.Media.Imaging;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace GameEngine
@@ -22,32 +11,9 @@ namespace GameEngine
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private MediaHandler song;
-        private bool isPlaying;
-
         public MainPage()
         {
-            InitializeComponent();
-            btn.Content = "Shake it";
-            song = new MediaHandler("shake.mp3");
+            
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (!isPlaying)
-            {
-                song.PlayMusic();
-                btn.Content = "Stop shaking";
-                isPlaying = true;
-            }
-            else
-            {
-                //song.PauseMusic();
-                song.PauseMusic();
-                btn.Content = "Shake it";
-                isPlaying = false;
-            }
-        }
-
     }
 }

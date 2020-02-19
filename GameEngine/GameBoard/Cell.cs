@@ -7,5 +7,13 @@ namespace GameEngine
 {
     public class Cell
     {
+
+        public List<CellObject> CellObjects
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

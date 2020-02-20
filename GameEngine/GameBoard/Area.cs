@@ -7,13 +7,11 @@ namespace GameEngine
 {
     public class Area
     {
-        public Cell[][] AreaGrid
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1819:Properties should not return arrays", Justification = "Jagged array is needed for area grid to work")]
+        public Cell[][] AreaGrid { get; private set; }
+        public MediaHandler AreaMusic { get; set; }
+        public int Height { get; set; }
+        public int Width { get; set; }
 
         public Area()
         {
@@ -21,19 +19,34 @@ namespace GameEngine
 
         public Area(int width, int height)
         {
-            setAreaGrid(width, height);
+            SetAreaGrid(width, height);
         }
 
-        public void setAreaGrid(int width, int height)
+        public void SetAreaGrid(int width, int height)
         {
+            int y = 0;
             // instantiate area grid with a cell object in each cell
-            AreaGrid = new Cell[height][];
-            for (int i = 0; i < height; i++)
+            AreaGrid = new Cell[width][];
+            for (int x = 0; x < width; x++)
             {
-                for (int j = 0; j < width; j++)
+                AreaGrid[x] = new Cell[height];
+                //AreaGrid[x] = new Cell[height];
+                for (y = 0; y < height; y++)
                 {
-                    AreaGrid[height][width] = new Cell();
+                    AreaGrid[x][y] = new Cell();
                 }
+            }
+            Width = width;
+            Height = height;
+        }
+
+        //TODO: Check that index exists
+        public void PlaceObjectToGrid(int xCoordinate, int yCoordinate, CellObject cellObject)
+        {
+            if(AreaGrid.Length > 0)
+            {
+                //AreaGrid[xCoordinate - 1][yCoordinate - 1].CellObjects = new List<CellObject>();
+                AreaGrid[xCoordinate - 1][yCoordinate - 1].CellObjects.Add(cellObject);
             }
         }
     }

@@ -10,23 +10,12 @@ namespace GameEngine
     public class MediaHandler : IDisposable
     {
         public MediaPlayer SoundPlayer;
-
+        
         public MediaHandler(string fileName)
         {
             SoundPlayer = new MediaPlayer();
             string musicPath = "ms-appx:///Assets/" + fileName;
             SoundPlayer.Source = MediaSource.CreateFromUri(new Uri(musicPath));
-        }
-
-        public void PlayMusic()
-        {
-            SoundPlayer.Play();
-        }
-
-
-        public void PauseMusic()
-        {
-            SoundPlayer.Pause();
         }
 
         #region IDisposable Support

@@ -2,9 +2,9 @@
 
 namespace GameEngine
 {
-    public class CellObject
+    public abstract class CellObject
     {
         public Sprite Sprite { get; set; }
-
+        public bool IsPassable { get; set; }
     }
 }

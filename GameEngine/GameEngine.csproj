@@ -119,12 +119,21 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GameBoard\CellObject.cs" />
     <Compile Include="GameBoard\Area.cs" />
     <Compile Include="GameBoard\Cell.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GameBoard\VisualGameBoard.xaml.cs">
+      <DependentUpon>VisualGameBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameObjects\Grass.cs" />
+    <Compile Include="GameObjects\Hero.cs" />
+    <Compile Include="GameObjects\IFighter.cs" />
+    <Compile Include="GameObjects\Sprite.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Parameters\StartGameParams.cs" />
     <Compile Include="Tools\MediaHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -134,6 +143,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\grass.png" />
     <Content Include="Assets\hero.png" />
     <Content Include="Assets\shake.mp3" />
     <Content Include="Properties\Default.rd.xml" />
@@ -150,6 +160,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="GameBoard\VisualGameBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -170,6 +184,9 @@
       <Link>.editorconfig</Link>
     </None>
     <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Events\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

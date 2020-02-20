@@ -1,10 +1,10 @@
-﻿using GameEngine.Tools;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace GameEngine.GameObjects
 {
@@ -23,7 +23,15 @@ namespace GameEngine.GameObjects
 
 		public void SetSpriteFromFileName(string fileName)
 		{
-			SpriteImage = new SpriteHandler().GetImageFromFileName(fileName);
+			SpriteImage = GetImageFromFileName(fileName);
+		}
+
+		private Image GetImageFromFileName(string fileName)
+		{
+			string uri = "ms-appx:///Assets/" + fileName;
+			Image img = new Image();
+			img.Source = new BitmapImage(new Uri(uri));
+			return img;
 		}
 	}
 }

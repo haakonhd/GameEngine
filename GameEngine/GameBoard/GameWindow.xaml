@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="GameEngine.GameBoard.VisualGameBoard"
+    x:Class="GameEngine.GameBoard.GameWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:GameEngine.GameBoard"
@@ -9,8 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid x:Name="OuterGrid" VerticalAlignment="Center" >
-        <Grid x:Name="MainGrid" HorizontalAlignment="Center" >
-
+        <Grid x:Name="MainGrid" HorizontalAlignment="Center">
         </Grid>
         
     </Grid>

@@ -7,11 +7,11 @@ namespace GameEngine
 {
     public class Cell
     {
-        public List<CellObject> CellObjects{ get; set; }
+        public List<ICellObject> CellObjects{ get; set; }
 
         public Cell()
         {
-            CellObjects = new List<CellObject>();
+            CellObjects = new List<ICellObject>();
         }
     }
 }

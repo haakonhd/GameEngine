@@ -9,6 +9,7 @@ namespace GameEngine
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1819:Properties should not return arrays", Justification = "Jagged array is needed for area grid to work")]
         public Cell[][] AreaGrid { get; private set; }
+        public ICellObject BackgroundCellObject { get; set; }
         public MediaHandler AreaMusic { get; set; }
         public int Height { get; set; }
         public int Width { get; set; }
@@ -41,7 +42,7 @@ namespace GameEngine
         }
 
         //TODO: Check that index exists
-        public void PlaceObjectToGrid(int xCoordinate, int yCoordinate, CellObject cellObject)
+        public void PlaceObjectToGrid(int xCoordinate, int yCoordinate, ICellObject cellObject)
         {
             if(AreaGrid.Length > 0)
             {

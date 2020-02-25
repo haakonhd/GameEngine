@@ -9,14 +9,12 @@ namespace GameEngine.Parameters
 	public class StartGameParams
 	{
 		public Area Area { get; set; }
-		public int BoardWidth { get; set; }
-		public int BoardHeight { get; set; }
+		public Game Game { get; set; }
 
-		public StartGameParams(Area palletTown, int boardWidth, int boardHeight)
+		public StartGameParams(Area startArea, Game game)
 		{
-			this.Area = palletTown;
-			this.BoardWidth = boardWidth;
-			this.BoardHeight = boardHeight;
+			Area = startArea;
+			Game = game;
 		}
 
 	}

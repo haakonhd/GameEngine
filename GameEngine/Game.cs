@@ -8,9 +8,10 @@ namespace GameEngine
     public class Game
     {
         internal MediaHandler CurrentlyPlayingMusic { get; set; }
-        public string GameName { get; set; }
+        public string Title { get; set; }
         public List<Area> Areas{ get; }
 		public Area StartArea { get; set; }
+        public int GameWidth { get; set; }
 
         public Game()
         {

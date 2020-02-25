@@ -1,11 +1,20 @@
-﻿using GameEngine.GameBoard;
-using GameEngine.GameObjects;
-using GameEngine.Parameters;
+﻿using GameEngine.Implementation.Pokemon;
 using System;
-using System.Diagnostics;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media.Imaging;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
+
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace GameEngine
@@ -17,28 +26,19 @@ namespace GameEngine
     {
         public MainPage()
         {
-            InitializeComponent();
-
-            Game pokemon = new Game();
-            Area palletTown = new Area();
-            palletTown.SetAreaGrid(10, 7);
-            pokemon.Areas.Add(palletTown);
-            Hero red = new Hero(new Sprite("hero.png"), 10);
-            palletTown.PlaceObjectToGrid(3, 5, red);
-            pokemon.StartArea = palletTown;
-            palletTown.AreaMusic = new MediaHandler("shake.mp3");
-            pokemon.CurrentlyPlayingMusic = palletTown.AreaMusic;
+            this.InitializeComponent();
 
             //For some weird reason the view isnt available after initialization, so we need to wait for it to become available
             //TODO: find another workaround for this
+
+            // Couldn't find a way to run this uwp project from another project. To simulate the relationship between
+            // the game engine and an game implementation, this implementation project will exist in a folder in this project.
+            // This class will start up the project that the user wants to run, which will again call to GameWindow. 
             Loaded += async (s, e) =>
             {
                 await Task.Delay(100);
-                StartGameParams startGameParams = new StartGameParams(palletTown, 400, 400);
-                Frame.Navigate(typeof(VisualGameBoard), startGameParams);
+                Frame.Navigate(typeof(GameInitializer));
             };
-
-            //this.Frame.Navigate(typeof(VisualGameBoard));
         }
     }
 }

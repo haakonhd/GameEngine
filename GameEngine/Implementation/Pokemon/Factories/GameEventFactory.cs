@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace GameEngineRuntimeComponent.Factories
 {
-	static class EventFactory
+	static class GameEventFactory
 	{
-		public static IEvent Build(string eventName)
+		public static IGameEvent Build(string eventName)
 		{
 			switch (eventName)
 			{

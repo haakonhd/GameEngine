@@ -10,6 +10,6 @@ namespace GameEngine
         Sprite Sprite { get; set; }
         bool IsPassable { get; set; }
         string Key { get; set; }
-        List<IEvent> EventTriggers { get; set; }
+        List<IGameEvent> EventTriggers { get; set; }
     }
 }

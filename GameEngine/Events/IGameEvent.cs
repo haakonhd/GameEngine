@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace GameEngineRuntimeComponent.Events
 {
-	public interface IEvent
+	public interface IGameEvent
 	{
-		Action Event { get; set; }
+		Action GameEvent { get; set; }
 	}
 }

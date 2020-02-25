@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace GameEngineRuntimeComponent.FactoryObjects
 {
-	class Speak : IEvent
+	class Speak : IGameEvent
 	{
-		public Action Event { get; set; }
+		public Action GameEvent { get; set; }
 		public string SpeechLine { get; set; }
 		public Speak()
 		{
-			Event = DoSpeak;
+			GameEvent = DoSpeak;
 		}
 
 		private void DoSpeak()

@@ -7,20 +7,15 @@ namespace GameEngine
 {
     public class Game
     {
-        public MediaHandler CurrentlyPlayingMusic
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        internal MediaHandler CurrentlyPlayingMusic { get; set; }
+        public string Title { get; set; }
+        public List<Area> Areas{ get; }
+		public Area StartArea { get; set; }
+        public int GameWidth { get; set; }
 
-        public string GameName
+        public Game()
         {
-            get => default;
-            set
-            {
-            }
+            Areas = new List<Area>();
         }
-    }
+	}
 }

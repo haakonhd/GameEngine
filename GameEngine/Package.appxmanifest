@@ -7,11 +7,11 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="f0fbd006-3012-4a95-9162-beb5706d3095"
+    Name="4bd93f5a-805d-414d-bc3c-d0cf45aa0944"
     Publisher="CN=hakon"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="f0fbd006-3012-4a95-9162-beb5706d3095" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="4bd93f5a-805d-414d-bc3c-d0cf45aa0944" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>GameEngine</DisplayName>

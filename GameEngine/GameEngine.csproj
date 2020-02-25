@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{AEF0CA65-A6B0-4365-A57A-4B1ABA174AC3}</ProjectGuid>
+    <ProjectGuid>{CF431363-12BB-440D-9909-BD55E57903B5}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GameEngine</RootNamespace>
@@ -119,14 +119,31 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Area.cs" />
-    <Compile Include="Cell.cs" />
+    <Compile Include="Events\IEvent.cs" />
+    <Compile Include="Implementation\Pokemon\Factories\CellObjectFactory.cs" />
+    <Compile Include="Implementation\Pokemon\Factories\EventFactory.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\Grass.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\Hero.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\Speak.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GameBoard\Area.cs" />
+    <Compile Include="GameBoard\Cell.cs" />
+    <Compile Include="GameBoard\ICellObject.cs" />
+    <Compile Include="GameBoard\Movement.cs" />
+    <Compile Include="GameBoard\GameWindow.xaml.cs">
+      <DependentUpon>GameWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameObjects\IFighter.cs" />
+    <Compile Include="GameObjects\Sprite.cs" />
+    <Compile Include="Implementation\Pokemon\GameInitializer.xaml.cs">
+      <DependentUpon>GameInitializer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MediaHandler.cs" />
+    <Compile Include="Parameters\StartGameParams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\MediaHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -134,7 +151,9 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\shake.mp3" />
+    <Content Include="Implementation\Pokemon\Assets\grass.png" />
+    <Content Include="Implementation\Pokemon\Assets\hero.png" />
+    <Content Include="Implementation\Pokemon\Assets\shake.mp3" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -149,23 +168,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="GameBoard\GameWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Implementation\Pokemon\GameInitializer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers">
-      <Version>2.9.8</Version>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.9</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

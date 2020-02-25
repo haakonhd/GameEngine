@@ -1,8 +1,10 @@
-﻿using System;
+﻿using GameEngine.Implementation.Pokemon;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,32 +24,21 @@ namespace GameEngine
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private MediaHandler song;
-        private bool isPlaying;
-
         public MainPage()
         {
-            InitializeComponent();
-            btn.Content = "Shake it";
-            song = new MediaHandler("shake.mp3");
-        }
+            this.InitializeComponent();
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (!isPlaying)
-            {
-                song.PlayMusic();
-                btn.Content = "Stop shaking";
-                isPlaying = true;
-            }
-            else
-            {
-                //song.PauseMusic();
-                song.PauseMusic();
-                btn.Content = "Shake it";
-                isPlaying = false;
-            }
-        }
+            //For some weird reason the view isnt available after initialization, so we need to wait for it to become available
+            //TODO: find another workaround for this
 
+            // Couldn't find a way to run this uwp project from another project. To simulate the relationship between
+            // the game engine and an game implementation, this implementation project will exist in a folder in this project.
+            // This class will start up the project that the user wants to run, which will again call to GameWindow. 
+            Loaded += async (s, e) =>
+            {
+                await Task.Delay(100);
+                Frame.Navigate(typeof(GameInitializer));
+            };
+        }
     }
 }

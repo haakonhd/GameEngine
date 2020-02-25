@@ -119,9 +119,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Events\IEvent.cs" />
+    <Compile Include="Events\IGameEvent.cs" />
     <Compile Include="Implementation\Pokemon\Factories\CellObjectFactory.cs" />
-    <Compile Include="Implementation\Pokemon\Factories\EventFactory.cs" />
+    <Compile Include="Implementation\Pokemon\Factories\GameEventFactory.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Grass.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Hero.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Speak.cs" />
@@ -185,6 +185,9 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.9</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

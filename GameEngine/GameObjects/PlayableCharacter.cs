@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GameEngine.GameObjects
 {
-	class PlayableCharacter
+	public class PlayableCharacter
 	{
 		public ICellObject CellObject { get; set; }
 		public PlayableCharacter(ICellObject cellObject)

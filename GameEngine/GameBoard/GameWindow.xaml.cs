@@ -6,6 +6,8 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
 using GameEngine.GameObjects;
+using static GameEngine.Area;
+using static GameEngine.GameBoard.Movement;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -147,28 +149,28 @@ namespace GameEngine.GameBoard
 			{
 				case VirtualKey.Left:
                     MainGrid.Children.Remove(img);
-                    Movement.MoveCellObject(heroCellObject,area, "LEFT");
+                    Movement.MoveCellObject(heroCellObject,area, Direction.Left);
                     img = PrepareImageFromCellObject(heroCellObject, heroCellObject.CoordinateTuple.x - 1, heroCellObject.CoordinateTuple.y - 1);
                     MainGrid.Children.Add(img);
 					break;
 
                 case VirtualKey.Right:
                     MainGrid.Children.Remove(img);
-                    Movement.MoveCellObject(heroCellObject, area, "RIGHT");
+                    Movement.MoveCellObject(heroCellObject, area, Direction.Right);
 					img = PrepareImageFromCellObject(heroCellObject, heroCellObject.CoordinateTuple.x - 1, heroCellObject.CoordinateTuple.y - 1);
                     MainGrid.Children.Add(img);
 					break;
 
                 case VirtualKey.Up:
                     MainGrid.Children.Remove(img);
-                    Movement.MoveCellObject(heroCellObject, area, "UP");
+                    Movement.MoveCellObject(heroCellObject, area, Direction.Up);
 					img = PrepareImageFromCellObject(heroCellObject, heroCellObject.CoordinateTuple.x - 1, heroCellObject.CoordinateTuple.y - 1);
                     MainGrid.Children.Add(img);
 					break;
 
                 case VirtualKey.Down:
                     MainGrid.Children.Remove(img);
-                    Movement.MoveCellObject(heroCellObject, area, "DOWN");
+                    Movement.MoveCellObject(heroCellObject, area, Direction.Down);
 					img = PrepareImageFromCellObject(heroCellObject, heroCellObject.CoordinateTuple.x - 1, heroCellObject.CoordinateTuple.y - 1);
                     MainGrid.Children.Add(img);
 					break;

@@ -8,7 +8,15 @@ namespace GameEngine.GameBoard
 {
 	public static class Movement
 	{
-		public static void MoveCellObject(ICellObject cellObject, Area area, String direction)
+        public enum Direction
+        {
+            Up,
+            Down,
+            Left,
+            Right
+        }
+
+        public static void MoveCellObject(ICellObject cellObject, Area area, Direction direction)
 		{
             var originalXCoordinate = cellObject.CoordinateTuple.x;
             var originalYCoordinate = cellObject.CoordinateTuple.y;
@@ -18,28 +26,28 @@ namespace GameEngine.GameBoard
 
             switch (direction)
             {
-                case "LEFT":
+                case Direction.Left:
                     if (originalXCoordinate > 1)
                         if (CheckIfNextCellIsPassable(nextXCoordinate - 1, nextYCoordinate, area))
                             nextXCoordinate--;
 
                     break;
 
-                case "UP":
+                case Direction.Up:
                     if (originalYCoordinate > 1)
                         if(CheckIfNextCellIsPassable(nextXCoordinate,nextYCoordinate - 1,area))
                             nextYCoordinate--;
 
                     break;
 
-                case "DOWN":
+                case Direction.Down:
                     if (originalYCoordinate < area.AreaGrid[0].Length)
                         if (CheckIfNextCellIsPassable(nextXCoordinate, nextYCoordinate + 1, area))
                             nextYCoordinate++;
                     
                     break;
 
-                case "RIGHT":
+                case Direction.Right:
                     if (originalXCoordinate < area.AreaGrid.Length)
                         if (CheckIfNextCellIsPassable(nextXCoordinate + 1, nextYCoordinate, area))
                             nextXCoordinate++;

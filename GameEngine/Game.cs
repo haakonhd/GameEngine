@@ -13,7 +13,7 @@ namespace GameEngine
         public List<Area> Areas{ get; }
 		public Area CurrentArea { get; set; }
         public int GameWidth { get; set; }
-        PlayableCharacter PlayableCharacter { get; set; }
+        public PlayableCharacter PlayableCharacter { get; set; }
 
         public Game()
         {

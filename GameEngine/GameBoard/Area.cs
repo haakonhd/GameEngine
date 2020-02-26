@@ -56,53 +56,5 @@ namespace GameEngine
                     cellObject.CoordinateTuple = (xCoordinate, yCoordinate);
             }
         }
-
-        public void MoveCellObjectDirection(ICellObject cellObject, String direction)
-        {
-            int xCoordinate = cellObject.CoordinateTuple.x;
-            int yCoordinate = cellObject.CoordinateTuple.y;
-
-            switch (direction)
-            {
-                case "LEFT":
-                    if (xCoordinate > 1)
-                    {
-                        AreaGrid[xCoordinate - 1][yCoordinate - 1].CellObjects.Remove(cellObject);
-                        AreaGrid[xCoordinate - 2][yCoordinate - 1].CellObjects.Add(cellObject);
-                        cellObject.CoordinateTuple = (xCoordinate - 1, yCoordinate);
-                    }
-                    break;
-
-                case "UP":
-                    if(yCoordinate > 1)
-                    {
-                        AreaGrid[xCoordinate - 1][yCoordinate - 1].CellObjects.Remove(cellObject);
-                        AreaGrid[xCoordinate - 1][yCoordinate - 2].CellObjects.Add(cellObject);
-                        cellObject.CoordinateTuple = (xCoordinate, yCoordinate - 1);
-                    }
-                    break;
-
-                case "DOWN":
-                    if(yCoordinate < AreaGrid[0].Length)
-                    {
-                        AreaGrid[xCoordinate - 1][yCoordinate - 1].CellObjects.Remove(cellObject);
-                        AreaGrid[xCoordinate - 1][yCoordinate].CellObjects.Add(cellObject);
-                        cellObject.CoordinateTuple = (xCoordinate, yCoordinate + 1);
-                    }
-                    break;
-
-                case "RIGHT":
-                    if(xCoordinate < AreaGrid.Length)
-                    {
-                        AreaGrid[xCoordinate - 1][yCoordinate - 1].CellObjects.Remove(cellObject);
-                        AreaGrid[xCoordinate][yCoordinate - 1].CellObjects.Add(cellObject);
-                        cellObject.CoordinateTuple = (xCoordinate + 1, yCoordinate);
-                    }
-                    break;
-
-
-                default: return;
-            }
-        }
     }
 }

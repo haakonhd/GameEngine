@@ -1,5 +1,6 @@
 ﻿using GameEngine.Factories;
 using GameEngineRuntimeComponent.Events;
+using GameEngineRuntimeComponent.Factories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GameEngine.GameObjects
 {
-	class Hero : ICellObject, IFighter
+	class Npc : ICellObject
 	{
 		public int HealthPoints { get; set; }
 		public Sprite Sprite { get; set; }
@@ -16,13 +17,14 @@ namespace GameEngine.GameObjects
 		public string Key { get; set; }
 		public List<IGameEvent> EventTriggers { get; set; }
 
-		public Hero()
+		public Npc()
 		{
-			Sprite = new Sprite("hero.png");
-			IsPassable = true;
+			Sprite = new Sprite("npc.png");
+			IsPassable = false;
 			HealthPoints = 20;
-			Key = "HERO";
-			EventTriggers = null;
+			Key = "NPC";
+			EventTriggers = new List<IGameEvent>();
+			EventTriggers.Add(GameEventFactory.Build("SPEAK"));
 		}
 	}
 }

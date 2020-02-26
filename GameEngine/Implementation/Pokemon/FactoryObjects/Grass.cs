@@ -13,7 +13,7 @@ namespace GameEngine.GameObjects
 		public Sprite Sprite {get; set ; }
 		public bool IsPassable { get; set; }
 		public string Key { get; set; }
-		public List<IEvent> EventTriggers { get; set; }
+		public List<IGameEvent> EventTriggers { get; set; }
 
 		public Grass()
 		{

@@ -10,7 +10,7 @@ namespace GameEngineRuntimeComponent.FactoryObjects
 	class Speak : IGameEvent
 	{
 		public Action GameEvent { get; set; }
-		public string SpeechLine { get; set; }
+		//public string SpeechLine { get; set; }
 		public Speak()
 		{
 			GameEvent = DoSpeak;

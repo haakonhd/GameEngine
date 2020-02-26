@@ -42,11 +42,10 @@ namespace GameEngine
         }
 
         //TODO: Check that index exists
-        public void PlaceObjectToGrid(int xCoordinate, int yCoordinate, ICellObject cellObject)
+        public void SetCellObjectGridPosition(int xCoordinate, int yCoordinate, ICellObject cellObject)
         {
             if(AreaGrid.Length > 0)
             {
-                //AreaGrid[xCoordinate - 1][yCoordinate - 1].CellObjects = new List<CellObject>();
                 AreaGrid[xCoordinate - 1][yCoordinate - 1].CellObjects.Add(cellObject);
             }
         }

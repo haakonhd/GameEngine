@@ -1,6 +1,6 @@
 ﻿using GameEngine.Factories;
 using GameEngine.GameBoard;
-using GameEngine.Parameters;
+using GameEngine.GameObjects;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 
@@ -24,19 +24,21 @@ namespace GameEngine.Implementation.Pokemon
             palletTown.SetAreaGrid(10, 7);
             palletTown.BackgroundCellObject = CellObjectFactory.Build("GRASS");
             pokemon.Areas.Add(palletTown);
-            var red = CellObjectFactory.Build("HERO");
-            palletTown.PlaceObjectToGrid(3, 5, red);
-            pokemon.StartArea = palletTown;
+            pokemon.CurrentArea = palletTown;
+            PlayableCharacter red = new PlayableCharacter(CellObjectFactory.Build("HERO"));
+            ICellObject npc = CellObjectFactory.Build("NPC");
+            palletTown.SetCellObjectGridPosition(3, 5, red.CellObject);
+            palletTown.SetCellObjectGridPosition(7, 2, npc);
+            pokemon.CurrentArea = palletTown;
             palletTown.AreaMusic = new MediaHandler("shake.mp3");
-            //pokemon.CurrentlyPlayingMusic = palletTown.AreaMusic;
+            pokemon.CurrentlyPlayingMusic = palletTown.AreaMusic;
 
             //For some weird reason the view isnt available after initialization, so we need to wait for it to become available
             //TODO: find another workaround for this
             Loaded += async (s, e) =>
             {
                 await Task.Delay(100);
-                StartGameParams startGameParams = new StartGameParams(palletTown, pokemon);
-                Frame.Navigate(typeof(GameWindow), startGameParams);
+                Frame.Navigate(typeof(GameWindow), pokemon);
             };
         }
 	}

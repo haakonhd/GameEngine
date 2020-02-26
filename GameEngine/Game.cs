@@ -11,7 +11,7 @@ namespace GameEngine
         internal MediaHandler CurrentlyPlayingMusic { get; set; }
         public string Title { get; set; }
         public List<Area> Areas{ get; }
-		public Area StartArea { get; set; }
+		public Area CurrentArea { get; set; }
         public int GameWidth { get; set; }
         PlayableCharacter PlayableCharacter { get; set; }
 

@@ -17,6 +17,9 @@ namespace GameEngine.Factories
 					return new Hero();
 				case "GRASS":
 					return new Grass();
+				case "NPC":
+					return new Npc();
+				//TODO: make default throw exception
 				default:
 					return null;
 			}

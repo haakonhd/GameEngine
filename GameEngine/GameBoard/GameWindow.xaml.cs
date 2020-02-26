@@ -1,6 +1,5 @@
 ﻿using GameEngine.Factories;
 using GameEngine.GameObjects;
-using GameEngine.Parameters;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,7 +24,7 @@ namespace GameEngine.GameBoard
 	/// </summary>
 	public sealed partial class GameWindow : Page
 	{
-		public StartGameParams StartGameParams { get; set; }
+		public Game Game { get; set; }
 		private Area area { get; set; }
 		private int boardWidth { get; set; }
 		private int cellSize { get; set; }
@@ -40,15 +39,15 @@ namespace GameEngine.GameBoard
 			// listen for keypress
 			Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
 
-			StartGameParams = (StartGameParams)e.Parameter;
-			if (StartGameParams == null) return;
+			Game = (Game)e.Parameter;
+			if (Game == null) return;
 
 			//Sets the title bar 
 			var appView = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
-			appView.Title = StartGameParams.Game.Title;
+			appView.Title = Game.Title;
 			
-			area = StartGameParams.Area;
-			boardWidth = StartGameParams.Game.GameWidth;
+			area = Game.CurrentArea;
+			boardWidth = Game.GameWidth;
 
 			DrawBoard();
 		}
@@ -95,6 +94,7 @@ namespace GameEngine.GameBoard
 						//place all cellObjects to the board 
 						foreach (ICellObject cellObject in area.AreaGrid[x][y].CellObjects)
 						{
+							
 							Image img = PrepareImageFromCellObject(cellObject, x, y);
 							MainGrid.Children.Add(img);
 						}

@@ -8,7 +8,10 @@ namespace GameEngine.GameObjects
 {
 	class PlayableCharacter
 	{
-		public ICellObject cellObject { get; set; }
-
+		public ICellObject CellObject { get; set; }
+		public PlayableCharacter(ICellObject cellObject)
+		{
+			CellObject = cellObject;
+		}
 	}
 }

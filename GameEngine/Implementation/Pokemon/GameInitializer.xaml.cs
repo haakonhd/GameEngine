@@ -33,7 +33,7 @@ namespace GameEngine.Implementation.Pokemon
             palletTown.AreaMusic = new MediaHandler("shake.mp3");
             pokemon.CurrentlyPlayingMusic = palletTown.AreaMusic;
 
-            //For some weird reason the view isnt available after initialization, so we need to wait for it to become available
+            //For some weird reason the view isn't available after initialization, so we need to wait for it to become available
             //TODO: find another workaround for this
             Loaded += async (s, e) =>
             {

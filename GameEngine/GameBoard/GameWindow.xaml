@@ -11,6 +11,5 @@
     <Grid x:Name="OuterGrid" VerticalAlignment="Center" >
         <Grid x:Name="MainGrid" HorizontalAlignment="Center">
         </Grid>
-        
     </Grid>
 </Page>

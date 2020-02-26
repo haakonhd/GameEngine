@@ -13,5 +13,6 @@ namespace GameEngine.GameObjects
 		{
 			CellObject = cellObject;
 		}
+
 	}
 }

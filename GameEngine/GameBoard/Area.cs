@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using GameEngine.GameObjects;
 
 namespace GameEngine
 {
@@ -13,7 +14,7 @@ namespace GameEngine
         public MediaHandler AreaMusic { get; set; }
         public int Height { get; set; }
         public int Width { get; set; }
-
+        public List<ICellObject> CellObjectsInUse = new List<ICellObject>();
         public Area()
         {
         }
@@ -44,9 +45,63 @@ namespace GameEngine
         //TODO: Check that index exists
         public void SetCellObjectGridPosition(int xCoordinate, int yCoordinate, ICellObject cellObject)
         {
+            if(!CellObjectsInUse.Contains(cellObject))
+                CellObjectsInUse.Add(cellObject);
+
             if(AreaGrid.Length > 0)
             {
                 AreaGrid[xCoordinate - 1][yCoordinate - 1].CellObjects.Add(cellObject);
+
+                if (cellObject is Hero)
+                    cellObject.CoordinateTuple = (xCoordinate, yCoordinate);
+            }
+        }
+
+        public void MoveCellObjectDirection(ICellObject cellObject, String direction)
+        {
+            int xCoordinate = cellObject.CoordinateTuple.x;
+            int yCoordinate = cellObject.CoordinateTuple.y;
+
+            switch (direction)
+            {
+                case "LEFT":
+                    if (xCoordinate > 1)
+                    {
+                        AreaGrid[xCoordinate - 1][yCoordinate - 1].CellObjects.Remove(cellObject);
+                        AreaGrid[xCoordinate - 2][yCoordinate - 1].CellObjects.Add(cellObject);
+                        cellObject.CoordinateTuple = (xCoordinate - 1, yCoordinate);
+                    }
+                    break;
+
+                case "UP":
+                    if(yCoordinate > 1)
+                    {
+                        AreaGrid[xCoordinate - 1][yCoordinate - 1].CellObjects.Remove(cellObject);
+                        AreaGrid[xCoordinate - 1][yCoordinate - 2].CellObjects.Add(cellObject);
+                        cellObject.CoordinateTuple = (xCoordinate, yCoordinate - 1);
+                    }
+                    break;
+
+                case "DOWN":
+                    if(yCoordinate < AreaGrid[0].Length)
+                    {
+                        AreaGrid[xCoordinate - 1][yCoordinate - 1].CellObjects.Remove(cellObject);
+                        AreaGrid[xCoordinate - 1][yCoordinate].CellObjects.Add(cellObject);
+                        cellObject.CoordinateTuple = (xCoordinate, yCoordinate + 1);
+                    }
+                    break;
+
+                case "RIGHT":
+                    if(xCoordinate < AreaGrid.Length)
+                    {
+                        AreaGrid[xCoordinate - 1][yCoordinate - 1].CellObjects.Remove(cellObject);
+                        AreaGrid[xCoordinate][yCoordinate - 1].CellObjects.Add(cellObject);
+                        cellObject.CoordinateTuple = (xCoordinate + 1, yCoordinate);
+                    }
+                    break;
+
+
+                default: return;
             }
         }
     }

@@ -1,30 +1,22 @@
 ﻿using GameEngine.Factories;
-using GameEngine.GameObjects;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using GameEngine.GameObjects;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace GameEngine.GameBoard
 {
-	/// <summary>
+    /// <summary>
 	/// This is the page where the game board is drawn
 	/// </summary>
 	public sealed partial class GameWindow : Page
 	{
-		public Game Game { get; set; }
+        public Game Game { get; set; }
 		private Area area { get; set; }
 		private int boardWidth { get; set; }
 		private int cellSize { get; set; }
@@ -36,7 +28,7 @@ namespace GameEngine.GameBoard
 
 		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
-			// listen for keypress
+            // listen for keypress
 			Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
 
 			Game = (Game)e.Parameter;
@@ -52,9 +44,10 @@ namespace GameEngine.GameBoard
 			DrawBoard();
 		}
 
-
-		private void GenerateGrid()
-		{
+        private void GenerateGrid()
+        {
+            if (MainGrid.ColumnDefinitions.Count > 0 && MainGrid.RowDefinitions.Count > 0)
+                return;
 
 			//cells are squared. their size is based on the boards width
 			cellSize = boardWidth / area.Width;
@@ -94,9 +87,9 @@ namespace GameEngine.GameBoard
 						//place all cellObjects to the board 
 						foreach (ICellObject cellObject in area.AreaGrid[x][y].CellObjects)
 						{
-							
-							Image img = PrepareImageFromCellObject(cellObject, x, y);
-							MainGrid.Children.Add(img);
+                            Image img = PrepareImageFromCellObject(cellObject, x, y);
+							if(!MainGrid.Children.Contains(img))
+							    MainGrid.Children.Add(img);
 						}
 					}
 				}
@@ -131,22 +124,58 @@ namespace GameEngine.GameBoard
 
 		public void DrawBoard()
 		{
-			if (area == null) return;
-			GenerateGrid();
-			if(area.BackgroundCellObject != null)
+			MainGrid.Children.Clear();
+
+			if (area == null) 
+                return;
+
+            GenerateGrid();
+
+            if(area.BackgroundCellObject != null)
 				FillBoardWithCellObject(area.BackgroundCellObject);
+
 			InsertAllCellObjects(area);
 		}
 
-		void CoreWindow_KeyDown(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs e)
+        void CoreWindow_KeyDown(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs e)
 		{
-			switch (e.VirtualKey)
+            var heroCellObject = area.CellObjectsInUse.Find(x => x.GetType() == typeof(Hero));
+            var img = PrepareImageFromCellObject(heroCellObject, heroCellObject.CoordinateTuple.x -1, heroCellObject.CoordinateTuple.y - 1);
+            
+
+            switch (e.VirtualKey)
 			{
-				case Windows.System.VirtualKey.Left:
-					//Movement.MoveCellObjectLeft();
+				case VirtualKey.Left:
+                    MainGrid.Children.Remove(img);
+                    Movement.MoveCellObject(heroCellObject,area, "LEFT");
+                    img = PrepareImageFromCellObject(heroCellObject, heroCellObject.CoordinateTuple.x - 1, heroCellObject.CoordinateTuple.y - 1);
+                    MainGrid.Children.Add(img);
+					break;
+
+                case VirtualKey.Right:
+                    MainGrid.Children.Remove(img);
+                    Movement.MoveCellObject(heroCellObject, area, "RIGHT");
+					img = PrepareImageFromCellObject(heroCellObject, heroCellObject.CoordinateTuple.x - 1, heroCellObject.CoordinateTuple.y - 1);
+                    MainGrid.Children.Add(img);
+					break;
+
+                case VirtualKey.Up:
+                    MainGrid.Children.Remove(img);
+                    Movement.MoveCellObject(heroCellObject, area, "UP");
+					img = PrepareImageFromCellObject(heroCellObject, heroCellObject.CoordinateTuple.x - 1, heroCellObject.CoordinateTuple.y - 1);
+                    MainGrid.Children.Add(img);
+					break;
+
+                case VirtualKey.Down:
+                    MainGrid.Children.Remove(img);
+                    Movement.MoveCellObject(heroCellObject, area, "DOWN");
+					img = PrepareImageFromCellObject(heroCellObject, heroCellObject.CoordinateTuple.x - 1, heroCellObject.CoordinateTuple.y - 1);
+                    MainGrid.Children.Add(img);
 					break;
 				default: return;
-			}
+
+            }
+            
 		}
 
 		//public void MoveCellOject(CellObject cellObject, )

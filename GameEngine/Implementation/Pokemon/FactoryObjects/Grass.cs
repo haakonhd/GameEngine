@@ -14,6 +14,7 @@ namespace GameEngine.GameObjects
 		public bool IsPassable { get; set; }
 		public string Key { get; set; }
 		public List<IGameEvent> EventTriggers { get; set; }
+		public (int x, int y) CoordinateTuple { get; set ; }
 
 		public Grass()
 		{

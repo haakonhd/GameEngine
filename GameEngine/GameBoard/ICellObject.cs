@@ -11,5 +11,7 @@ namespace GameEngine
         bool IsPassable { get; set; }
         string Key { get; set; }
         List<IGameEvent> EventTriggers { get; set; }
+
+        (int x, int y) CoordinateTuple { get; set; }
     }
 }

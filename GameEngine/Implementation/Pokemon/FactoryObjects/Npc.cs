@@ -1,11 +1,6 @@
-﻿using GameEngine.Factories;
-using GameEngineRuntimeComponent.Events;
+﻿using GameEngineRuntimeComponent.Events;
 using GameEngineRuntimeComponent.Factories;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameEngine.GameObjects
 {
@@ -16,7 +11,7 @@ namespace GameEngine.GameObjects
 		public bool IsPassable { get; set; }
 		public string Key { get; set; }
 		public List<IGameEvent> EventTriggers { get; set; }
-        public (int x, int y) CoordinateTuple { get; set; }
+        public (int x, int y) Position { get; set; }
 
 		public Npc()
 		{

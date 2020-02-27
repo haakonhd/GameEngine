@@ -120,6 +120,8 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Events\IGameEvent.cs" />
+    <Compile Include="GameBoard\ICellEntity.cs" />
+    <Compile Include="GameObjects\ChatBubble.cs" />
     <Compile Include="GameObjects\PlayableCharacter.cs" />
     <Compile Include="Implementation\Pokemon\Factories\CellObjectFactory.cs" />
     <Compile Include="Implementation\Pokemon\Factories\GameEventFactory.cs" />

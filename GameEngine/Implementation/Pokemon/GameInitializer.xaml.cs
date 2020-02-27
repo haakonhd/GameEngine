@@ -17,20 +17,27 @@ namespace GameEngine.Implementation.Pokemon
 		{
 			this.InitializeComponent();
 
-            Game pokemon = new Game();
-            pokemon.Title = "Pokémon";
-            pokemon.GameWidth = 600;
+            Game pokemon = new Game()
+            {
+                Title = "Pokémon",
+                GameWidth = 600,
+            };
+
             Area palletTown = new Area();
             palletTown.SetAreaGrid(10, 7);
             palletTown.BackgroundCellObject = CellObjectFactory.Build("GRASS");
+
             pokemon.Areas.Add(palletTown);
             pokemon.CurrentArea = palletTown;
+
             PlayableCharacter red = new PlayableCharacter(CellObjectFactory.Build("HERO"));
             ICellObject npc = CellObjectFactory.Build("NPC");
+
             palletTown.SetCellObjectGridPosition(3, 5, red.CellObject);
             palletTown.SetCellObjectGridPosition(7, 2, npc);
-            pokemon.CurrentArea = palletTown;
             palletTown.AreaMusic = new MediaHandler("shake.mp3");
+
+            pokemon.CurrentArea = palletTown;
             pokemon.CurrentlyPlayingMusic = palletTown.AreaMusic;
 
             //For some weird reason the view isn't available after initialization, so we need to wait for it to become available

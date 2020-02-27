@@ -1,9 +1,7 @@
 ﻿using GameEngineRuntimeComponent.Events;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using GameEngine.GameBoard;
 
 namespace GameEngineRuntimeComponent.FactoryObjects
 {
@@ -18,9 +16,8 @@ namespace GameEngineRuntimeComponent.FactoryObjects
 
 		private void DoSpeak()
 		{
-			
-			
-		}
-
-	}
+            //Debugger.Break();
+			//ICellEntity temp = 
+        }
+    }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace GameEngine.GameBoard
 {
@@ -18,8 +14,8 @@ namespace GameEngine.GameBoard
 
         public static void MoveCellObject(ICellObject cellObject, Area area, Direction direction)
 		{
-            var originalXCoordinate = cellObject.CoordinateTuple.x;
-            var originalYCoordinate = cellObject.CoordinateTuple.y;
+            var originalXCoordinate = cellObject.Position.x;
+            var originalYCoordinate = cellObject.Position.y;
 
             var nextXCoordinate = originalXCoordinate;
             var nextYCoordinate = originalYCoordinate;
@@ -59,7 +55,7 @@ namespace GameEngine.GameBoard
 
             area.AreaGrid[originalXCoordinate - 1][originalYCoordinate - 1].CellObjects.Remove(cellObject);
             area.AreaGrid[nextXCoordinate - 1][nextYCoordinate - 1].CellObjects.Add(cellObject);
-            cellObject.CoordinateTuple = (nextXCoordinate, nextYCoordinate);
+            cellObject.Position = (nextXCoordinate, nextYCoordinate);
 
             TriggerEventHandlerInNextCellObject(nextXCoordinate, nextYCoordinate, area);
         }
@@ -67,10 +63,16 @@ namespace GameEngine.GameBoard
         private static void TriggerEventHandlerInNextCellObject(int xPos, int yPos, Area area)
         {
             var cellObjects = area.AreaGrid[xPos - 1][yPos - 1].CellObjects;
-
-            foreach (var cellObject in cellObjects)
+            if(cellObjects.Count > 0)
             {
-                //TODO: Find a way to trigger the events
+                foreach (var cellObject in cellObjects)
+                {
+                    //TODO: Find a way to trigger the events
+                    if(cellObject.EventTriggers == null || cellObject.EventTriggers.Count == 0)
+                        continue;
+
+                    cellObject.EventTriggers[0].GameEvent();
+                }
             }
         }
 
@@ -78,7 +80,20 @@ namespace GameEngine.GameBoard
         {
             var cellObjects = area.AreaGrid[xPos - 1][yPos - 1].CellObjects;
 
+            //TriggerEventHandlerInNextCellObject(xPos, yPos, area);
+
             return cellObjects.All(cellObject => cellObject.IsPassable);
+        }
+
+        public static void InteractWithCellObject(ICellObject cellObject, Area area)
+        {
+            int xPos = cellObject.Position.x;
+            int yPos = cellObject.Position.y;
+
+            TriggerEventHandlerInNextCellObject(xPos-1,yPos,area);
+            TriggerEventHandlerInNextCellObject(xPos+1,yPos,area);
+            TriggerEventHandlerInNextCellObject(xPos,yPos-1,area);
+            TriggerEventHandlerInNextCellObject(xPos,yPos+1,area);
         }
     }
 }

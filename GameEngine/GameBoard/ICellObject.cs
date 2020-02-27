@@ -1,6 +1,5 @@
 ﻿using GameEngine.GameObjects;
 using GameEngineRuntimeComponent.Events;
-using System;
 using System.Collections.Generic;
 
 namespace GameEngine
@@ -11,7 +10,6 @@ namespace GameEngine
         bool IsPassable { get; set; }
         string Key { get; set; }
         List<IGameEvent> EventTriggers { get; set; }
-
-        (int x, int y) CoordinateTuple { get; set; }
+        (int x, int y) Position { get; set; }
     }
 }

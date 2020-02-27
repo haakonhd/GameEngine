@@ -1,6 +1,7 @@
 ﻿using GameEngine.GameObjects;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -14,10 +15,12 @@ namespace GameEngine
 		public Area CurrentArea { get; set; }
         public int GameWidth { get; set; }
         public PlayableCharacter PlayableCharacter { get; set; }
+        public Stopwatch stopWatch { get; }
 
         public Game()
         {
             Areas = new List<Area>();
+            stopWatch = new Stopwatch();
         }
 	}
 }

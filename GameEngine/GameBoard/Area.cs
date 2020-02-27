@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using GameEngine.GameBoard;
 using GameEngine.GameObjects;
 
 namespace GameEngine
@@ -14,7 +15,11 @@ namespace GameEngine
         public MediaHandler AreaMusic { get; set; }
         public int Height { get; set; }
         public int Width { get; set; }
-        public List<ICellObject> CellObjectsInUse = new List<ICellObject>();
+
+        public List<ICellObject> GameObjects = new List<ICellObject>();
+
+        public List<ICellEntity> GameEntities = new List<ICellEntity>();
+
         public Area()
         {
         }
@@ -45,15 +50,15 @@ namespace GameEngine
         //TODO: Check that index exists
         public void SetCellObjectGridPosition(int xCoordinate, int yCoordinate, ICellObject cellObject)
         {
-            if(!CellObjectsInUse.Contains(cellObject))
-                CellObjectsInUse.Add(cellObject);
+            if(!GameObjects.Contains(cellObject))
+                GameObjects.Add(cellObject);
 
             if(AreaGrid.Length > 0)
             {
                 AreaGrid[xCoordinate - 1][yCoordinate - 1].CellObjects.Add(cellObject);
 
                 if (cellObject is Hero)
-                    cellObject.CoordinateTuple = (xCoordinate, yCoordinate);
+                    cellObject.Position = (xCoordinate, yCoordinate);
             }
         }
     }

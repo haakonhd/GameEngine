@@ -4,24 +4,26 @@ using GameEngine.Implementation.Pokemon.FactoryObjects;
 
 namespace GameEngine.Implementation.Pokemon.Factories
 {
-    static class CellEntityFactory
+    public static class CellEntityFactory
     {
-        public enum EntityTypes
+        public enum entityType
         {
-            Speech,
+            ChatBubble,
             MessageBox
         }
-        public static ICellEntity Build(EntityTypes entityName)
+
+        public static ICellEntity Build(entityType entityName)
         {
-            switch (entityName)
+            switch(entityName)
             {
-                case EntityTypes.Speech:
+                case entityType.ChatBubble:
                     return new ChatBubble();
 
-                case EntityTypes.MessageBox:
+                case entityType.MessageBox:
                     return new MessageBox();
 
-                default: return null;
+                default:
+                    return null;
             }
         }
     }

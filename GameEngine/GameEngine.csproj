@@ -125,7 +125,8 @@
       <DependentUpon>BattleWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="GameBoard\ICellEntity.cs" />
-    <Compile Include="GameObjects\ChatBubble.cs" />
+    <Compile Include="Implementation\Pokemon\Factories\CellEntityFactory.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\ChatBubble.cs" />
     <Compile Include="GameObjects\IBattleAttack.cs" />
     <Compile Include="GameObjects\IInventoryItem.cs" />
     <Compile Include="GameObjects\IPlayableCharacter.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="Implementation\Pokemon\FactoryObjects\Grass.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\HealthPotionSmall.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Hero.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\MessageBox.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Npc.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Speak.cs" />
     <Compile Include="Game.cs" />

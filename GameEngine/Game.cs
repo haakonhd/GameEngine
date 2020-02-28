@@ -15,12 +15,11 @@ namespace GameEngine
 		public Area CurrentArea { get; set; }
         public int GameWidth { get; set; }
         public PlayableCharacter PlayableCharacter { get; set; }
-        public Stopwatch stopWatch { get; }
+        public static Stopwatch stopWatch = new Stopwatch();
 
         public Game()
         {
             Areas = new List<Area>();
-            stopWatch = new Stopwatch();
         }
 	}
 }

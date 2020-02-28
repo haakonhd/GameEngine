@@ -20,7 +20,7 @@ namespace GameEngine
         public Game()
         {
             Areas = new List<Area>();
-            StopWatch = new Stopwatch();
+            stopWatch = new Stopwatch();
         }
 	}
 }

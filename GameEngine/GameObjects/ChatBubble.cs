@@ -18,17 +18,13 @@ namespace GameEngine.GameObjects
         public (int x, int y) Position { get; set; }
         public long EntityLifetime { get; set; }
 
-        public ChatBubble(Game game, int duration, string text, int xPos, int yPos)
+        public ChatBubble(int duration, string text, int xPos, int yPos)
         {
-            EntityLifetime = game.StopWatch.ElapsedMilliseconds + duration;
+            EntityLifetime = Game.stopWatch.ElapsedMilliseconds + duration;
             Position = (xPos, yPos);
             TextBox txtBox = new TextBox();
             txtBox.Text = text;
             
-            int cellSize = game.GameWidth / game.CurrentArea.Width;
-
-            txtBox.Width = cellSize;
-            txtBox.Height = cellSize;
             txtBox.SetValue(Grid.ColumnProperty, xPos);
             txtBox.SetValue(Grid.RowProperty, yPos);
             txtBox.Background = new SolidColorBrush(color: Colors.Black);
@@ -36,6 +32,11 @@ namespace GameEngine.GameObjects
             txtBox.BorderBrush = new SolidColorBrush(Color.FromArgb(0,0,0,255));
 
             Entity = txtBox;
+        }
+
+        public ChatBubble()
+        {
+            
         }
     }
 }

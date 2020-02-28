@@ -9,5 +9,8 @@ namespace GameEngine.GameObjects
 	public interface IFighter
 	{
 		int HealthPoints { get; set; }
+		List<IInventoryItem> ItemInventory { get; set; }
+		List<IBattleAttack> BattleAttacks { get; set; }
+		int Level { get; set; }
 	}
 }

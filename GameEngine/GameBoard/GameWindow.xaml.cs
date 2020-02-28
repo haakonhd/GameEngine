@@ -42,7 +42,7 @@ namespace GameEngine.GameBoard
 			area = Game.CurrentArea;
 			boardWidth = Game.GameWidth;
 
-			Game.stopWatch.Start();
+			Game.StopWatch.Start();
 
 			DrawBoard();
 
@@ -115,7 +115,7 @@ namespace GameEngine.GameBoard
 
             foreach (var entity in area.GameEntities)
             {
-                if (entity.EntityLifetime >= Game.stopWatch.ElapsedMilliseconds)
+                if (entity.EntityLifetime >= Game.StopWatch.ElapsedMilliseconds)
                 {
 					if(!MainGrid.Children.Contains((UIElement)entity.Entity))
 					    MainGrid.Children.Add((UIElement)entity.Entity);
@@ -139,7 +139,7 @@ namespace GameEngine.GameBoard
 				for (int y = 0; y < area.Height; y++)
 				{
 					// a new instance of Grass needs to be created in order to place it in the view more than once
-					Image img = PrepareImageFromCellObject(CellObjectFactory.Build(cellObject.Key), x, y);
+					Image img = PrepareImageFromCellObject(CellObjectFactory.Build(cellObject.EnumType), x, y);
 					MainGrid.Children.Add(img);
 				}
 			}

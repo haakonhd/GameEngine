@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static GameEngine.Factories.CellObjectFactory;
 
 namespace GameEngine.GameObjects
 {
@@ -12,15 +13,15 @@ namespace GameEngine.GameObjects
 	{
 		public Sprite Sprite {get; set ; }
 		public bool IsPassable { get; set; }
-		public string Key { get; set; }
 		public List<IGameEvent> EventTriggers { get; set; }
 		public (int x, int y) Position { get; set ; }
+		public CellObjectType EnumType { get; set; }
 
 		public Grass()
 		{
 			Sprite = new Sprite("grass.png");
 			IsPassable = true;
-			Key = "GRASS";
+			EnumType = CellObjectType.Grass;
 			EventTriggers = null;
 		}
 

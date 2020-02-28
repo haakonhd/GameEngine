@@ -20,7 +20,7 @@ namespace GameEngine.GameObjects
 
         public ChatBubble(Game game, int duration, string text, int xPos, int yPos)
         {
-            EntityLifetime = game.stopWatch.ElapsedMilliseconds + duration;
+            EntityLifetime = game.StopWatch.ElapsedMilliseconds + duration;
             Position = (xPos, yPos);
             TextBox txtBox = new TextBox();
             txtBox.Text = text;

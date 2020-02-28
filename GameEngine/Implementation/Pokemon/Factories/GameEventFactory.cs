@@ -1,4 +1,5 @@
 ﻿using GameEngine;
+using GameEngine.Implementation.Pokemon.FactoryObjects;
 using GameEngineRuntimeComponent.Events;
 using GameEngineRuntimeComponent.FactoryObjects;
 using System;
@@ -9,14 +10,26 @@ using System.Threading.Tasks;
 
 namespace GameEngineRuntimeComponent.Factories
 {
-	static class GameEventFactory
+	public static class GameEventFactory
 	{
-		public static IGameEvent Build(string eventName)
+		public enum EventName
+		{
+			SpeakHello,
+			SpeakGoodbye,
+			StartBattle
+		}
+		public static IGameEvent Build(EventName eventName)
 		{
 			switch (eventName)
 			{
-				case "SPEAK":
-					return new Speak();
+				case EventName.SpeakHello:
+					return new Speak("Hello");
+				case EventName.SpeakGoodbye:
+					return new Speak("Good bye");
+				case EventName.StartBattle:
+					//oops
+					//TODO: StartBattle is hungry for arguments. We need to change something here
+					return new StartBattle(null,null);
 				default:
 					return null;
 			}

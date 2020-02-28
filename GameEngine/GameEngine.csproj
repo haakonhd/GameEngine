@@ -119,13 +119,23 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Events\Battle.cs" />
     <Compile Include="Events\IGameEvent.cs" />
+    <Compile Include="GameBoard\BattleWindow.xaml.cs">
+      <DependentUpon>BattleWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GameBoard\ICellEntity.cs" />
     <Compile Include="GameObjects\ChatBubble.cs" />
-    <Compile Include="GameObjects\PlayableCharacter.cs" />
+    <Compile Include="GameObjects\IBattleAttack.cs" />
+    <Compile Include="GameObjects\IInventoryItem.cs" />
+    <Compile Include="GameObjects\IPlayableCharacter.cs" />
+    <Compile Include="Implementation\Pokemon\Factories\BattleAttackFactory.cs" />
     <Compile Include="Implementation\Pokemon\Factories\CellObjectFactory.cs" />
     <Compile Include="Implementation\Pokemon\Factories\GameEventFactory.cs" />
+    <Compile Include="Implementation\Pokemon\Factories\InventoryItemFactory.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\Enemy.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Grass.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\HealthPotionSmall.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Hero.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Npc.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Speak.cs" />
@@ -139,6 +149,8 @@
     </Compile>
     <Compile Include="GameObjects\IFighter.cs" />
     <Compile Include="GameObjects\Sprite.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\Stab.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\StartBattle.cs" />
     <Compile Include="Implementation\Pokemon\GameInitializer.xaml.cs">
       <DependentUpon>GameInitializer.xaml</DependentUpon>
     </Compile>
@@ -154,6 +166,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Implementation\Pokemon\Assets\enemy.png" />
     <Content Include="Implementation\Pokemon\Assets\grass.png" />
     <Content Include="Implementation\Pokemon\Assets\hero.png" />
     <Content Include="Implementation\Pokemon\Assets\npc.png" />
@@ -172,6 +185,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="GameBoard\BattleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GameBoard\GameWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

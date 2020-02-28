@@ -14,13 +14,13 @@ namespace GameEngine
         public List<Area> Areas{ get; }
 		public Area CurrentArea { get; set; }
         public int GameWidth { get; set; }
-        public PlayableCharacter PlayableCharacter { get; set; }
-        public Stopwatch stopWatch { get; }
+        public IPlayableCharacter PlayableCharacter { get; set; }
+        public Stopwatch StopWatch { get; }
 
         public Game()
         {
             Areas = new List<Area>();
-            stopWatch = new Stopwatch();
+            StopWatch = new Stopwatch();
         }
 	}
 }

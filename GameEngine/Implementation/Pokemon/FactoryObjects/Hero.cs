@@ -1,17 +1,12 @@
-﻿using GameEngine.Factories;
-using GameEngine.Implementation.Pokemon.Factories;
-using GameEngineRuntimeComponent.Events;
-using GameEngineRuntimeComponent.Factories;
-using System;
+﻿using GameEngine.Implementation.Pokemon.Factories;
+using GameEngine.Events;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static GameEngine.Factories.CellObjectFactory;
 using static GameEngine.Implementation.Pokemon.Factories.BattleAttackFactory;
 using static GameEngine.Implementation.Pokemon.Factories.InventoryItemFactory;
+using static GameEngine.Implementation.Pokemon.Factories.CellObjectFactory;
+using GameEngine.GameObjects;
 
-namespace GameEngine.GameObjects
+namespace GameEngine.Implementation.Pokemon.FactoryObjects
 {
 	class Hero : IPlayableCharacter
 	{
@@ -35,6 +30,11 @@ namespace GameEngine.GameObjects
 			EventTriggers = null;
 			ItemInventory.Add(InventoryItemFactory.Build(ItemName.SmallHealthPotion));
 			BattleAttacks.Add(BattleAttackFactory.Build(AttackName.Stab));
+		}
+
+		public ICellObject GetCopy()
+		{
+			throw new System.NotImplementedException();
 		}
 	}
 }

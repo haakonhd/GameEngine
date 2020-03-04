@@ -7,11 +7,20 @@ using System.Threading.Tasks;
 
 namespace GameEngine.Events
 {
-	class Battle
+	public class Battle
 	{
-		public Battle(IFighter hero, IFighter enemy)
+		public IFighter Hero { get; set; }
+		public IFighter Enemy { get; set; }
+		public Battle(IFighter hero)
 		{
+			Hero = hero;
+		}
 
+		public void StartBattle()
+		{
+			//TODO: handle error
+			if (Hero == null || Enemy == null) return;
+			//TODO: create battle
 		}
 	}
 }

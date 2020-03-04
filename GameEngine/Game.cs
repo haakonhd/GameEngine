@@ -1,4 +1,5 @@
-﻿using GameEngine.GameObjects;
+﻿using GameEngine.Events;
+using GameEngine.GameObjects;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,6 +17,7 @@ namespace GameEngine
         public int GameWidth { get; set; }
         public IPlayableCharacter PlayableCharacter { get; set; }
         public static Stopwatch StopWatch = new Stopwatch();
+        public Battle OngoingBattle { get; set; }
 
         public Game()
         {

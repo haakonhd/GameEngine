@@ -1,11 +1,10 @@
-﻿using GameEngine.Factories;
-using GameEngine.GameBoard;
+﻿using GameEngine.GameBoard;
 using GameEngine.GameObjects;
 using GameEngine.Implementation.Pokemon.Factories;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
-using static GameEngine.Factories.CellObjectFactory;
 using static GameEngine.Implementation.Pokemon.Factories.BattleAttackFactory;
+using static GameEngine.Implementation.Pokemon.Factories.CellObjectFactory;
 using static GameEngine.Implementation.Pokemon.Factories.InventoryItemFactory;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238

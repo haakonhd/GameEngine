@@ -1,14 +1,9 @@
-﻿using GameEngine.Factories;
+﻿using GameEngine.Events;
 using GameEngine.GameObjects;
-using GameEngine.Implementation.Pokemon.Factories;
-using GameEngineRuntimeComponent.Events;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static GameEngine.Factories.CellObjectFactory;
 using static GameEngine.Implementation.Pokemon.Factories.BattleAttackFactory;
+using static GameEngine.Implementation.Pokemon.Factories.CellObjectFactory;
+using static GameEngine.Implementation.Pokemon.Factories.GameEventFactory;
 
 namespace GameEngine.Implementation.Pokemon.FactoryObjects
 {
@@ -31,7 +26,15 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 			EnumType = CellObjectType.Enemy;
 			HealthPoints = 10;
 			Level = 2;
-			BattleAttacks.Add(BattleAttackFactory.Build(AttackName.Stab));
+			BattleAttacks.Add(Build(AttackName.Stab));
+			EventTriggers.Add(Build(EventName.StartBattle, this));
+		}
+
+		public ICellObject GetCopy()
+		{
+			Enemy newEnemy = new Enemy();
+			newEnemy = this;
+			return newEnemy;
 		}
 	}
 }

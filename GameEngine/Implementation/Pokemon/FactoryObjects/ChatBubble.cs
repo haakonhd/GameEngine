@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Services.Maps.Guidance;
-using Windows.UI;
+﻿using Windows.UI;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using GameEngine.GameBoard;
 
-namespace GameEngine.GameObjects
+namespace GameEngine.Implementation.Pokemon.FactoryObjects
 {
     class ChatBubble : ICellEntity
     {

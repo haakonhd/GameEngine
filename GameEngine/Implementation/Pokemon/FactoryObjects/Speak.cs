@@ -1,9 +1,9 @@
-﻿using GameEngineRuntimeComponent.Events;
+﻿using GameEngine.Events;
 using System;
 using System.Diagnostics;
 using GameEngine.GameBoard;
 
-namespace GameEngineRuntimeComponent.FactoryObjects
+namespace GameEngine.Implementation.Pokemon.FactoryObjects
 {
 	class Speak : IGameEvent
 	{

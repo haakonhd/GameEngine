@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using GameEngine.GameBoard;
 using GameEngine.GameObjects;
+using GameEngine.Implementation.Pokemon.FactoryObjects;
 
 namespace GameEngine
 {
@@ -56,7 +57,7 @@ namespace GameEngine
             if(AreaGrid.Length > 0)
             {
                 AreaGrid[xCoordinate - 1][yCoordinate - 1].CellObjects.Add(cellObject);
-
+                //TODO: Can't use Hero here
                 if (cellObject is Hero)
                     cellObject.Position = (xCoordinate, yCoordinate);
             }

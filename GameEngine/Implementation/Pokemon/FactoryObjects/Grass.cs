@@ -1,13 +1,9 @@
-﻿using GameEngine.Factories;
-using GameEngineRuntimeComponent.Events;
-using System;
+﻿using GameEngine.Events;
+using GameEngine.GameObjects;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static GameEngine.Factories.CellObjectFactory;
+using static GameEngine.Implementation.Pokemon.Factories.CellObjectFactory;
 
-namespace GameEngine.GameObjects
+namespace GameEngine.Implementation.Pokemon.FactoryObjects
 {
 	class Grass : ICellObject
 	{
@@ -25,5 +21,15 @@ namespace GameEngine.GameObjects
 			EventTriggers = null;
 		}
 
+		//TODO: make this better, and create background-cellobject interface
+		public ICellObject GetCopy()
+		{
+			Grass newGrass = new Grass();
+			newGrass.Sprite = new Sprite("grass.png");
+			newGrass.IsPassable = true;
+			newGrass.EnumType = CellObjectType.Grass;
+			newGrass.EventTriggers = null;
+			return newGrass;
+		}
 	}
 }

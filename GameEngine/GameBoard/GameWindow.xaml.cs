@@ -1,11 +1,9 @@
-﻿using System.Diagnostics;
-using GameEngine.Factories;
+﻿using GameEngine.Implementation.Pokemon.FactoryObjects;
 using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using GameEngine.GameObjects;
 using static GameEngine.GameBoard.Movement;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -139,7 +137,7 @@ namespace GameEngine.GameBoard
 				for (int y = 0; y < area.Height; y++)
 				{
 					// a new instance of Grass needs to be created in order to place it in the view more than once
-					Image img = PrepareImageFromCellObject(CellObjectFactory.Build(cellObject.EnumType), x, y);
+					Image img = PrepareImageFromCellObject(cellObject.GetCopy(), x, y);
 					MainGrid.Children.Add(img);
 				}
 			}
@@ -172,6 +170,7 @@ namespace GameEngine.GameBoard
 
         void CoreWindow_KeyDown(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs e)
         {
+			//TODO: Can't reference Hero
             var heroCellObject = area.GameObjects.Find(x => x.GetType() == typeof(Hero));
 			
             switch (e.VirtualKey)

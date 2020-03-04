@@ -1,11 +1,11 @@
-﻿using GameEngine.Factories;
-using GameEngineRuntimeComponent.Events;
-using GameEngineRuntimeComponent.Factories;
+﻿using GameEngine.Events;
+using GameEngine.GameObjects;
+using GameEngine.Implementation.Pokemon.Factories;
 using System.Collections.Generic;
-using static GameEngine.Factories.CellObjectFactory;
-using static GameEngineRuntimeComponent.Factories.GameEventFactory;
+using static GameEngine.Implementation.Pokemon.Factories.CellObjectFactory;
+using static GameEngine.Implementation.Pokemon.Factories.GameEventFactory;
 
-namespace GameEngine.GameObjects
+namespace GameEngine.Implementation.Pokemon.FactoryObjects
 {
 	class Npc : ICellObject
 	{
@@ -23,7 +23,12 @@ namespace GameEngine.GameObjects
 			HealthPoints = 20;
 			EnumType = CellObjectType.Npc;
 			EventTriggers = new List<IGameEvent>();
-			EventTriggers.Add(GameEventFactory.Build(EventName.SpeakHello));
+			EventTriggers.Add(Build(EventName.SpeakHello));
+		}
+
+		public ICellObject GetCopy()
+		{
+			throw new System.NotImplementedException();
 		}
 	}
 }

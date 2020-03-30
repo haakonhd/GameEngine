@@ -23,6 +23,8 @@ namespace GameEngine.GameBoard
 		public GameWindow()
 		{
 			InitializeComponent();
+
+			//Test
 		}
 
 		protected override void OnNavigatedTo(NavigationEventArgs e)

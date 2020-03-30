@@ -28,7 +28,7 @@ namespace GameEngine.GameObjects
 
 		private Image GetImageFromFileName(string fileName)
 		{
-			string uri = "ms-appx:///Implementation/Pokemon/Assets/" + fileName;
+			string uri = "ms-appx:///Implementation/" + Game.GetInstance().GamePathName + "/Assets/" + fileName;
 			Image img = new Image();
 			img.Source = new BitmapImage(new Uri(uri));
 			return img;

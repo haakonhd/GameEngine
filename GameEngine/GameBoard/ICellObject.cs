@@ -8,7 +8,7 @@ namespace GameEngine
     {
         Sprite Sprite { get; set; }
         bool IsPassable { get; set; }
-        List<IGameEvent> EventTriggers { get; set; }
+        Dictionary<IGameEvent, double> EventTriggers { get; set; }
         (int x, int y) Position { get; set; }
         ICellObject GetCopy();
     }

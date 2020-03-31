@@ -145,11 +145,6 @@ namespace GameEngine.GameBoard
 			}
 		}
 
-		public void InsertXamlControl(Control control)
-		{
-			OuterGrid.Children.Add(control);
-		}
-
 		private Image PrepareImageFromCellObject(ICellObject cellObject, int columnProperty, int rowProperty)
 		{
 			Image img = cellObject.Sprite.SpriteImage;
@@ -160,7 +155,6 @@ namespace GameEngine.GameBoard
 			return img;
 		}
 
-		// whipes the current board and draws a new one from area object
 		public void DrawBoard()
 		{
             if (area == null) 

@@ -1,7 +1,6 @@
 ﻿using GameEngine.GameBoard;
 using GameEngine.GameObjects;
 using GameEngine.Implementation.Pokemon.Factories;
-using GameEngine.Implementation.Pokemon.FactoryObjects;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using static GameEngine.Implementation.Pokemon.Factories.BattleAttackFactory;
@@ -19,12 +18,13 @@ namespace GameEngine.Implementation.Pokemon
 	{
 		public GameInitializer()
 		{
-			InitializeComponent();
+			this.InitializeComponent();
 
-            Game pokemon = Game.GetInstance();
-
-            pokemon.Title = "Pokémon";
-            pokemon.GameWidth = 600;
+            Game pokemon = new Game()
+            {
+                Title = "Pokémon",
+                GameWidth = 600
+            };
 
             Area palletTown = new Area();
             palletTown.SetAreaGrid(10, 7);
@@ -46,14 +46,10 @@ namespace GameEngine.Implementation.Pokemon
             palletTown.SetCellObjectGridPosition(3, 5, red);
             palletTown.SetCellObjectGridPosition(5, 2, npc);
             palletTown.SetCellObjectGridPosition(1, 2, enemy);
-            palletTown.AreaMusic = new MediaHandler("shake.mp3", pokemon.GamePathName);
-
+            palletTown.AreaMusic = new MediaHandler("shake.mp3");
 
             pokemon.CurrentArea = palletTown;
             pokemon.CurrentlyPlayingMusic = palletTown.AreaMusic;
-            pokemon.CurrentlyPlayingMusic.SoundPlayer.Play();
-
-            TextView tv = new TextView();
 
             //For some weird reason the view isn't available after initialization, 
             // so we need to wait for it to become available

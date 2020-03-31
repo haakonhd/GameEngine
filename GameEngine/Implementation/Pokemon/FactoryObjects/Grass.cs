@@ -9,9 +9,9 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 	{
 		public Sprite Sprite {get; set ; }
 		public bool IsPassable { get; set; }
+		public List<IGameEvent> EventTriggers { get; set; }
 		public (int x, int y) Position { get; set ; }
 		public CellObjectType EnumType { get; set; }
-		public Dictionary<IGameEvent, double> EventTriggers { get; set; }
 
 		public Grass()
 		{

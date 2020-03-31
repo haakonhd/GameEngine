@@ -4,6 +4,5 @@ namespace GameEngine.GameObjects
 {
 	public interface IPlayableCharacter : ICellObject, IFighter
 	{
-		int PlayerMoney { get; set; }
 	}
 }

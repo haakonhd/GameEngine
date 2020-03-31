@@ -125,8 +125,6 @@
       <DependentUpon>BattleWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="GameBoard\ICellEntity.cs" />
-    <Compile Include="GameObjects\IEnemy.cs" />
-    <Compile Include="GameObjects\IMerchant.cs" />
     <Compile Include="Implementation\Pokemon\Factories\CellEntityFactory.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\ChatBubble.cs" />
     <Compile Include="GameObjects\IBattleAttack.cs" />
@@ -155,7 +153,6 @@
     <Compile Include="GameObjects\Sprite.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Stab.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\StartBattle.cs" />
-    <Compile Include="Implementation\Pokemon\FactoryObjects\TextView.cs" />
     <Compile Include="Implementation\Pokemon\GameInitializer.xaml.cs">
       <DependentUpon>GameInitializer.xaml</DependentUpon>
     </Compile>

@@ -7,18 +7,17 @@ using static GameEngine.Implementation.Pokemon.Factories.GameEventFactory;
 
 namespace GameEngine.Implementation.Pokemon.FactoryObjects
 {
-	class Enemy : IEnemy
+	class Enemy : ICellObject, IFighter
 	{
 		public Sprite Sprite { get; set; }
 		public bool IsPassable { get; set; }
 		public CellObjectType EnumType { get; set; }
+		public List<IGameEvent> EventTriggers { get; set; } = new List<IGameEvent>();
 		public (int x, int y) Position { get; set; }
 		public int HealthPoints { get; set; }
 		public List<IInventoryItem> ItemInventory { get; set; } = new List<IInventoryItem>();
 		public List<IBattleAttack> BattleAttacks { get; set; } = new List<IBattleAttack>();
 		public int Level { get; set; }
-		public Dictionary<IInventoryItem, double> Loot { get; set; }
-		public Dictionary<IGameEvent, double> EventTriggers { get; set; }
 
 		public Enemy()
 		{
@@ -28,8 +27,7 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 			HealthPoints = 10;
 			Level = 2;
 			BattleAttacks.Add(Build(AttackName.Stab));
-			//EventTriggers.Add(Build(EventName.StartBattle, this));
-			Loot = null;
+			EventTriggers.Add(Build(EventName.StartBattle, this));
 		}
 
 		public ICellObject GetCopy()

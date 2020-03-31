@@ -9,6 +9,5 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 		public string ItemName { get; set; }
 		public string ItemDescription { get; set; }
 		public List<IGameEvent> ItemEffects { get; set; }
-		public int ItemPrice { get; set; }
 	}
 }

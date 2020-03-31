@@ -11,7 +11,6 @@ namespace GameEngine.GameObjects
 	{
 		string ItemName { get; set; }
 		string ItemDescription { get; set; }
-		int ItemPrice { get; set; }
 		List<IGameEvent> ItemEffects { get; set; }
 	}
 }

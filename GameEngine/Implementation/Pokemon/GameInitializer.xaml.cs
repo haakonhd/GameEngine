@@ -25,6 +25,7 @@ namespace GameEngine.Implementation.Pokemon
 
             pokemon.Title = "Pokémon";
             pokemon.GameWidth = 600;
+            pokemon.GamePathName = "Pokemon";
 
             Area palletTown = new Area();
             palletTown.SetAreaGrid(10, 7);

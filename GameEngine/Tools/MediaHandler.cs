@@ -11,10 +11,11 @@ namespace GameEngine
     {
         public MediaPlayer SoundPlayer;
         
-        public MediaHandler(string fileName)
+        public MediaHandler(string fileName, string gamePathName)
         {
             SoundPlayer = new MediaPlayer();
-            string musicPath = "ms-appx:///Assets/" + fileName;
+            //string musicPath = "ms-appx:///Assets/" + fileName;
+            string musicPath = "ms-appx:///Implementation/" + gamePathName + "/Assets/" + fileName;
             SoundPlayer.Source = MediaSource.CreateFromUri(new Uri(musicPath));
         }
 

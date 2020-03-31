@@ -12,9 +12,9 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 		public int HealthPoints { get; set; }
 		public Sprite Sprite { get; set; }
 		public bool IsPassable { get; set; }
-		public List<IGameEvent> EventTriggers { get; set; }
         public (int x, int y) Position { get; set; }
 		public CellObjectType EnumType { get; set; }
+		public Dictionary<IGameEvent, double> EventTriggers { get; set; }
 
 		public Npc()
 		{
@@ -22,8 +22,8 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 			IsPassable = false;
 			HealthPoints = 20;
 			EnumType = CellObjectType.Npc;
-			EventTriggers = new List<IGameEvent>();
-			EventTriggers.Add(Build(EventName.SpeakHello));
+			//EventTriggers = new List<IGameEvent>();
+			//EventTriggers.Add(Build(EventName.SpeakHello));
 		}
 
 		public ICellObject GetCopy()

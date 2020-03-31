@@ -71,7 +71,7 @@ namespace GameEngine.GameBoard
                     if(cellObject.EventTriggers == null || cellObject.EventTriggers.Count == 0)
                         continue;
 
-                    cellObject.EventTriggers[0].GameEvent();
+                    //cellObject.EventTriggers[0].GameEvent();
                 }
             }
         }

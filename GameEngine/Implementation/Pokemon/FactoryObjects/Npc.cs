@@ -1,9 +1,9 @@
 ﻿using GameEngine.Events;
 using GameEngine.GameObjects;
 using GameEngine.Implementation.Pokemon.Factories;
+using System;
 using System.Collections.Generic;
 using static GameEngine.Implementation.Pokemon.Factories.CellObjectFactory;
-using static GameEngine.Implementation.Pokemon.Factories.GameEventFactory;
 
 namespace GameEngine.Implementation.Pokemon.FactoryObjects
 {
@@ -14,7 +14,7 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 		public bool IsPassable { get; set; }
         public (int x, int y) Position { get; set; }
 		public CellObjectType EnumType { get; set; }
-		public Dictionary<IGameEvent, double> EventTriggers { get; set; }
+		public Dictionary<double, Action> EventTriggers { get; set; } = new Dictionary<double, Action>();
 
 		public Npc()
 		{
@@ -22,8 +22,7 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 			IsPassable = false;
 			HealthPoints = 20;
 			EnumType = CellObjectType.Npc;
-			//EventTriggers = new List<IGameEvent>();
-			//EventTriggers.Add(Build(EventName.SpeakHello));
+			EventTriggers.Add(1, new MediaHandler("bump.mp3").SoundPlayer.Play);
 		}
 
 		public ICellObject GetCopy()

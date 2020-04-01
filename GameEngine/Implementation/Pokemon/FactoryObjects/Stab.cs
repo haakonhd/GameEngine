@@ -1,6 +1,7 @@
 ﻿using GameEngine.GameObjects;
 using GameEngine.Events;
 using System.Collections.Generic;
+using System;
 
 namespace GameEngine.Implementation.Pokemon.FactoryObjects
 {
@@ -8,7 +9,7 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 	{
 		public string AttackName { get; set; }
 		public int AttackDamage { get; set; }
-		public List<IGameEvent> AttackEffects { get; set; }
+		public List<Action> AttackEffects { get; set; }
 
 		public Stab(string attackName, int attackDamage)
 		{

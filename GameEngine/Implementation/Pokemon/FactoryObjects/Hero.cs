@@ -5,6 +5,7 @@ using static GameEngine.Implementation.Pokemon.Factories.BattleAttackFactory;
 using static GameEngine.Implementation.Pokemon.Factories.InventoryItemFactory;
 using static GameEngine.Implementation.Pokemon.Factories.CellObjectFactory;
 using GameEngine.GameObjects;
+using System;
 
 namespace GameEngine.Implementation.Pokemon.FactoryObjects
 {
@@ -19,7 +20,7 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 		public List<IBattleAttack> BattleAttacks { get; set; } = new List<IBattleAttack>();
 		public CellObjectType EnumType { get; set; }
 		public int PlayerMoney { get; set; }
-		public Dictionary<IGameEvent, double> EventTriggers { get; set; }
+		public Dictionary<double, Action> EventTriggers { get; set; } 
 
 		public Hero()
 		{

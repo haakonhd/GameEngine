@@ -47,16 +47,15 @@ namespace GameEngine.Implementation.Pokemon
             palletTown.SetCellObjectGridPosition(3, 5, red);
             palletTown.SetCellObjectGridPosition(5, 2, npc);
             palletTown.SetCellObjectGridPosition(1, 2, enemy);
-            palletTown.AreaMusic = new MediaHandler("shake.mp3", pokemon.GamePathName);
+            palletTown.AreaMusic = new MediaHandler("shake.mp3");
 
 
             pokemon.CurrentArea = palletTown;
             pokemon.CurrentlyPlayingMusic = palletTown.AreaMusic;
-            pokemon.CurrentlyPlayingMusic.SoundPlayer.Play();
+            //pokemon.CurrentlyPlayingMusic.SoundPlayer.Play();
 
-            TextView tv = new TextView();
 
-            //For some weird reason the view isn't available after initialization, 
+            //For some weird reason the view isn't available right after initialization, 
             // so we need to wait for it to become available
             //TODO: find another workaround for this
             Loaded += async (s, e) =>

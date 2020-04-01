@@ -1,5 +1,6 @@
 ﻿using GameEngine.Events;
 using GameEngine.GameObjects;
+using System;
 using System.Collections.Generic;
 using static GameEngine.Implementation.Pokemon.Factories.CellObjectFactory;
 
@@ -11,7 +12,7 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 		public bool IsPassable { get; set; }
 		public (int x, int y) Position { get; set ; }
 		public CellObjectType EnumType { get; set; }
-		public Dictionary<IGameEvent, double> EventTriggers { get; set; }
+		public Dictionary<double, Action> EventTriggers { get; set; }
 
 		public Grass()
 		{

@@ -11,6 +11,6 @@ namespace GameEngine.GameObjects
 	{
 		string AttackName { get; set; }
 		int AttackDamage { get; set; }
-		List<IGameEvent> AttackEffects { get; set; }
+		List<Action> AttackEffects { get; set; }
 	}
 }

@@ -120,7 +120,6 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Events\Battle.cs" />
-    <Compile Include="Events\IGameEvent.cs" />
     <Compile Include="GameBoard\BattleWindow.xaml.cs">
       <DependentUpon>BattleWindow.xaml</DependentUpon>
     </Compile>
@@ -134,7 +133,6 @@
     <Compile Include="GameObjects\IPlayableCharacter.cs" />
     <Compile Include="Implementation\Pokemon\Factories\BattleAttackFactory.cs" />
     <Compile Include="Implementation\Pokemon\Factories\CellObjectFactory.cs" />
-    <Compile Include="Implementation\Pokemon\Factories\GameEventFactory.cs" />
     <Compile Include="Implementation\Pokemon\Factories\InventoryItemFactory.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Enemy.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Grass.cs" />
@@ -142,7 +140,6 @@
     <Compile Include="Implementation\Pokemon\FactoryObjects\Hero.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\MessageBox.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Npc.cs" />
-    <Compile Include="Implementation\Pokemon\FactoryObjects\Speak.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameBoard\Area.cs" />
     <Compile Include="GameBoard\Cell.cs" />
@@ -154,7 +151,6 @@
     <Compile Include="GameObjects\IFighter.cs" />
     <Compile Include="GameObjects\Sprite.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Stab.cs" />
-    <Compile Include="Implementation\Pokemon\FactoryObjects\StartBattle.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\TextView.cs" />
     <Compile Include="Implementation\Pokemon\GameInitializer.xaml.cs">
       <DependentUpon>GameInitializer.xaml</DependentUpon>
@@ -163,6 +159,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\HelperMethods.cs" />
     <Compile Include="Tools\MediaHandler.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +168,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Implementation\Pokemon\Assets\bump.mp3" />
     <Content Include="Implementation\Pokemon\Assets\enemy.png" />
     <Content Include="Implementation\Pokemon\Assets\grass.png" />
     <Content Include="Implementation\Pokemon\Assets\hero.png" />

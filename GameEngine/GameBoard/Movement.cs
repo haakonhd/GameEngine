@@ -1,4 +1,8 @@
-﻿using System.Linq;
+﻿using GameEngine.Events;
+using GameEngine.Tools;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GameEngine.GameBoard
 {
@@ -26,13 +30,15 @@ namespace GameEngine.GameBoard
                     if (originalXCoordinate > 1)
                         if (CheckIfNextCellIsPassable(nextXCoordinate - 1, nextYCoordinate, area))
                             nextXCoordinate--;
+                        else TriggerEventHandlerInNextCellObject(nextXCoordinate - 1, nextYCoordinate, area);
 
                     break;
 
                 case Direction.Up:
-                    if (originalYCoordinate > 1)
-                        if(CheckIfNextCellIsPassable(nextXCoordinate,nextYCoordinate - 1,area))
+                    if (originalYCoordinate > 1) 
+                        if (CheckIfNextCellIsPassable(nextXCoordinate, nextYCoordinate - 1, area))
                             nextYCoordinate--;
+                        else TriggerEventHandlerInNextCellObject(nextXCoordinate, nextYCoordinate - 1, area);
 
                     break;
 
@@ -40,14 +46,15 @@ namespace GameEngine.GameBoard
                     if (originalYCoordinate < area.AreaGrid[0].Length)
                         if (CheckIfNextCellIsPassable(nextXCoordinate, nextYCoordinate + 1, area))
                             nextYCoordinate++;
-                    
+                        else TriggerEventHandlerInNextCellObject(nextXCoordinate, nextYCoordinate + 1, area);
+
                     break;
 
                 case Direction.Right:
                     if (originalXCoordinate < area.AreaGrid.Length)
                         if (CheckIfNextCellIsPassable(nextXCoordinate + 1, nextYCoordinate, area))
                             nextXCoordinate++;
-                    
+                        else TriggerEventHandlerInNextCellObject(nextXCoordinate + 1, nextYCoordinate, area);
                     break;
 
                 default: return;
@@ -67,11 +74,17 @@ namespace GameEngine.GameBoard
             {
                 foreach (var cellObject in cellObjects)
                 {
-                    //TODO: Find a way to trigger the events
-                    if(cellObject.EventTriggers == null || cellObject.EventTriggers.Count == 0)
-                        continue;
-
-                    //cellObject.EventTriggers[0].GameEvent();
+                    if(cellObject.EventTriggers != null)
+                        if(cellObject.EventTriggers.Count > 0)
+                        {
+                            foreach(KeyValuePair<double, Action> gameEvent in cellObject.EventTriggers)
+                            {
+                                if (gameEvent.Key > HelperMethods.GetRandomNumber(0, 1))
+                                {
+                                    gameEvent.Value.Invoke();
+                                }
+                            }
+                        }
                 }
             }
         }

@@ -1,9 +1,9 @@
 ﻿using GameEngine.Events;
 using GameEngine.GameObjects;
+using System;
 using System.Collections.Generic;
 using static GameEngine.Implementation.Pokemon.Factories.BattleAttackFactory;
 using static GameEngine.Implementation.Pokemon.Factories.CellObjectFactory;
-using static GameEngine.Implementation.Pokemon.Factories.GameEventFactory;
 
 namespace GameEngine.Implementation.Pokemon.FactoryObjects
 {
@@ -18,7 +18,7 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 		public List<IBattleAttack> BattleAttacks { get; set; } = new List<IBattleAttack>();
 		public int Level { get; set; }
 		public Dictionary<IInventoryItem, double> Loot { get; set; }
-		public Dictionary<IGameEvent, double> EventTriggers { get; set; }
+		public Dictionary<double, Action> EventTriggers { get; set; } = new Dictionary<double, Action>();
 
 		public Enemy()
 		{
@@ -28,7 +28,7 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 			HealthPoints = 10;
 			Level = 2;
 			BattleAttacks.Add(Build(AttackName.Stab));
-			//EventTriggers.Add(Build(EventName.StartBattle, this));
+			EventTriggers.Add(1, new MediaHandler("bump.mp3").SoundPlayer.Play);
 			Loot = null;
 		}
 

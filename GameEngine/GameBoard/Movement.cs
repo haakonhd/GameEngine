@@ -3,11 +3,13 @@ using GameEngine.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Windows.System;
 
 namespace GameEngine.GameBoard
 {
 	public static class Movement
 	{
+
         public enum Direction
         {
             Up,
@@ -16,7 +18,15 @@ namespace GameEngine.GameBoard
             Right
         }
 
-        public static void MoveCellObject(ICellObject cellObject, Area area, Direction direction)
+        public enum ControllerState
+        {
+            Movement,
+            Dialog
+        }
+
+        public static ControllerState CurrentGameState;
+
+        public static void MoveCellObject(ICellObject cellObject, Area area, VirtualKey direction)
 		{
             var originalXCoordinate = cellObject.Position.x;
             var originalYCoordinate = cellObject.Position.y;
@@ -26,7 +36,7 @@ namespace GameEngine.GameBoard
 
             switch (direction)
             {
-                case Direction.Left:
+                case VirtualKey.Left:
                     if (originalXCoordinate > 1)
                         if (CheckIfNextCellIsPassable(nextXCoordinate - 1, nextYCoordinate, area))
                             nextXCoordinate--;
@@ -34,7 +44,7 @@ namespace GameEngine.GameBoard
 
                     break;
 
-                case Direction.Up:
+                case VirtualKey.Up:
                     if (originalYCoordinate > 1) 
                         if (CheckIfNextCellIsPassable(nextXCoordinate, nextYCoordinate - 1, area))
                             nextYCoordinate--;
@@ -42,7 +52,7 @@ namespace GameEngine.GameBoard
 
                     break;
 
-                case Direction.Down:
+                case VirtualKey.Down:
                     if (originalYCoordinate < area.AreaGrid[0].Length)
                         if (CheckIfNextCellIsPassable(nextXCoordinate, nextYCoordinate + 1, area))
                             nextYCoordinate++;
@@ -50,7 +60,7 @@ namespace GameEngine.GameBoard
 
                     break;
 
-                case Direction.Right:
+                case VirtualKey.Right:
                     if (originalXCoordinate < area.AreaGrid.Length)
                         if (CheckIfNextCellIsPassable(nextXCoordinate + 1, nextYCoordinate, area))
                             nextXCoordinate++;
@@ -117,6 +127,35 @@ namespace GameEngine.GameBoard
 
             if (!CheckIfNextCellIsPassable(xPos, yPos + 1, area))
                 TriggerEventHandlerInNextCellObject(xPos,yPos+1,area, GameEvent.EventTypes.Interaction);
+        }
+
+        public static void HandleInput(VirtualKey eVirtualKey, ICellObject cellObject)
+        {
+            switch (CurrentGameState)
+            {
+                case ControllerState.Movement:
+                    if(IsDirectional(eVirtualKey))
+                        MoveCellObject(cellObject, Game.GetInstance().CurrentArea, eVirtualKey);
+                    else
+                        InteractWithCellObject(cellObject, Game.GetInstance().CurrentArea);
+                    break;
+
+                case ControllerState.Dialog:
+                    //TODO add dialog stuff
+                    break;
+
+            }
+        }
+
+        private static bool IsDirectional(VirtualKey eVirtualKey)
+        {
+            if (eVirtualKey == VirtualKey.Left
+                || eVirtualKey == VirtualKey.Right
+                || eVirtualKey == VirtualKey.Up
+                || eVirtualKey == VirtualKey.Down)
+                return true;
+
+            return false;
         }
     }
 }

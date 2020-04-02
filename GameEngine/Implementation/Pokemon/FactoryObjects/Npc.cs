@@ -22,7 +22,6 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 			IsPassable = false;
 			HealthPoints = 20;
 			EnumType = CellObjectType.Npc;
-			//EventTriggers.Add(1, new MediaHandler("bump.mp3").SoundPlayer.Play);
 			EventTriggers.Add(new GameEvent(1, new MediaHandler("bump.mp3").SoundPlayer.Play, GameEvent.EventTypes.Collision));
 		}
 

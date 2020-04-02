@@ -38,6 +38,8 @@ namespace GameEngine.GameBoard
 			//Sets the title bar 
 			var appView = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
 			appView.Title = Game.Title;
+
+            Movement.CurrentGameState = ControllerState.Movement;
 			
 			area = Game.CurrentArea;
 			boardWidth = Game.GameWidth;
@@ -173,36 +175,9 @@ namespace GameEngine.GameBoard
         {
 			//TODO: Can't reference Hero
             var heroCellObject = area.GameObjects.Find(x => x.GetType() == typeof(Hero));
-			
-            switch (e.VirtualKey)
-			{
-				case VirtualKey.Left:
-                    Movement.MoveCellObject(heroCellObject,area, Direction.Left);
-                    break;
 
-                case VirtualKey.Right:
-                    Movement.MoveCellObject(heroCellObject, area, Direction.Right);
-                    break;
-
-                case VirtualKey.Up:
-                    Movement.MoveCellObject(heroCellObject, area, Direction.Up);
-                    break;
-
-                case VirtualKey.Down:
-                    Movement.MoveCellObject(heroCellObject, area, Direction.Down);
-                    break;
-
-				case VirtualKey.E:
-                    Movement.InteractWithCellObject(heroCellObject, area);
-					
-					//area.GameEntities.Add(new ChatBubble(3000, "Hey"));
-
-                    break;
-
-				default: return;
-            }
-            
-		}
+            Movement.HandleInput(e.VirtualKey, heroCellObject);
+        }
 
 	}
 }

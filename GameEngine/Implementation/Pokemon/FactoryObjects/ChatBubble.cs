@@ -22,5 +22,10 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
         {
             
         }
+
+        public void InitializeDialog()
+        {
+            Movement.CurrentGameState = Movement.ControllerState.Dialog;
+        }
     }
 }

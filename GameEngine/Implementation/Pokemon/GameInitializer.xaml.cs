@@ -55,6 +55,7 @@ namespace GameEngine.Implementation.Pokemon
             
             
 
+
             pokemon.CurrentArea = palletTown;
             pokemon.CurrentlyPlayingMusic = palletTown.AreaMusic;
             //pokemon.CurrentlyPlayingMusic.SoundPlayer.Play();

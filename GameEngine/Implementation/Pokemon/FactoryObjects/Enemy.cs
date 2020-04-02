@@ -30,7 +30,7 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 			HealthPoints = 10;
 			Level = 2;
 			BattleAttacks.Add(Build(AttackName.Stab));
-			EventTriggers.Add(0.1, new MediaHandler("bump.mp3").SoundPlayer.Play);
+            EventTriggers.Add(new GameEvent(1, new MediaHandler("bump.mp3").SoundPlayer.Play, GameEvent.EventTypes.Collision));
 			Loot = null;
 			CellWidth = 1;
 			CellHeight = 1;

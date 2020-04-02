@@ -1,5 +1,6 @@
 ﻿using GameEngine.Events;
 using GameEngine.GameObjects;
+using GameEngine.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,16 +20,16 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 
 		public MediumHouse()
 		{
-			Sprite = new Sprite("house_2x2.png");
+			this.Sprite = new Sprite("house_4x4.png");
 			IsPassable = false;
 			EventTriggers.Add(new GameEvent(1, new MediaHandler("bump.mp3").SoundPlayer.Play, GameEvent.EventTypes.Collision));
-			CellWidth = 2;
-			CellHeight = 2;
+			CellWidth = 4;
+			CellHeight = 4;
 		}
 
-		public ICellObject GetCopy()
+		public void SetSprite()
 		{
-			throw new NotImplementedException();
+			this.Sprite = new Sprite("house_4x4.png");
 		}
 	}
 }

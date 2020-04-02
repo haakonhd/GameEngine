@@ -1,4 +1,5 @@
 ﻿using GameEngine.Events;
+using GameEngine.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,16 +19,21 @@ namespace GameEngine.GameObjects
 
 		public EmptyCell(List<GameEvent> eventTriggers)
 		{
-			Sprite = new Sprite("");
+			this.Sprite = new Sprite("");
 			IsPassable = false;
 			EventTriggers = eventTriggers;
 			CellWidth = 1;
 			CellHeight = 1;
 		}
 
-		public ICellObject GetCopy()
+		public EmptyCell()
 		{
-			throw new NotImplementedException();
+
+		}
+
+		public void SetSprite()
+		{
+			this.Sprite = new Sprite("");
 		}
 	}
 }

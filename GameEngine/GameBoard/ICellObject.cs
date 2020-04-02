@@ -14,6 +14,6 @@ namespace GameEngine
         (int x, int y) Position { get; set; }
         int CellWidth { get; set; }
         int CellHeight { get; set; }
-        ICellObject GetCopy();
+        void SetSprite();
     }
 }

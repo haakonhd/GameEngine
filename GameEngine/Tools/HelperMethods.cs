@@ -13,5 +13,15 @@ namespace GameEngine.Tools
 			Random random = new Random();
 			return random.NextDouble() * (maximum - minimum) + minimum;
 		}
+		
+		public static void SetCellObjectCopyProps(ICellObject original, ICellObject copy)
+		{
+			copy.Sprite = original.Sprite;
+			copy.IsPassable = original.IsPassable;
+			copy.Position = original.Position;
+			copy.EventTriggers = original.EventTriggers;
+			copy.CellWidth = original.CellWidth;
+			copy.CellHeight = original.CellHeight;
+		}
 	}
 }

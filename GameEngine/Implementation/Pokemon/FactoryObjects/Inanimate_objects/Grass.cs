@@ -1,5 +1,6 @@
 ﻿using GameEngine.Events;
 using GameEngine.GameObjects;
+using GameEngine.Tools;
 using System;
 using System.Collections.Generic;
 using static GameEngine.Implementation.Pokemon.Factories.CellObjectFactory;
@@ -18,7 +19,7 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 
 		public Grass()
 		{
-			Sprite = new Sprite("grass.png");
+			this.Sprite = new Sprite("grass.png");
 			IsPassable = true;
 			EnumType = CellObjectType.Grass;
 			EventTriggers = null;
@@ -26,15 +27,9 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 			CellHeight = 1;
 		}
 
-		//TODO: make this better, and create background-cellobject interface
-		public ICellObject GetCopy()
+		public void SetSprite()
 		{
-			Grass newGrass = new Grass();
-			newGrass.Sprite = new Sprite("grass.png");
-			newGrass.IsPassable = true;
-			newGrass.EnumType = CellObjectType.Grass;
-			newGrass.EventTriggers = null;
-			return newGrass;
+			this.Sprite = new Sprite("grass.png");
 		}
 	}
 }

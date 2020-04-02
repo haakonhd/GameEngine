@@ -57,7 +57,7 @@ namespace GameEngine
             if (Width < xCoordinate + cellObject.CellWidth - 1)
                 throw new System.ArgumentOutOfRangeException("(xCoordinate + cellWidth - 1)  is out of range.");
 
-            if (Height < xCoordinate + cellObject.CellWidth - 1)
+            if (Height < yCoordinate + cellObject.CellHeight - 1)
                 throw new System.ArgumentOutOfRangeException("(yCoordinate + cellHeight - 1)  is out of range.");
 
             if (AreaGrid.Length > 0)

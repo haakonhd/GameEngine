@@ -1,5 +1,6 @@
 ﻿using GameEngine.Events;
 using GameEngine.GameObjects;
+using GameEngine.Tools;
 using System;
 using System.Collections.Generic;
 using static GameEngine.Implementation.Pokemon.Factories.BattleAttackFactory;
@@ -36,11 +37,9 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 			CellHeight = 1;
 		}
 
-		public ICellObject GetCopy()
+		public void SetSprite()
 		{
-			Enemy newEnemy = new Enemy();
-			newEnemy = this;
-			return newEnemy;
+			this.Sprite = new Sprite("enemy.png");
 		}
 	}
 }

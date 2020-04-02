@@ -12,7 +12,9 @@ namespace GameEngine.Implementation.Pokemon.Factories
 			Npc,
 			Enemy,
 			SmallHouse,
-			MediumHouse
+			MediumHouse,
+			BigHouse,
+			Tree
 		}
 
 		public static ICellObject Build(CellObjectType cellObjectType)
@@ -31,6 +33,10 @@ namespace GameEngine.Implementation.Pokemon.Factories
 					return new SmallHouse();
 				case CellObjectType.MediumHouse:
 					return new MediumHouse();
+				case CellObjectType.BigHouse:
+					return new BigHouse();
+				case CellObjectType.Tree:
+					return new Tree();
 				//TODO: make default throw exception
 				default:
 					return null;

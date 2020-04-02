@@ -39,9 +39,9 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 			CellHeight = 1;
 		}
 
-		public ICellObject GetCopy()
+		public void SetSprite()
 		{
-			throw new System.NotImplementedException();
+			this.Sprite = new Sprite("hero.png");
 		}
 	}
 }

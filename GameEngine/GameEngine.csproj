@@ -129,6 +129,7 @@
     <Compile Include="GameObjects\IEnemy.cs" />
     <Compile Include="GameObjects\IMerchant.cs" />
     <Compile Include="Implementation\Pokemon\Factories\CellEntityFactory.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\Inanimate_objects\BigHouse.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\ChatBubble.cs" />
     <Compile Include="GameObjects\IBattleAttack.cs" />
     <Compile Include="GameObjects\IInventoryItem.cs" />
@@ -136,13 +137,13 @@
     <Compile Include="Implementation\Pokemon\Factories\BattleAttackFactory.cs" />
     <Compile Include="Implementation\Pokemon\Factories\CellObjectFactory.cs" />
     <Compile Include="Implementation\Pokemon\Factories\InventoryItemFactory.cs" />
-    <Compile Include="Implementation\Pokemon\FactoryObjects\Enemy.cs" />
-    <Compile Include="Implementation\Pokemon\FactoryObjects\Grass.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\People\Enemy.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\Inanimate_objects\Grass.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\HealthPotionSmall.cs" />
-    <Compile Include="Implementation\Pokemon\FactoryObjects\Hero.cs" />
-    <Compile Include="Implementation\Pokemon\FactoryObjects\MediumHouse.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\People\Hero.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\Inanimate_objects\MediumHouse.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\MessageBox.cs" />
-    <Compile Include="Implementation\Pokemon\FactoryObjects\Npc.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\People\Npc.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameBoard\Area.cs" />
     <Compile Include="GameBoard\Cell.cs" />
@@ -153,9 +154,10 @@
     </Compile>
     <Compile Include="GameObjects\IFighter.cs" />
     <Compile Include="GameObjects\Sprite.cs" />
-    <Compile Include="Implementation\Pokemon\FactoryObjects\SmallHouse.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\Inanimate_objects\SmallHouse.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Stab.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\TextView.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\Inanimate_objects\Tree.cs" />
     <Compile Include="Implementation\Pokemon\GameInitializer.xaml.cs">
       <DependentUpon>GameInitializer.xaml</DependentUpon>
     </Compile>
@@ -176,10 +178,12 @@
     <Content Include="Implementation\Pokemon\Assets\enemy.png" />
     <Content Include="Implementation\Pokemon\Assets\grass.png" />
     <Content Include="Implementation\Pokemon\Assets\hero.png" />
-    <Content Include="Implementation\Pokemon\Assets\house_1x2.png" />
-    <Content Include="Implementation\Pokemon\Assets\house_2x2.png" />
+    <Content Include="Implementation\Pokemon\Assets\house_4x2.png" />
+    <Content Include="Implementation\Pokemon\Assets\house_4x4.png" />
+    <Content Include="Implementation\Pokemon\Assets\house_6x4.png" />
     <Content Include="Implementation\Pokemon\Assets\npc.png" />
     <Content Include="Implementation\Pokemon\Assets\shake.mp3" />
+    <Content Include="Implementation\Pokemon\Assets\tree_1x2.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

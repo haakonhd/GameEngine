@@ -20,6 +20,7 @@ namespace GameEngine.GameBoard
 		private Area area { get; set; }
 		private int boardWidth { get; set; }
 		private int cellSize { get; set; }
+		private bool firstRender = true;
 
 		public GameWindow()
 		{
@@ -104,11 +105,15 @@ namespace GameEngine.GameBoard
 						foreach (ICellObject cellObject in area.AreaGrid[x][y].CellObjects)
 						{
 							if (cellObject != null)
+							{
+								if (firstRender) cellObject.SetSprite();
 								InsertCellObject(cellObject, x, y, cellObject.CellHeight, cellObject.CellWidth);
+							}
 						}
 					}
 				}
 			}
+			firstRender = false;
 		}
 
 		// row and column span is how many cells the object should span over. rowSpan=1 columnSpan=2 will create a 1x2 object
@@ -131,7 +136,7 @@ namespace GameEngine.GameBoard
             }
         }
 
-		public void FillBoardWithCellObject(ICellObject cellObject)
+		public void FillBoardWithOneCellObject(ICellObject cellObject)
 		{
 			if (cellObject == null) return;
 			//for each column
@@ -141,7 +146,8 @@ namespace GameEngine.GameBoard
 				for (int y = 0; y < area.Height; y++)
 				{
 					// a new instance of background-object needs to be created in order to place it in the view more than once
-					InsertCellObject(cellObject.GetCopy(), x, y, cellObject.CellHeight, cellObject.CellWidth);
+					cellObject.SetSprite();
+					InsertCellObject(cellObject, x, y, cellObject.CellHeight, cellObject.CellWidth);
 				}
 			}
 		}
@@ -179,7 +185,7 @@ namespace GameEngine.GameBoard
 			GenerateGrid();
 
             if(area.BackgroundCellObject != null)
-				FillBoardWithCellObject(area.BackgroundCellObject);
+				FillBoardWithOneCellObject(area.BackgroundCellObject);
 
 			InsertAllCellObjects(area);
 		}

@@ -12,7 +12,7 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 		public Sprite Sprite { get; set; }
 		public bool IsPassable { get; set; }
         public (int x, int y) Position { get; set; }
-		public Dictionary<double, Action> EventTriggers { get; set; } = new Dictionary<double, Action>();
+		public List<GameEvent> EventTriggers { get; set; } = new List<GameEvent>();
 		public int CellWidth { get; set; }
 		public int CellHeight { get; set; }
 
@@ -20,7 +20,7 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 		{
 			Sprite = new Sprite("npc.png");
 			IsPassable = false;
-			EventTriggers.Add(1, new MediaHandler("bump.mp3").SoundPlayer.Play);
+			EventTriggers.Add(new GameEvent(1, new MediaHandler("bump.mp3").SoundPlayer.Play, GameEvent.EventTypes.Collision));
 			CellWidth = 1;
 			CellHeight = 1;
 		}

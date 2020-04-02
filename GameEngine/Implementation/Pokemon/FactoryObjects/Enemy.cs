@@ -18,7 +18,7 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 		public List<IBattleAttack> BattleAttacks { get; set; } = new List<IBattleAttack>();
 		public int Level { get; set; }
 		public Dictionary<IInventoryItem, double> Loot { get; set; }
-		public Dictionary<double, Action> EventTriggers { get; set; } = new Dictionary<double, Action>();
+		public List<GameEvent> EventTriggers { get; set; } = new List<GameEvent>();
 		public int CellWidth { get; set; }
 		public int CellHeight { get; set; }
 

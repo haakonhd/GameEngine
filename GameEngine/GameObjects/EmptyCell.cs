@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameEngine.Events;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,12 +11,12 @@ namespace GameEngine.GameObjects
 	{
 		public Sprite Sprite { get; set; }
 		public bool IsPassable { get; set; }
-		public Dictionary<double, Action> EventTriggers { get; set; }
 		public (int x, int y) Position { get; set; }
 		public int CellWidth { get; set; }
 		public int CellHeight { get; set; }
+		public List<GameEvent> EventTriggers { get; set; }
 
-		public EmptyCell(Dictionary<double, Action> eventTriggers)
+		public EmptyCell(List<GameEvent> eventTriggers)
 		{
 			Sprite = new Sprite("");
 			IsPassable = false;

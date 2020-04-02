@@ -10,21 +10,12 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
         public object Entity { get; set; }
         public (int x, int y) Position { get; set; }
         public long EntityLifetime { get; set; }
+        public string VoiceLines { get; set; }
 
-        public ChatBubble(int duration, string text, int xPos, int yPos)
+        public ChatBubble(int duration, string text)
         {
             EntityLifetime = Game.StopWatch.ElapsedMilliseconds + duration;
-            Position = (xPos, yPos);
-            TextBox txtBox = new TextBox();
-            txtBox.Text = text;
-            
-            txtBox.SetValue(Grid.ColumnProperty, xPos);
-            txtBox.SetValue(Grid.RowProperty, yPos);
-            txtBox.Background = new SolidColorBrush(color: Colors.Black);
-            txtBox.Background.Opacity = 0;
-            txtBox.BorderBrush = new SolidColorBrush(Color.FromArgb(0,0,0,255));
-
-            Entity = txtBox;
+            VoiceLines = text;
         }
 
         public ChatBubble()

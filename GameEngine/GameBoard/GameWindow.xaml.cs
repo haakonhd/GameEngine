@@ -42,6 +42,9 @@ namespace GameEngine.GameBoard
 			area = Game.CurrentArea;
 			boardWidth = Game.GameWidth;
 
+            ChatBox.Width = Game.GameWidth - Game.GameWidth / 10;
+			ChatBox.Margin = new Thickness(0,0,0,Game.GameWidth/25);
+
 			Game.StopWatch.Start();
 
 			DrawBoard();
@@ -115,17 +118,7 @@ namespace GameEngine.GameBoard
 
             foreach (var entity in area.GameEntities)
             {
-                if (entity.EntityLifetime >= Game.StopWatch.ElapsedMilliseconds)
-                {
-					if(!MainGrid.Children.Contains((UIElement)entity.Entity))
-					    MainGrid.Children.Add((UIElement)entity.Entity);
-                }
-                else
-                {
-                    MainGrid.Children.Remove((UIElement) entity.Entity);
-                    area.GameEntities.Remove(entity);
-					return;
-                }
+ 
             }
         }
 
@@ -200,9 +193,9 @@ namespace GameEngine.GameBoard
                     break;
 
 				case VirtualKey.E:
-                    //Movement.InteractWithCellObject(heroCellObject, area);
+                    Movement.InteractWithCellObject(heroCellObject, area);
 					
-					area.GameEntities.Add(new ChatBubble(3000, "Hey", 5, 1));
+					area.GameEntities.Add(new ChatBubble(3000, "Hey"));
 
                     break;
 

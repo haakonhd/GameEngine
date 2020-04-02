@@ -91,6 +91,9 @@ namespace GameEngine.GameBoard
 
         private static bool CheckIfNextCellIsPassable(int xPos, int yPos, Area area)
         {
+            if (xPos == 0 || yPos == 0 || xPos == area.AreaGrid.Length+1 || yPos == area.AreaGrid[0].Length+1)
+                return true;
+
             var cellObjects = area.AreaGrid[xPos - 1][yPos - 1].CellObjects;
 
             //TriggerEventHandlerInNextCellObject(xPos, yPos, area);
@@ -103,10 +106,17 @@ namespace GameEngine.GameBoard
             int xPos = cellObject.Position.x;
             int yPos = cellObject.Position.y;
 
-            TriggerEventHandlerInNextCellObject(xPos-1,yPos,area);
-            TriggerEventHandlerInNextCellObject(xPos+1,yPos,area);
-            TriggerEventHandlerInNextCellObject(xPos,yPos-1,area);
-            TriggerEventHandlerInNextCellObject(xPos,yPos+1,area);
+            if (!CheckIfNextCellIsPassable(xPos - 1, yPos, area))
+                TriggerEventHandlerInNextCellObject(xPos - 1, yPos, area);
+
+            if (!CheckIfNextCellIsPassable(xPos + 1, yPos, area))
+                TriggerEventHandlerInNextCellObject(xPos+1,yPos,area);
+
+            if (!CheckIfNextCellIsPassable(xPos, yPos - 1, area))
+                TriggerEventHandlerInNextCellObject(xPos,yPos-1,area);
+
+            if (!CheckIfNextCellIsPassable(xPos, yPos + 1, area))
+                TriggerEventHandlerInNextCellObject(xPos,yPos+1,area);
         }
     }
 }

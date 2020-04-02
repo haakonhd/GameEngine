@@ -50,6 +50,7 @@ namespace GameEngine.Implementation.Pokemon
             palletTown.AreaMusic = new MediaHandler("shake.mp3");
 
 
+
             pokemon.CurrentArea = palletTown;
             pokemon.CurrentlyPlayingMusic = palletTown.AreaMusic;
             //pokemon.CurrentlyPlayingMusic.SoundPlayer.Play();

@@ -13,6 +13,8 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 		public (int x, int y) Position { get; set ; }
 		public CellObjectType EnumType { get; set; }
 		public Dictionary<double, Action> EventTriggers { get; set; }
+		public int CellWidth { get; set; }
+		public int CellHeight { get; set; }
 
 		public Grass()
 		{
@@ -20,6 +22,8 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 			IsPassable = true;
 			EnumType = CellObjectType.Grass;
 			EventTriggers = null;
+			CellWidth = 1;
+			CellHeight = 1;
 		}
 
 		//TODO: make this better, and create background-cellobject interface

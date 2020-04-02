@@ -13,5 +13,6 @@ namespace GameEngine.GameObjects
 		string ItemDescription { get; set; }
 		int ItemPrice { get; set; }
 		List<Action> ItemEffects { get; set; }
+
 	}
 }

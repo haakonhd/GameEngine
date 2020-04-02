@@ -124,6 +124,7 @@
       <DependentUpon>BattleWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="GameBoard\ICellEntity.cs" />
+    <Compile Include="GameObjects\EmptyCell.cs" />
     <Compile Include="GameObjects\IEnemy.cs" />
     <Compile Include="GameObjects\IMerchant.cs" />
     <Compile Include="Implementation\Pokemon\Factories\CellEntityFactory.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="Implementation\Pokemon\FactoryObjects\Grass.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\HealthPotionSmall.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Hero.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\MediumHouse.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\MessageBox.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Npc.cs" />
     <Compile Include="Game.cs" />
@@ -150,6 +152,7 @@
     </Compile>
     <Compile Include="GameObjects\IFighter.cs" />
     <Compile Include="GameObjects\Sprite.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\SmallHouse.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Stab.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\TextView.cs" />
     <Compile Include="Implementation\Pokemon\GameInitializer.xaml.cs">
@@ -172,6 +175,8 @@
     <Content Include="Implementation\Pokemon\Assets\enemy.png" />
     <Content Include="Implementation\Pokemon\Assets\grass.png" />
     <Content Include="Implementation\Pokemon\Assets\hero.png" />
+    <Content Include="Implementation\Pokemon\Assets\house_1x2.png" />
+    <Content Include="Implementation\Pokemon\Assets\house_2x2.png" />
     <Content Include="Implementation\Pokemon\Assets\npc.png" />
     <Content Include="Implementation\Pokemon\Assets\shake.mp3" />
     <Content Include="Properties\Default.rd.xml" />

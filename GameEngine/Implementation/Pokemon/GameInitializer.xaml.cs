@@ -43,12 +43,17 @@ namespace GameEngine.Implementation.Pokemon
 
             ICellObject npc = CellObjectFactory.Build(CellObjectType.Npc);
             ICellObject enemy = CellObjectFactory.Build(CellObjectType.Enemy);
-
+            ICellObject smallHouse = CellObjectFactory.Build(CellObjectType.SmallHouse);
+            ICellObject mediumHouse = CellObjectFactory.Build(CellObjectType.MediumHouse);
+            
             palletTown.SetCellObjectGridPosition(3, 5, red);
-            palletTown.SetCellObjectGridPosition(5, 2, npc);
-            palletTown.SetCellObjectGridPosition(1, 2, enemy);
+            palletTown.SetCellObjectGridPosition(7, 5, npc);
+            palletTown.SetCellObjectGridPosition(1, 4, enemy);
+            palletTown.SetCellObjectGridPosition(3, 2, smallHouse);
+            palletTown.SetCellObjectGridPosition(6, 1, mediumHouse);
             palletTown.AreaMusic = new MediaHandler("shake.mp3");
-
+            
+            
 
             pokemon.CurrentArea = palletTown;
             pokemon.CurrentlyPlayingMusic = palletTown.AreaMusic;

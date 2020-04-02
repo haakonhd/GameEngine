@@ -19,6 +19,8 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 		public int Level { get; set; }
 		public Dictionary<IInventoryItem, double> Loot { get; set; }
 		public Dictionary<double, Action> EventTriggers { get; set; } = new Dictionary<double, Action>();
+		public int CellWidth { get; set; }
+		public int CellHeight { get; set; }
 
 		public Enemy()
 		{
@@ -28,8 +30,10 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 			HealthPoints = 10;
 			Level = 2;
 			BattleAttacks.Add(Build(AttackName.Stab));
-			EventTriggers.Add(1, new MediaHandler("bump.mp3").SoundPlayer.Play);
+			EventTriggers.Add(0.1, new MediaHandler("bump.mp3").SoundPlayer.Play);
 			Loot = null;
+			CellWidth = 1;
+			CellHeight = 1;
 		}
 
 		public ICellObject GetCopy()

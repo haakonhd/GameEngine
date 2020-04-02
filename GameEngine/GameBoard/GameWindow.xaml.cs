@@ -1,4 +1,5 @@
-﻿using GameEngine.Implementation.Pokemon.FactoryObjects;
+﻿using GameEngine.GameObjects;
+using GameEngine.Implementation.Pokemon.FactoryObjects;
 using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -23,8 +24,6 @@ namespace GameEngine.GameBoard
 		public GameWindow()
 		{
 			InitializeComponent();
-
-			//Test
 		}
 
 		protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -99,13 +98,21 @@ namespace GameEngine.GameBoard
 						//place all cellObjects to the board 
 						foreach (ICellObject cellObject in area.AreaGrid[x][y].CellObjects)
 						{
-                            Image img = PrepareImageFromCellObject(cellObject, x, y);
-							if(!MainGrid.Children.Contains(img))
-							    MainGrid.Children.Add(img);
+							if (cellObject != null)
+								InsertCellObject(cellObject, x, y, cellObject.CellHeight, cellObject.CellWidth);
 						}
 					}
 				}
 			}
+		}
+
+		// row and column span is how many cells the object should span over. rowSpan=1 columnSpan=2 will create a 1x2 object
+		public void InsertCellObject(ICellObject cellObject, int xPos, int yPos, int rowSpan, int columnSpan)
+		{
+			Image img = PrepareImageFromCellObject(cellObject);
+			SetImageGridProperties(img, xPos, yPos, rowSpan, columnSpan);
+			if (!MainGrid.Children.Contains(img))
+				MainGrid.Children.Add(img);
 		}
 
         private void InsertAllCellEntities(Area area)
@@ -138,9 +145,8 @@ namespace GameEngine.GameBoard
 				//for each row 
 				for (int y = 0; y < area.Height; y++)
 				{
-					// a new instance of Grass needs to be created in order to place it in the view more than once
-					Image img = PrepareImageFromCellObject(cellObject.GetCopy(), x, y);
-					MainGrid.Children.Add(img);
+					// a new instance of background-object needs to be created in order to place it in the view more than once
+					InsertCellObject(cellObject.GetCopy(), x, y, cellObject.CellHeight, cellObject.CellWidth);
 				}
 			}
 		}
@@ -150,14 +156,21 @@ namespace GameEngine.GameBoard
 			OuterGrid.Children.Add(control);
 		}
 
-		private Image PrepareImageFromCellObject(ICellObject cellObject, int columnProperty, int rowProperty)
+		private Image PrepareImageFromCellObject(ICellObject cellObject)
 		{
 			Image img = cellObject.Sprite.SpriteImage;
-			img.SetValue(Grid.ColumnProperty, columnProperty);
-			img.SetValue(Grid.RowProperty, rowProperty);
-			img.Width = cellSize;
-			img.Height = cellSize;
+			img.Width = cellSize * cellObject.CellWidth;
+			img.Height = cellSize * cellObject.CellHeight;
 			return img;
+		}
+
+		private void SetImageGridProperties(Image image, int xPos, int yPos, int rowSpan, int columnSpan)
+		{
+			image.SetValue(Grid.ColumnProperty, xPos);
+			image.SetValue(Grid.RowProperty, yPos);
+			image.SetValue(Grid.RowSpanProperty, rowSpan);
+			image.SetValue(Grid.ColumnSpanProperty, columnSpan);
+
 		}
 
 		// whipes the current board and draws a new one from area object

@@ -20,7 +20,9 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 		public List<IBattleAttack> BattleAttacks { get; set; } = new List<IBattleAttack>();
 		public CellObjectType EnumType { get; set; }
 		public int PlayerMoney { get; set; }
-		public Dictionary<double, Action> EventTriggers { get; set; } 
+		public Dictionary<double, Action> EventTriggers { get; set; }
+		public int CellWidth { get; set; }
+		public int CellHeight { get; set; }
 
 		public Hero()
 		{
@@ -33,6 +35,8 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 			ItemInventory.Add(InventoryItemFactory.Build(ItemName.SmallHealthPotion));
 			BattleAttacks.Add(BattleAttackFactory.Build(AttackName.Stab));
 			PlayerMoney = 0;
+			CellWidth = 1;
+			CellHeight = 1;
 		}
 
 		public ICellObject GetCopy()

@@ -54,13 +54,31 @@ namespace GameEngine
             if(!GameObjects.Contains(cellObject))
                 GameObjects.Add(cellObject);
 
-            if(AreaGrid.Length > 0)
+            if (Width < xCoordinate + cellObject.CellWidth - 1)
+                throw new System.ArgumentOutOfRangeException("(xCoordinate + cellWidth - 1)  is out of range.");
+
+            if (Height < xCoordinate + cellObject.CellWidth - 1)
+                throw new System.ArgumentOutOfRangeException("(yCoordinate + cellHeight - 1)  is out of range.");
+
+            if (AreaGrid.Length > 0)
             {
                 AreaGrid[xCoordinate - 1][yCoordinate - 1].CellObjects.Add(cellObject);
-                //TODO: Can't use Hero here
-                if (cellObject is Hero)
-                    cellObject.Position = (xCoordinate, yCoordinate);
+
+                //if cell objects are larger than 1x1 we insert invisible cells in the empty places
+                
+                //for each column we add an empty cell
+                for (int width = 1; width <= cellObject.CellWidth; width++)
+                {
+                    //skip first cell since it is created above
+                    if(width != 1)
+                        AreaGrid[xCoordinate - 2 + width][yCoordinate - 1].CellObjects.Add(new EmptyCell(cellObject.EventTriggers));
+                        // for each row we add an empty cell
+                    for (int height = 1; height < cellObject.CellHeight; height++)
+                        AreaGrid[xCoordinate - 2 + width][yCoordinate - 1 + height].CellObjects.Add(new EmptyCell(cellObject.EventTriggers));
+                }
             }
+            if (cellObject is IPlayableCharacter)
+                cellObject.Position = (xCoordinate, yCoordinate);
         }
     }
 }

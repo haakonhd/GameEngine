@@ -39,7 +39,7 @@ namespace GameEngine.GameBoard
 			var appView = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
 			appView.Title = Game.Title;
 
-            Movement.CurrentGameState = ControllerState.Movement;
+            Game.GetInstance().CurrentGameState = Game.GameState.Movement;
 			
 			area = Game.CurrentArea;
 			boardWidth = Game.GameWidth;

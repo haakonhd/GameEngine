@@ -18,14 +18,6 @@ namespace GameEngine.GameBoard
             Right
         }
 
-        public enum ControllerState
-        {
-            Movement,
-            Dialog
-        }
-
-        public static ControllerState CurrentGameState;
-
         public static void MoveCellObject(ICellObject cellObject, Area area, VirtualKey direction)
 		{
             var originalXCoordinate = cellObject.Position.x;
@@ -131,16 +123,16 @@ namespace GameEngine.GameBoard
 
         public static void HandleInput(VirtualKey eVirtualKey, ICellObject cellObject)
         {
-            switch (CurrentGameState)
+            switch (Game.GetInstance().CurrentGameState)
             {
-                case ControllerState.Movement:
+                case Game.GameState.Movement:
                     if(IsDirectional(eVirtualKey))
                         MoveCellObject(cellObject, Game.GetInstance().CurrentArea, eVirtualKey);
                     else
                         InteractWithCellObject(cellObject, Game.GetInstance().CurrentArea);
                     break;
 
-                case ControllerState.Dialog:
+                case Game.GameState.Dialog:
                     //TODO add dialog stuff
                     break;
 

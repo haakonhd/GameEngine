@@ -25,7 +25,7 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 
         public void InitializeDialog()
         {
-            Movement.CurrentGameState = Movement.ControllerState.Dialog;
+            Game.GetInstance().CurrentGameState = Game.GameState.Dialog;
         }
     }
 }

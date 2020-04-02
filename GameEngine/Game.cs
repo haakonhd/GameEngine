@@ -10,6 +10,14 @@ namespace GameEngine
 {
     public class Game
     {
+
+        public enum GameState
+        {
+            Movement,
+            Dialog
+        }
+
+        public GameState CurrentGameState;
         internal MediaHandler CurrentlyPlayingMusic { get; set; }
         public string Title { get; set; }
         public string GamePathName { get; set; }

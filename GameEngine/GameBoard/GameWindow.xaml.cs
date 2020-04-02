@@ -195,7 +195,7 @@ namespace GameEngine.GameBoard
 				case VirtualKey.E:
                     Movement.InteractWithCellObject(heroCellObject, area);
 					
-					area.GameEntities.Add(new ChatBubble(3000, "Hey"));
+					//area.GameEntities.Add(new ChatBubble(3000, "Hey"));
 
                     break;
 

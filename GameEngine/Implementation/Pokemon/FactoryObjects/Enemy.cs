@@ -18,7 +18,7 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 		public List<IBattleAttack> BattleAttacks { get; set; } = new List<IBattleAttack>();
 		public int Level { get; set; }
 		public Dictionary<IInventoryItem, double> Loot { get; set; }
-		public Dictionary<double, Action> EventTriggers { get; set; } = new Dictionary<double, Action>();
+        public List<GameEvent> EventTriggers { get; set; } = new List<GameEvent>();
 
 		public Enemy()
 		{
@@ -28,7 +28,7 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 			HealthPoints = 10;
 			Level = 2;
 			BattleAttacks.Add(Build(AttackName.Stab));
-			EventTriggers.Add(1, new MediaHandler("bump.mp3").SoundPlayer.Play);
+            EventTriggers.Add(new GameEvent(1, new MediaHandler("bump.mp3").SoundPlayer.Play, GameEvent.EventTypes.Collision));
 			Loot = null;
 		}
 

@@ -14,7 +14,7 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 		public bool IsPassable { get; set; }
         public (int x, int y) Position { get; set; }
 		public CellObjectType EnumType { get; set; }
-		public Dictionary<double, Action> EventTriggers { get; set; } = new Dictionary<double, Action>();
+		public List<GameEvent> EventTriggers { get; set; } = new List<GameEvent>();
 
 		public Npc()
 		{
@@ -22,7 +22,8 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 			IsPassable = false;
 			HealthPoints = 20;
 			EnumType = CellObjectType.Npc;
-			EventTriggers.Add(1, new MediaHandler("bump.mp3").SoundPlayer.Play);
+			//EventTriggers.Add(1, new MediaHandler("bump.mp3").SoundPlayer.Play);
+			EventTriggers.Add(new GameEvent(1, new MediaHandler("bump.mp3").SoundPlayer.Play, GameEvent.EventTypes.Collision));
 		}
 
 		public ICellObject GetCopy()

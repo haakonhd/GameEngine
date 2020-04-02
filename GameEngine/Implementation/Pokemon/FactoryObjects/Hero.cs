@@ -20,7 +20,7 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 		public List<IBattleAttack> BattleAttacks { get; set; } = new List<IBattleAttack>();
 		public CellObjectType EnumType { get; set; }
 		public int PlayerMoney { get; set; }
-		public Dictionary<double, Action> EventTriggers { get; set; } 
+		public List<GameEvent> EventTriggers { get; set; } 
 
 		public Hero()
 		{

@@ -30,7 +30,7 @@ namespace GameEngine.GameBoard
                     if (originalXCoordinate > 1)
                         if (CheckIfNextCellIsPassable(nextXCoordinate - 1, nextYCoordinate, area))
                             nextXCoordinate--;
-                        else TriggerEventHandlerInNextCellObject(nextXCoordinate - 1, nextYCoordinate, area);
+                        else TriggerEventHandlerInNextCellObject(nextXCoordinate - 1, nextYCoordinate, area, GameEvent.EventTypes.Collision);
 
                     break;
 
@@ -38,7 +38,7 @@ namespace GameEngine.GameBoard
                     if (originalYCoordinate > 1) 
                         if (CheckIfNextCellIsPassable(nextXCoordinate, nextYCoordinate - 1, area))
                             nextYCoordinate--;
-                        else TriggerEventHandlerInNextCellObject(nextXCoordinate, nextYCoordinate - 1, area);
+                        else TriggerEventHandlerInNextCellObject(nextXCoordinate, nextYCoordinate - 1, area, GameEvent.EventTypes.Collision);
 
                     break;
 
@@ -46,7 +46,7 @@ namespace GameEngine.GameBoard
                     if (originalYCoordinate < area.AreaGrid[0].Length)
                         if (CheckIfNextCellIsPassable(nextXCoordinate, nextYCoordinate + 1, area))
                             nextYCoordinate++;
-                        else TriggerEventHandlerInNextCellObject(nextXCoordinate, nextYCoordinate + 1, area);
+                        else TriggerEventHandlerInNextCellObject(nextXCoordinate, nextYCoordinate + 1, area, GameEvent.EventTypes.Collision);
 
                     break;
 
@@ -54,7 +54,7 @@ namespace GameEngine.GameBoard
                     if (originalXCoordinate < area.AreaGrid.Length)
                         if (CheckIfNextCellIsPassable(nextXCoordinate + 1, nextYCoordinate, area))
                             nextXCoordinate++;
-                        else TriggerEventHandlerInNextCellObject(nextXCoordinate + 1, nextYCoordinate, area);
+                        else TriggerEventHandlerInNextCellObject(nextXCoordinate + 1, nextYCoordinate, area, GameEvent.EventTypes.Collision);
                     break;
 
                 default: return;
@@ -64,10 +64,10 @@ namespace GameEngine.GameBoard
             area.AreaGrid[nextXCoordinate - 1][nextYCoordinate - 1].CellObjects.Add(cellObject);
             cellObject.Position = (nextXCoordinate, nextYCoordinate);
 
-            TriggerEventHandlerInNextCellObject(nextXCoordinate, nextYCoordinate, area);
+            TriggerEventHandlerInNextCellObject(nextXCoordinate, nextYCoordinate, area, GameEvent.EventTypes.Enter);
         }
 
-        private static void TriggerEventHandlerInNextCellObject(int xPos, int yPos, Area area)
+        private static void TriggerEventHandlerInNextCellObject(int xPos, int yPos, Area area, GameEvent.EventTypes eventType)
         {
             var cellObjects = area.AreaGrid[xPos - 1][yPos - 1].CellObjects;
             if(cellObjects.Count > 0)
@@ -77,11 +77,11 @@ namespace GameEngine.GameBoard
                     if(cellObject.EventTriggers != null)
                         if(cellObject.EventTriggers.Count > 0)
                         {
-                            foreach(KeyValuePair<double, Action> gameEvent in cellObject.EventTriggers)
+                            foreach(var gameEvent in cellObject.EventTriggers)
                             {
-                                if (gameEvent.Key > HelperMethods.GetRandomNumber(0, 1))
+                                if (gameEvent.TriggerChance > HelperMethods.GetRandomNumber(0, 1) && gameEvent.EventType == eventType)
                                 {
-                                    gameEvent.Value.Invoke();
+                                    gameEvent.EventAction.Invoke();
                                 }
                             }
                         }
@@ -107,16 +107,16 @@ namespace GameEngine.GameBoard
             int yPos = cellObject.Position.y;
 
             if (!CheckIfNextCellIsPassable(xPos - 1, yPos, area))
-                TriggerEventHandlerInNextCellObject(xPos - 1, yPos, area);
+                TriggerEventHandlerInNextCellObject(xPos - 1, yPos, area, GameEvent.EventTypes.Interaction);
 
             if (!CheckIfNextCellIsPassable(xPos + 1, yPos, area))
-                TriggerEventHandlerInNextCellObject(xPos+1,yPos,area);
+                TriggerEventHandlerInNextCellObject(xPos+1,yPos,area, GameEvent.EventTypes.Interaction);
 
             if (!CheckIfNextCellIsPassable(xPos, yPos - 1, area))
-                TriggerEventHandlerInNextCellObject(xPos,yPos-1,area);
+                TriggerEventHandlerInNextCellObject(xPos,yPos-1,area, GameEvent.EventTypes.Interaction);
 
             if (!CheckIfNextCellIsPassable(xPos, yPos + 1, area))
-                TriggerEventHandlerInNextCellObject(xPos,yPos+1,area);
+                TriggerEventHandlerInNextCellObject(xPos,yPos+1,area, GameEvent.EventTypes.Interaction);
         }
     }
 }

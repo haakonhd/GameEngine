@@ -1,5 +1,6 @@
 ﻿using GameEngine.GameBoard;
 using GameEngine.GameObjects;
+using GameEngine.Implementation.Pokemon.Areas;
 using GameEngine.Implementation.Pokemon.Factories;
 using GameEngine.Implementation.Pokemon.FactoryObjects;
 using System.Threading.Tasks;
@@ -27,9 +28,7 @@ namespace GameEngine.Implementation.Pokemon
             pokemon.GameWidth = 800;
             pokemon.GamePathName = "Pokemon";
 
-            Area palletTown = new Area();
-            palletTown.SetAreaGrid(20, 14);
-            palletTown.BackgroundCellObject = CellObjectFactory.Build(CellObjectType.Grass);
+            Area palletTown = PalletTown.GetArea();
 
             pokemon.Areas.Add(palletTown);
             pokemon.CurrentArea = palletTown;
@@ -40,24 +39,7 @@ namespace GameEngine.Implementation.Pokemon
             red.ItemInventory.Add(InventoryItemFactory.Build(ItemName.SmallHealthPotion));
 
             pokemon.PlayableCharacter = red;
-
-            ICellObject npc = CellObjectFactory.Build(CellObjectType.Npc);
-            ICellObject enemy = CellObjectFactory.Build(CellObjectType.Enemy);
-            ICellObject smallHouse = CellObjectFactory.Build(CellObjectType.SmallHouse);
-            ICellObject mediumHouse = CellObjectFactory.Build(CellObjectType.MediumHouse);
-            ICellObject bigHouse = CellObjectFactory.Build(CellObjectType.BigHouse);
-            ICellObject tree = CellObjectFactory.Build(CellObjectType.Tree);
-            
-            palletTown.SetCellObjectGridPosition(3, 5, red);
-            palletTown.SetCellObjectGridPosition(7, 5, npc);
-            palletTown.SetCellObjectGridPosition(1, 4, enemy);
-            palletTown.SetCellObjectGridPosition(4, 10, smallHouse);
-            palletTown.SetCellObjectGridPosition(14, 2, mediumHouse);
-            palletTown.SetCellObjectGridPosition(6, 1, bigHouse);
-            palletTown.SetCellObjectGridPosition(1, 1, tree);
-            palletTown.SetCellObjectGridPosition(2, 1, tree);
-            palletTown.SetCellObjectGridPosition(3, 1, tree);
-            palletTown.AreaMusic = new MediaHandler("shake.mp3");
+            palletTown.SetCellObjectGridPosition(10, 8, red);
 
             pokemon.CurrentArea = palletTown;
             pokemon.CurrentlyPlayingMusic = palletTown.AreaMusic;

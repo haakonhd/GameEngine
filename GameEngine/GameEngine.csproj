@@ -128,6 +128,7 @@
     <Compile Include="GameObjects\EmptyCell.cs" />
     <Compile Include="GameObjects\IEnemy.cs" />
     <Compile Include="GameObjects\IMerchant.cs" />
+    <Compile Include="Implementation\Pokemon\Areas\PalletTown.cs" />
     <Compile Include="Implementation\Pokemon\Factories\CellEntityFactory.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Inanimate_objects\BigHouse.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\ChatBubble.cs" />

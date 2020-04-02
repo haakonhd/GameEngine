@@ -48,7 +48,6 @@ namespace GameEngine
             Height = height;
         }
 
-        //TODO: Check that index exists
         public void SetCellObjectGridPosition(int xCoordinate, int yCoordinate, ICellObject cellObject)
         {
             if(!GameObjects.Contains(cellObject))

@@ -1,0 +1,63 @@
+﻿using GameEngine.Implementation.Pokemon.Factories;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static GameEngine.Implementation.Pokemon.Factories.CellObjectFactory;
+
+namespace GameEngine.Implementation.Pokemon.Areas
+{
+	public static class PalletTown
+	{
+		public static Area GetArea()
+		{
+			Area palletTown = new Area();
+			int areaWidth = 20;
+			int areaHeight = 14;
+			palletTown.SetAreaGrid(areaWidth, areaHeight);
+			palletTown.BackgroundCellObject = CellObjectFactory.Build(CellObjectType.Grass);
+
+			ICellObject N = CellObjectFactory.Build(CellObjectType.Npc);
+			ICellObject E = CellObjectFactory.Build(CellObjectType.Enemy);
+			ICellObject S = CellObjectFactory.Build(CellObjectType.SmallHouse);
+			ICellObject M = CellObjectFactory.Build(CellObjectType.MediumHouse);
+			ICellObject B = CellObjectFactory.Build(CellObjectType.BigHouse);
+			ICellObject T = CellObjectFactory.Build(CellObjectType.Tree);
+			ICellObject _ = null;
+			ICellObject x = null;
+			ICellObject I = null;
+
+
+			ICellObject[][] area =
+			{ 
+				//                 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
+				new ICellObject[]{ T,T,T,T,T,T,B,x,x,x,x,x,T,T,T,T,T,T,T,T }, //1
+				new ICellObject[]{ I,I,I,I,I,I,x,_,_,_,_,x,I,I,I,I,I,I,I,I }, //2
+				new ICellObject[]{ T,T,T,_,_,_,x,_,_,_,_,x,_,_,M,x,x,x,T,T }, //3
+				new ICellObject[]{ I,I,_,_,_,_,x,x,x,x,x,x,_,_,x,_,_,x,I,I }, //4
+				new ICellObject[]{ T,T,_,_,_,_,N,_,_,_,_,_,_,_,x,_,_,x,_,T }, //5
+				new ICellObject[]{ I,I,_,_,_,_,_,_,_,_,_,_,_,_,x,x,x,x,_,I }, //6
+				new ICellObject[]{ T,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,T }, //7
+				new ICellObject[]{ I,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,E,_,_,I }, //8
+				new ICellObject[]{ T,T,T,T,S,x,x,x,_,_,_,_,_,_,_,_,_,_,T,T }, //9
+				new ICellObject[]{ I,I,I,I,x,x,x,x,_,_,_,_,S,x,x,x,_,_,I,I }, //10
+				new ICellObject[]{ T,T,_,_,_,_,_,_,_,_,_,_,x,x,x,x,_,_,T,T }, //11
+				new ICellObject[]{ I,I,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,I,I }, //12
+				new ICellObject[]{ T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T }, //13
+				new ICellObject[]{ I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I } //14
+			};
+
+			for(int i = 0; i < areaHeight-1; i++)
+			{
+				for(int j = 0; j <= areaWidth - 1; j++)
+				{
+					if (area[i][j] != null)
+						palletTown.SetCellObjectGridPosition(j+1, i+1, area[i][j]);
+				}
+			}
+
+			return palletTown;
+		}
+	}
+}

@@ -45,5 +45,9 @@ namespace GameEngine
             Areas = new List<Area>();
         }
 
-	}
+        public void ChangeGameState(GameState state)
+        {
+            CurrentGameState = state;
+        }
+    }
 }

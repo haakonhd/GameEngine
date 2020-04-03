@@ -14,7 +14,9 @@ namespace GameEngine
         public enum GameState
         {
             Movement,
-            Dialog
+            Dialog,
+            Combat,
+            Menu
         }
 
         public GameState CurrentGameState;

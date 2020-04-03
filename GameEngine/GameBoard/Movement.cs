@@ -9,15 +9,6 @@ namespace GameEngine.GameBoard
 {
 	public static class Movement
 	{
-
-        public enum Direction
-        {
-            Up,
-            Down,
-            Left,
-            Right
-        }
-
         public static void MoveCellObject(ICellObject cellObject, Area area, VirtualKey direction)
 		{
             var originalXCoordinate = cellObject.Position.x;
@@ -133,7 +124,15 @@ namespace GameEngine.GameBoard
                     break;
 
                 case Game.GameState.Dialog:
-                    //TODO add dialog stuff
+                    //TODO add dialog controls
+                    break;
+
+                case Game.GameState.Combat:
+                    //TODO Add combat controls
+                    break;
+
+                case Game.GameState.Menu:
+                    //TODO add menu controls
                     break;
 
             }

@@ -120,7 +120,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Events\Battle.cs" />
+    <Compile Include="Events\Dialog.cs" />
     <Compile Include="Events\GameEvent.cs" />
+    <Compile Include="Events\Menu.cs" />
     <Compile Include="GameBoard\BattleWindow.xaml.cs">
       <DependentUpon>BattleWindow.xaml</DependentUpon>
     </Compile>

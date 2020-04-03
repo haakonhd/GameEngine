@@ -22,5 +22,10 @@ namespace GameEngine.Events
 			if (Hero == null || Enemy == null) return;
 			//TODO: create battle
 		}
+
+        public void EndBattle()
+        {
+			//TODO Add logic
+        }
 	}
 }

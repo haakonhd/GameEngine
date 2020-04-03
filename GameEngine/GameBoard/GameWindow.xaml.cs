@@ -195,7 +195,7 @@ namespace GameEngine.GameBoard
 			//TODO: Can't reference Hero
             var heroCellObject = area.GameObjects.Find(x => x.GetType() == typeof(Hero));
 
-            Movement.HandleInput(e.VirtualKey, heroCellObject);
+            KeyboardInputHandler.HandleInput(e.VirtualKey, heroCellObject);
         }
 
 	}

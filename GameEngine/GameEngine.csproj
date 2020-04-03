@@ -127,6 +127,7 @@
       <DependentUpon>BattleWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="GameBoard\ICellEntity.cs" />
+    <Compile Include="GameBoard\KeyboardInputHandler.cs" />
     <Compile Include="GameObjects\EmptyCell.cs" />
     <Compile Include="GameObjects\IEnemy.cs" />
     <Compile Include="GameObjects\IMerchant.cs" />

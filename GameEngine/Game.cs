@@ -48,6 +48,7 @@ namespace GameEngine
         public void ChangeGameState(GameState state)
         {
             CurrentGameState = state;
+            //TODO implement logic for when different states are initialized
         }
     }
 }

@@ -114,28 +114,10 @@ namespace GameEngine.GameBoard
 
         public static void HandleInput(VirtualKey eVirtualKey, ICellObject cellObject)
         {
-            switch (Game.GetInstance().CurrentGameState)
-            {
-                case Game.GameState.Movement:
-                    if(IsDirectional(eVirtualKey))
-                        MoveCellObject(cellObject, Game.GetInstance().CurrentArea, eVirtualKey);
-                    else
-                        InteractWithCellObject(cellObject, Game.GetInstance().CurrentArea);
-                    break;
-
-                case Game.GameState.Dialog:
-                    //TODO add dialog controls
-                    break;
-
-                case Game.GameState.Combat:
-                    //TODO Add combat controls
-                    break;
-
-                case Game.GameState.Menu:
-                    //TODO add menu controls
-                    break;
-
-            }
+            if(IsDirectional(eVirtualKey))
+                MoveCellObject(cellObject, Game.GetInstance().CurrentArea, eVirtualKey);
+            else
+                InteractWithCellObject(cellObject, Game.GetInstance().CurrentArea);
         }
 
         private static bool IsDirectional(VirtualKey eVirtualKey)

@@ -1,4 +1,5 @@
 ﻿using GameEngine.GameObjects;
+using GameEngine.Implementation.Pokemon.Areas;
 using GameEngine.Implementation.Pokemon.FactoryObjects;
 using Windows.System;
 using Windows.UI.Xaml;
@@ -16,11 +17,15 @@ namespace GameEngine.GameBoard
 	/// </summary>
 	public sealed partial class GameWindow : Page
 	{
-        public Game Game { get; set; }
-		private Area area { get; set; }
+        //public Game Game { get; set; }
+		//private Area area { get; set; }
 		private int boardWidth { get; set; }
 		private int cellSize { get; set; }
-		private bool firstRender = true;
+		private static bool firstRender = true;
+		public static bool renderIsInProgress = false;
+		public static int counter = 0;
+		//static Grid mainGrid;
+		
 
 		public GameWindow()
 		{
@@ -29,41 +34,58 @@ namespace GameEngine.GameBoard
 
 		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
-            // listen for keypress
+			firstRender = true;
+			// listen for keypress
 			Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
 
-            Game = (Game)e.Parameter;
-			if (Game == null) return;
+			var game = Game.Instance ;
+			if (game == null) return;
+
+			game.Reload = Reload;
 
 			//Sets the title bar 
 			var appView = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
-			appView.Title = Game.Title;
+			appView.Title = game.Title;
 
-            Game.GetInstance().CurrentGameState = Game.GameState.Movement;
-			
-			area = Game.CurrentArea;
-			boardWidth = Game.GameWidth;
+			game.CurrentGameState = Game.GameState.Movement;
 
-            ChatBox.Width = Game.GameWidth - Game.GameWidth / 10;
-			ChatBox.Margin = new Thickness(0,0,0,Game.GameWidth/25);
+			game.CurrentArea = game.CurrentArea;
+			boardWidth = game.GameWidth;
 
-			Game.StopWatch.Start();
+            ChatBox.Width = game.GameWidth - game.GameWidth / 10;
+			ChatBox.Margin = new Thickness(0,0,0, game.GameWidth/25);
+
+			game.StopWatch.Start();
+			game.CurrentlyPlayingMusic = game.CurrentArea?.AreaMusic;
+			game.CurrentlyPlayingMusic?.SoundPlayer.Play();
 
 			DrawBoard();
 
 			CompositionTarget.Rendering += CompositionTarget_Rendering;
+			renderIsInProgress = false;
         }
 
 		private void CompositionTarget_Rendering(object sender, object e)
 		{
-			InsertAllCellObjects(area);
-            InsertAllCellEntities(area);
+			//preventing functions from being run twice at the same time
+			if (!renderIsInProgress)
+			{
+				//if(mainGrid != null)
+					//MainGrid = mainG/*r*/id;
+
+				InsertAllCellObjects(Game.Instance.CurrentArea);
+				InsertAllCellEntities(Game.Instance.CurrentArea);
+
+				//mainGrid = MainGrid;
+			}
         }
 
 
         private void GenerateGrid()
         {
-            if (MainGrid.ColumnDefinitions.Count > 0 && MainGrid.RowDefinitions.Count > 0)
+			var area = Game.Instance.CurrentArea;
+
+			if (MainGrid.ColumnDefinitions.Count > 0 && MainGrid.RowDefinitions.Count > 0)
                 return;
 
 			//cells are squared. their size is based on the boards width
@@ -93,6 +115,9 @@ namespace GameEngine.GameBoard
 		public void InsertAllCellObjects(Area area)
 		{
 			if (area == null) return;
+
+			renderIsInProgress = true;
+
 			//for each column
 			for (int x = 0; x < area.Width; x++)
 			{
@@ -106,22 +131,47 @@ namespace GameEngine.GameBoard
 						{
 							if (cellObject != null)
 							{
-								if (firstRender) cellObject.SetSprite();
+								if (firstRender)
+								{
+									cellObject.SetSprite();
+								}
 								InsertCellObject(cellObject, x, y, cellObject.CellHeight, cellObject.CellWidth);
 							}
 						}
 					}
 				}
 			}
+			renderIsInProgress = false;
 			firstRender = false;
+		}
+
+
+		public void Reload()
+		{
+			renderIsInProgress = true;
+			var game = Game.Instance;
+			//game.CurrentArea.SetCellObjectGridPosition(game.PlayableCharacter.Position.x, game.PlayableCharacter.Position.y, game.PlayableCharacter);
+			//MainGrid.Children.Clear();
+
+			Frame.Navigate(typeof(GameWindow), game);
+
+			MainGrid.Children.Clear();
+			//mainGrid = null;
+			int i = 2;
 		}
 
 		// row and column span is how many cells the object should span over. rowSpan=1 columnSpan=2 will create a 1x2 object
 		public void InsertCellObject(ICellObject cellObject, int xPos, int yPos, int rowSpan, int columnSpan)
 		{
+			var game = Game.Instance;
 			Image img = PrepareImageFromCellObject(cellObject);
 			SetImageGridProperties(img, xPos, yPos, rowSpan, columnSpan);
-			if (!MainGrid.Children.Contains(img))
+
+
+
+			if (MainGrid.Children.Contains(img))
+				int hjk = 9;
+			else
 				MainGrid.Children.Add(img);
 		}
 
@@ -138,6 +188,7 @@ namespace GameEngine.GameBoard
 
 		public void FillBoardWithOneCellObject(ICellObject cellObject)
 		{
+			var area = Game.Instance.CurrentArea;
 			if (cellObject == null) return;
 			//for each column
 			for (int x = 0; x < area.Width; x++)
@@ -177,23 +228,26 @@ namespace GameEngine.GameBoard
 		// whipes the current board and draws a new one from area object
 		public void DrawBoard()
 		{
-            if (area == null) 
+			var area = Game.Instance.CurrentArea;
+
+			if (area == null) 
                 return;
 
-            MainGrid.Children.Clear();
-
+			//OuterGrid.Children.Clear();
+			//MainGrid = new Grid();
+			//OuterGrid.Children.Add(MainGrid);
+            //MainGrid.Children.Clear();
 			GenerateGrid();
 
-            if(area.BackgroundCellObject != null)
-				FillBoardWithOneCellObject(area.BackgroundCellObject);
-
-			InsertAllCellObjects(area);
+            //if(area.BackgroundCellObject != null)
+				//FillBoardWithOneCellObject(area.BackgroundCellObject);
 		}
 
-        void CoreWindow_KeyDown(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs e)
+
+		void CoreWindow_KeyDown(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs e)
         {
 			//TODO: Can't reference Hero
-            var heroCellObject = area.GameObjects.Find(x => x.GetType() == typeof(Hero));
+            var heroCellObject = Game.Instance.CurrentArea.GameObjects.Find(x => x.GetType() == typeof(Hero));
 
             Movement.HandleInput(e.VirtualKey, heroCellObject);
         }

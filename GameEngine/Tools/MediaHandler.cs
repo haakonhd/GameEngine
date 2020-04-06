@@ -15,7 +15,7 @@ namespace GameEngine
         {
             SoundPlayer = new MediaPlayer();
             //string musicPath = "ms-appx:///Assets/" + fileName;
-            string musicPath = "ms-appx:///Implementation/" + Game.GetInstance().GamePathName + "/Assets/" + fileName;
+            string musicPath = "ms-appx:///Implementation/" + Game.Instance.GamePathName + "/Assets/" + fileName;
             SoundPlayer.Source = MediaSource.CreateFromUri(new Uri(musicPath));
         }
 

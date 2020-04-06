@@ -53,7 +53,13 @@ namespace GameEngine.GameBoard
                 default: return;
             }
 
-            area.AreaGrid[originalXCoordinate - 1][originalYCoordinate - 1].CellObjects.Remove(cellObject);
+            // cellobject has moved
+            if(nextXCoordinate != originalXCoordinate || nextYCoordinate != originalYCoordinate)
+            {
+                
+            }
+
+            area.AreaGrid[originalXCoordinate - 1][originalYCoordinate - 1].CellObjects?.Remove(cellObject);
             area.AreaGrid[nextXCoordinate - 1][nextYCoordinate - 1].CellObjects.Add(cellObject);
             cellObject.Position = (nextXCoordinate, nextYCoordinate);
 
@@ -87,7 +93,7 @@ namespace GameEngine.GameBoard
             if (xPos == 0 || yPos == 0 || xPos == area.AreaGrid.Length+1 || yPos == area.AreaGrid[0].Length+1)
                 return true;
 
-            var cellObjects = area.AreaGrid[xPos - 1][yPos - 1].CellObjects;
+            var cellObjects = area.AreaGrid[xPos - 1][yPos - 1]?.CellObjects;
 
             //TriggerEventHandlerInNextCellObject(xPos, yPos, area);
 
@@ -114,13 +120,13 @@ namespace GameEngine.GameBoard
 
         public static void HandleInput(VirtualKey eVirtualKey, ICellObject cellObject)
         {
-            switch (Game.GetInstance().CurrentGameState)
+            switch (Game.Instance.CurrentGameState)
             {
                 case Game.GameState.Movement:
                     if(IsDirectional(eVirtualKey))
-                        MoveCellObject(cellObject, Game.GetInstance().CurrentArea, eVirtualKey);
+                        MoveCellObject(cellObject, Game.Instance.CurrentArea, eVirtualKey);
                     else
-                        InteractWithCellObject(cellObject, Game.GetInstance().CurrentArea);
+                        InteractWithCellObject(cellObject, Game.Instance.CurrentArea);
                     break;
 
                 case Game.GameState.Dialog:

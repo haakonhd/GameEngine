@@ -15,7 +15,7 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 
 		public TextView()
 		{
-			Width = Game.GetInstance().GameWidth;
+			Width = Game.Instance.GameWidth;
 		}
 	}
 }

@@ -41,7 +41,7 @@ namespace GameEngine.GameBoard
 			var game = Game.Instance ;
 			if (game == null) return;
 
-			game.Reload = Reload;
+			//game.Reload = Reload;
 
 			//Sets the title bar 
 			var appView = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
@@ -49,11 +49,12 @@ namespace GameEngine.GameBoard
 
 			game.CurrentGameState = Game.GameState.Movement;
 
-			game.CurrentArea = game.CurrentArea;
+			//game.CurrentArea = game.CurrentArea;
 			boardWidth = game.GameWidth;
 
             ChatBox.Width = game.GameWidth - game.GameWidth / 10;
 			ChatBox.Margin = new Thickness(0,0,0, game.GameWidth/25);
+            ChatBox.Visibility = Visibility.Collapsed;
 
 			game.StopWatch.Start();
 			game.CurrentlyPlayingMusic = game.CurrentArea?.AreaMusic;
@@ -65,16 +66,30 @@ namespace GameEngine.GameBoard
 			renderIsInProgress = false;
         }
 
-		private void CompositionTarget_Rendering(object sender, object e)
+        private void InitializeNewArea()
+        {
+            if (Game.Instance.CurrentArea == Game.Instance.NextArea)
+                return;
+
+            if (MainGrid.Children.Count != 0)
+                MainGrid.Children.Clear();
+
+            Game.Instance.CurrentArea = Game.Instance.NextArea;
+            DrawBoard();
+		}
+
+        private void CompositionTarget_Rendering(object sender, object e)
 		{
 			//preventing functions from being run twice at the same time
 			if (!renderIsInProgress)
-			{
+            {
+                InitializeNewArea();
+
 				//if(mainGrid != null)
-					//MainGrid = mainG/*r*/id;
+				//MainGrid = mainG/*r*/id;
 
 				InsertAllCellObjects(Game.Instance.CurrentArea);
-				InsertAllCellEntities(Game.Instance.CurrentArea);
+				//InsertAllCellEntities(Game.Instance.CurrentArea);
 
 				//mainGrid = MainGrid;
 			}
@@ -153,7 +168,7 @@ namespace GameEngine.GameBoard
 			//game.CurrentArea.SetCellObjectGridPosition(game.PlayableCharacter.Position.x, game.PlayableCharacter.Position.y, game.PlayableCharacter);
 			//MainGrid.Children.Clear();
 
-			Frame.Navigate(typeof(GameWindow), game);
+			//Frame.Navigate(typeof(GameWindow), game);
 
 			MainGrid.Children.Clear();
 			//mainGrid = null;
@@ -167,12 +182,8 @@ namespace GameEngine.GameBoard
 			Image img = PrepareImageFromCellObject(cellObject);
 			SetImageGridProperties(img, xPos, yPos, rowSpan, columnSpan);
 
-
-
-			if (MainGrid.Children.Contains(img))
-				int hjk = 9;
-			else
-				MainGrid.Children.Add(img);
+			if (!MainGrid.Children.Contains(img))
+                MainGrid.Children.Add(img);
 		}
 
         private void InsertAllCellEntities(Area area)
@@ -239,8 +250,8 @@ namespace GameEngine.GameBoard
             //MainGrid.Children.Clear();
 			GenerateGrid();
 
-            //if(area.BackgroundCellObject != null)
-				//FillBoardWithOneCellObject(area.BackgroundCellObject);
+            if(area.BackgroundCellObject != null)
+				FillBoardWithOneCellObject(area.BackgroundCellObject);
 		}
 
 

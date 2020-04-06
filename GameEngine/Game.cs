@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using GameEngine.GameBoard;
 
 namespace GameEngine
 {
@@ -25,6 +26,7 @@ namespace GameEngine
         public string GamePathName { get; set; }
         public List<Area> Areas{ get; }
 		public Area CurrentArea { get; set; }
+        public Area NextArea { get; set; }
         public int GameWidth { get; set; }
         public IPlayableCharacter PlayableCharacter { get; set; }
         public Stopwatch StopWatch = new Stopwatch();

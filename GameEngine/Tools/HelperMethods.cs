@@ -29,11 +29,11 @@ namespace GameEngine.Tools
 			var game = Game.Instance;
 
 			game.PlayableCharacter.Position = startPos;
-			game.CurrentArea = newArea;
+			game.NextArea = newArea;
 			//game.PlayableCharacter.SetSprite();
 			//newBarkTown.SetCellObjectGridPosition(10, 8, red);
-			game.CurrentArea.SetCellObjectGridPosition(startPos.x, startPos.y, game.PlayableCharacter);
-			game.Reload();
+			game.NextArea.SetCellObjectGridPosition(startPos.x, startPos.y, game.PlayableCharacter);
+			//game.Reload();
 		}
 	}
 }

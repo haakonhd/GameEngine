@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameEngine.Events;
 using static GameEngine.Implementation.Pokemon.Factories.CellObjectFactory;
 
 namespace GameEngine.Implementation.Pokemon.Areas
@@ -46,7 +47,7 @@ namespace GameEngine.Implementation.Pokemon.Areas
 			ICellObject M = CellObjectFactory.Build(CellObjectType.MediumHouse);
 			ICellObject B = CellObjectFactory.Build(CellObjectType.BigHouse);
 			ICellObject T = CellObjectFactory.Build(CellObjectType.Tree);
-			//ICellObject P = new Portal(NewBarkTown.Instance.Area, (1,7));
+			//ICellObject P = new Portal(NewBarkTown.Instance.Area, (1,7), GameEvent.EventTypes.Enter, true);
 			ICellObject _ = null;
 			ICellObject x = null;
 			ICellObject I = null;
@@ -73,8 +74,8 @@ namespace GameEngine.Implementation.Pokemon.Areas
 			ICellObject[][] area =
 			{	
 				//                 1 2 3 4 5 6 
-				new ICellObject[]{ T,_,_,_,_,_ }, //1
-				new ICellObject[]{ I,_,_,_,_,_ }, //2
+				new ICellObject[]{ T,T,T,_,T,T }, //1
+				new ICellObject[]{ I,I,I,_,I,I }, //2
 				new ICellObject[]{ _,_,_,_,_,_ }, //3
 				new ICellObject[]{ _,_,_,_,_,_ }, //3
 				new ICellObject[]{ _,_,_,_,_,_ }, //3
@@ -82,7 +83,7 @@ namespace GameEngine.Implementation.Pokemon.Areas
 				new ICellObject[]{ _,_,_,_,_,_ }, //4
 				new ICellObject[]{ _,_,_,_,_,_ }  //6
 			};
-
+			
 			for (int i = 0; i < areaHeight - 1; i++)
 			{
 				for (int j = 0; j <= areaWidth - 1; j++)

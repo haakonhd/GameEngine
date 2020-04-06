@@ -33,6 +33,8 @@ namespace GameEngine.Implementation.Pokemon
             pokemon.Areas.Add(newBarkTown);
             pokemon.Areas.Add(RouteOne.Instance.Area);
             pokemon.CurrentArea = newBarkTown;
+            pokemon.NextArea = newBarkTown;
+
 
             IPlayableCharacter red = ((IPlayableCharacter)CellObjectFactory.Build(CellObjectType.Hero));
      
@@ -43,7 +45,7 @@ namespace GameEngine.Implementation.Pokemon
             red.Position = (10, 8);
             //newBarkTown.SetCellObjectGridPosition(10, 8, red);
 
-            pokemon.CurrentArea = newBarkTown;
+            //pokemon.CurrentArea = newBarkTown;
 
             //pokemon.InitializeGame = InitializeGame;
 

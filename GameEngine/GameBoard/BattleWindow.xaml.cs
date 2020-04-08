@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GameEngine.Events;
+using GameEngine.GameObjects;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +27,52 @@ namespace GameEngine.GameBoard
 		public BattleWindow()
 		{
 			this.InitializeComponent();
+
+			startMatch();
+		}
+
+		private void startMatch()
+		{
+			HeroSprite.Source = Battle.Instance.Hero?.BattleSprite.SpriteImage.Source;
+			EnemySprite.Source = Battle.Instance.Enemy?.BattleSprite.SpriteImage.Source;
+		}
+
+		private void attackClicked(object sender, RoutedEventArgs e)
+		{
+			AttackList.Visibility = Visibility.Visible;
+		}
+
+		private void inventoryClicked(object sender, RoutedEventArgs e)
+		{
+			ItemList.Visibility = Visibility.Visible;
+		}
+
+		private void runClicked(object sender, RoutedEventArgs e)
+		{
+			//TODO: randomly disallow run based on hero vs enemy level
+			Frame.Navigate(typeof(GameWindow), Game.Instance);
+		}
+
+		private void attackList_ItemClick(object sender, ItemClickEventArgs e)
+		{
+			IBattleAttack clickedItem = (IBattleAttack)e.ClickedItem;
+			attackFighter(clickedItem, Battle.Instance.Enemy);
+			AttackList.Visibility = Visibility.Collapsed;
+		}
+
+		private void attackFighter(IBattleAttack attack, IFighter fighter)
+		{
+			fighter.HealthPoints -= attack.AttackDamage;
+			foreach (Action effect in attack.AttackEffects)
+				effect.Invoke();
+		}
+
+		private void itemList_ItemClick(object sender, ItemClickEventArgs e)
+		{
+			IInventoryItem clickedItem = (IInventoryItem)e.ClickedItem;
+			foreach (Action effect in clickedItem.ItemEffects)
+				effect.Invoke();
+			ItemList.Visibility = Visibility.Collapsed;
 		}
 	}
 }

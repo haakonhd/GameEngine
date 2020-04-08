@@ -24,12 +24,14 @@ namespace GameEngine.GameBoard
 		private static bool firstRender = true;
 		public static bool renderIsInProgress = false;
 		public static int counter = 0;
+		public static Frame GameWindowFrame;
 		//static Grid mainGrid;
 		
 
 		public GameWindow()
 		{
 			InitializeComponent();
+			GameWindowFrame = Frame;
 		}
 
 		protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -262,6 +264,7 @@ namespace GameEngine.GameBoard
 
             KeyboardInputHandler.HandleInput(e.VirtualKey, heroCellObject);
         }
+
 
 	}
 }

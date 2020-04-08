@@ -22,10 +22,12 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 		public List<GameEvent> EventTriggers { get; set; } = new List<GameEvent>();
 		public int CellWidth { get; set; }
 		public int CellHeight { get; set; }
+		public Sprite BattleSprite { get; set; }
 
 		public Enemy()
 		{
 			Sprite = new Sprite("enemy.png");
+			BattleSprite = new Sprite("enemy.png");
 			IsPassable = false;
 			EnumType = CellObjectType.Enemy;
 			HealthPoints = 10;

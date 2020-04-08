@@ -9,6 +9,22 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <RelativePanel>
+            <Image RelativePanel.AlignBottomWithPanel="True" Margin="220,20,20,70" x:Name="HeroSprite" Height="205" Width="233"/>
+            <Image x:Name="EnemySprite" Height="205" Width="233" RelativePanel.AlignTopWithPanel="True"
+                   RelativePanel.AlignRightWithPanel="True" Margin="20,70,200,20"/>
+            <StackPanel x:Name="ActionButtons" Orientation="Horizontal" RelativePanel.AlignBottomWithPanel="True"
+                        RelativePanel.AlignRightWithPanel="True" Margin="10,10,200,300">
+                <Button Width="100" Height="50" Content="Attack" Margin="10" Click="attackClicked"></Button>
+                <Button Width="100" Height="50" Content="Inventory" Margin="10" Click="inventoryClicked"></Button>
+                <Button Width="100" Height="50" Content="Run" Margin="10" Click="runClicked"></Button>
+            </StackPanel>
+            <ListView x:Name="AttackList" ItemClick="attackList_ItemClick" Background="Aqua" Height="500" Width="300" RelativePanel.LeftOf="ActionButtons" 
+                      RelativePanel.AlignBottomWithPanel="True" Visibility="Collapsed"/>
+            <ListView x:Name="ItemList" ItemClick="itemList_ItemClick" Background="Aqua" Height="500" Width="300" RelativePanel.LeftOf="ActionButtons" 
+                      RelativePanel.AlignBottomWithPanel="True" Visibility="Collapsed"/>
+        </RelativePanel>
+
 
     </Grid>
 </Page>

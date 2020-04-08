@@ -16,6 +16,7 @@ namespace GameEngine.Implementation.Pokemon.Areas
 		private static NewBarkTown instance = null;
 		public Area Area { get; set; }
 
+
 		public static NewBarkTown Instance
 		{
 			get

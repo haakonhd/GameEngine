@@ -131,7 +131,9 @@
     <Compile Include="GameObjects\EmptyCell.cs" />
     <Compile Include="GameObjects\IEnemy.cs" />
     <Compile Include="GameObjects\IMerchant.cs" />
-    <Compile Include="Implementation\Pokemon\Areas\PalletTown.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\Inanimate_objects\Portal.cs" />
+    <Compile Include="Implementation\Pokemon\Areas\NewBarkTown.cs" />
+    <Compile Include="Implementation\Pokemon\Areas\RouteOne.cs" />
     <Compile Include="Implementation\Pokemon\Factories\CellEntityFactory.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Inanimate_objects\BigHouse.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\ChatBubble.cs" />
@@ -178,6 +180,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Implementation\Pokemon\Assets\new_bark_town.mp3" />
     <Content Include="Implementation\Pokemon\Assets\bump.mp3" />
     <Content Include="Implementation\Pokemon\Assets\enemy.png" />
     <Content Include="Implementation\Pokemon\Assets\grass.png" />
@@ -186,6 +189,7 @@
     <Content Include="Implementation\Pokemon\Assets\house_4x4.png" />
     <Content Include="Implementation\Pokemon\Assets\house_6x4.png" />
     <Content Include="Implementation\Pokemon\Assets\npc.png" />
+    <Content Include="Implementation\Pokemon\Assets\route_one.mp3" />
     <Content Include="Implementation\Pokemon\Assets\shake.mp3" />
     <Content Include="Implementation\Pokemon\Assets\tree_1x2.png" />
     <Content Include="Properties\Default.rd.xml" />

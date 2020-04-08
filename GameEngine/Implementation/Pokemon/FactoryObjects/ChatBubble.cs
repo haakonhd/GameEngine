@@ -14,7 +14,7 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 
         public ChatBubble(int duration, string text)
         {
-            EntityLifetime = Game.StopWatch.ElapsedMilliseconds + duration;
+            EntityLifetime = Game.Instance.StopWatch.ElapsedMilliseconds + duration;
             VoiceLines = text;
         }
 
@@ -25,7 +25,7 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 
         public void InitializeDialog()
         {
-            Game.GetInstance().CurrentGameState = Game.GameState.Dialog;
+            Game.Instance.CurrentGameState = Game.GameState.Dialog;
         }
     }
 }

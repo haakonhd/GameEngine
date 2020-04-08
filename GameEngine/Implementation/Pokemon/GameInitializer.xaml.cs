@@ -22,16 +22,19 @@ namespace GameEngine.Implementation.Pokemon
 		{
 			InitializeComponent();
 
-            Game pokemon = Game.GetInstance();
+            Game pokemon = Game.Instance;
 
             pokemon.Title = "Pokémon";
             pokemon.GameWidth = 800;
             pokemon.GamePathName = "Pokemon";
 
-            Area palletTown = PalletTown.GetArea();
+            Area newBarkTown = NewBarkTown.Instance.Area;
 
-            pokemon.Areas.Add(palletTown);
-            pokemon.CurrentArea = palletTown;
+            pokemon.Areas.Add(newBarkTown);
+            pokemon.Areas.Add(RouteOne.Instance.Area);
+            pokemon.CurrentArea = newBarkTown;
+            pokemon.NextArea = newBarkTown;
+
 
             IPlayableCharacter red = ((IPlayableCharacter)CellObjectFactory.Build(CellObjectType.Hero));
      
@@ -39,21 +42,36 @@ namespace GameEngine.Implementation.Pokemon
             red.ItemInventory.Add(InventoryItemFactory.Build(ItemName.SmallHealthPotion));
 
             pokemon.PlayableCharacter = red;
-            palletTown.SetCellObjectGridPosition(10, 8, red);
+            red.Position = (10, 8);
+            //newBarkTown.SetCellObjectGridPosition(10, 8, red);
 
-            pokemon.CurrentArea = palletTown;
-            pokemon.CurrentlyPlayingMusic = palletTown.AreaMusic;
-            //pokemon.CurrentlyPlayingMusic.SoundPlayer.Play();
+            //pokemon.CurrentArea = newBarkTown;
 
+            //pokemon.InitializeGame = InitializeGame;
 
+            InitializeGameFirstTime();
+        }
+
+        public void InitializeGameFirstTime()
+        {
+            var game = Game.Instance;
+            game.CurrentArea.SetCellObjectGridPosition(game.PlayableCharacter.Position.x, game.PlayableCharacter.Position.y, game.PlayableCharacter);
             //For some weird reason the view isn't available right after initialization, 
             // so we need to wait for it to become available
             //TODO: find another workaround for this
             Loaded += async (s, e) =>
             {
                 await Task.Delay(100);
-                Frame.Navigate(typeof(GameWindow), pokemon);
+                Frame.Navigate(typeof(GameWindow), game);
             };
         }
-	}
+
+        public void InitializeGame()
+        {
+            GameWindow.renderIsInProgress = true;
+            var game = Game.Instance;
+            //game.CurrentArea.SetCellObjectGridPosition(game.PlayableCharacter.Position.x, game.PlayableCharacter.Position.y, game.PlayableCharacter);
+            Frame.Navigate(typeof(GameWindow), game);
+        }
+    }
 }

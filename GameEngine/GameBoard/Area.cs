@@ -50,6 +50,7 @@ namespace GameEngine
 
         public void SetCellObjectGridPosition(int xCoordinate, int yCoordinate, ICellObject cellObject)
         {
+
             if(!GameObjects.Contains(cellObject))
                 GameObjects.Add(cellObject);
 

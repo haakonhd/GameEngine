@@ -29,7 +29,6 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 
 		public void SetSprite()
 		{
-
 			this.Sprite = new Sprite("house_6x4.png");
 		}
 	}

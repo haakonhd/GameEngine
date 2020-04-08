@@ -23,5 +23,17 @@ namespace GameEngine.Tools
 			copy.CellWidth = original.CellWidth;
 			copy.CellHeight = original.CellHeight;
 		}
+
+		public static void Travel((int x, int y) startPos, Area newArea)
+		{
+			var game = Game.Instance;
+
+			game.PlayableCharacter.Position = startPos;
+			game.NextArea = newArea;
+			//game.PlayableCharacter.SetSprite();
+			//newBarkTown.SetCellObjectGridPosition(10, 8, red);
+			game.NextArea.SetCellObjectGridPosition(startPos.x, startPos.y, game.PlayableCharacter);
+			//game.Reload();
+		}
 	}
 }

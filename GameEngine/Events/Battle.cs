@@ -1,9 +1,11 @@
-﻿using GameEngine.GameObjects;
+﻿using GameEngine.GameBoard;
+using GameEngine.GameObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
 
 namespace GameEngine.Events
 {
@@ -11,21 +13,43 @@ namespace GameEngine.Events
 	{
 		public IFighter Hero { get; set; }
 		public IFighter Enemy { get; set; }
-		public Battle(IFighter hero)
-		{
-			Hero = hero;
-		}
+        private static Battle instance = null;
+        private static readonly object padlock = new object();
 
-		public void StartBattle()
+        public Battle()
+        {
+        }
+
+        public static Battle Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    lock (padlock)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new Battle();
+                        }
+                    }
+                }
+                return instance;
+            }
+        }
+
+        public void StartBattle()
 		{
-			//TODO: handle error
-			if (Hero == null || Enemy == null) return;
-			//TODO: create battle
-		}
+            Hero = Game.Instance.PlayableCharacter;
+            //TODO: handle error: no enemy set
+            if (Enemy == null)
+                return;
+
+            GameWindow.GameWindowFrame?.Navigate(typeof(BattleWindow));
+        }
 
         public void EndBattle()
         {
-			//TODO Add logic
         }
 	}
 }

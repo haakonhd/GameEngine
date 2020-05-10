@@ -1,11 +1,14 @@
-﻿using GameEngine.GameObjects;
-using GameEngine.Events;
-using System.Collections.Generic;
+﻿using GameEngine.Events;
+using GameEngine.GameObjects;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace GameEngine.Implementation.Pokemon.FactoryObjects
+namespace GameEngine.Implementation.EmptyProject.FactoryObjects
 {
-	public class HealthPotionSmall : IInventoryItem
+	class HealthPotionSmall : IInventoryItem
 	{
 		public string ItemName { get; set; }
 		public string ItemDescription { get; set; }

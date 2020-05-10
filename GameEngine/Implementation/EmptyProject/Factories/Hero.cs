@@ -1,13 +1,15 @@
-﻿using GameEngine.Implementation.Pokemon.Factories;
-using GameEngine.Events;
-using System.Collections.Generic;
-using static GameEngine.Implementation.Pokemon.Factories.BattleAttackFactory;
-using static GameEngine.Implementation.Pokemon.Factories.InventoryItemFactory;
-using static GameEngine.Implementation.Pokemon.Factories.CellObjectFactory;
+﻿using GameEngine.Events;
 using GameEngine.GameObjects;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using static GameEngine.Implementation.EmptyProject.Factories.BattleAttackFactory;
+using static GameEngine.Implementation.EmptyProject.Factories.CellObjectFactory;
+using static GameEngine.Implementation.EmptyProject.Factories.InventoryItemFactory;
 
-namespace GameEngine.Implementation.Pokemon.FactoryObjects
+namespace GameEngine.Implementation.EmptyProject.Factories
 {
 	class Hero : IPlayableCharacter
 	{
@@ -15,7 +17,7 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects
 		public bool IsPassable { get; set; }
 		public int HealthPoints { get; set; }
 		public int Level { get; set; }
-        public (int x, int y) Position { get; set; }
+		public (int x, int y) Position { get; set; }
 		public List<IInventoryItem> ItemInventory { get; set; } = new List<IInventoryItem>();
 		public List<IBattleAttack> BattleAttacks { get; set; } = new List<IBattleAttack>();
 		public CellObjectType EnumType { get; set; }

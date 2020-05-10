@@ -80,7 +80,7 @@ namespace GameEngine.Implementation.Pokemon.Areas
 				new ICellObject[]{ _,_,_,_,_,_ }, //3
 				new ICellObject[]{ _,_,_,_,_,_ }, //3
 				new ICellObject[]{ _,_,_,_,_,_ }, //3
-				new ICellObject[]{ _,_,_,_,_,_ }, //4
+				new ICellObject[]{ S,_,_,_,_,_ }, //4
 				new ICellObject[]{ _,_,_,_,_,_ }  //6
 			};
 			

@@ -12,7 +12,7 @@ namespace GameEngine.GameBoard
 
         public static void HandleInput(VirtualKey eVirtualKey, ICellObject cellObject)
         {
-            switch (Game.GetInstance().CurrentGameState)
+            switch (Game.Instance.CurrentGameState)
             {
                 case Game.GameState.Movement:
                     Movement.HandleInput(eVirtualKey, cellObject);

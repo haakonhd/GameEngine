@@ -162,21 +162,6 @@ namespace GameEngine.GameBoard
 			firstRender = false;
 		}
 
-
-		public void Reload()
-		{
-			renderIsInProgress = true;
-			var game = Game.Instance;
-			//game.CurrentArea.SetCellObjectGridPosition(game.PlayableCharacter.Position.x, game.PlayableCharacter.Position.y, game.PlayableCharacter);
-			//MainGrid.Children.Clear();
-
-			//Frame.Navigate(typeof(GameWindow), game);
-
-			MainGrid.Children.Clear();
-			//mainGrid = null;
-			int i = 2;
-		}
-
 		// row and column span is how many cells the object should span over. rowSpan=1 columnSpan=2 will create a 1x2 object
 		public void InsertCellObject(ICellObject cellObject, int xPos, int yPos, int rowSpan, int columnSpan)
 		{

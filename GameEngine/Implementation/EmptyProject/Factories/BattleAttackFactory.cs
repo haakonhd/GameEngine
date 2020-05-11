@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace GameEngine.Implementation.EmptyProject.Factories
 {
+	/// <summary>
+	/// Gives access to all the battle attacks in the game
+	/// </summary>
 	class BattleAttackFactory
 	{
 		public enum AttackName

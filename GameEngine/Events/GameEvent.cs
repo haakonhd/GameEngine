@@ -15,12 +15,20 @@ namespace GameEngine.Events
             Enter
         }
         
-        
-        public int TriggerChance;
+        /// <summary>
+        /// 0 means 0%, 1 means 100% chance for event to trigger
+        /// </summary>
+        public double TriggerChance;
+        /// <summary>
+        /// An action can be triggered when interacted with on the game board
+        /// </summary>
         public Action EventAction;
+        /// <summary>
+        /// Collision, Interaction, or Enter
+        /// </summary>
         public EventTypes EventType;
 
-        public GameEvent(int chance, Action action, EventTypes type)
+        public GameEvent(double chance, Action action, EventTypes type)
         {
             TriggerChance = chance;
             EventAction = action;

@@ -35,4 +35,3 @@ namespace GameEngine.Implementation.EmptyProject.FactoryObjects
 		}
 	}
 }
-}

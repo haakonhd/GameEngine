@@ -29,6 +29,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>bin\x86\Debug\GameEngine.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -131,6 +132,19 @@
     <Compile Include="GameObjects\EmptyCell.cs" />
     <Compile Include="GameObjects\IEnemy.cs" />
     <Compile Include="GameObjects\IMerchant.cs" />
+    <Compile Include="Implementation\EmptyProject\Areas\FirstArea.cs" />
+    <Compile Include="Implementation\EmptyProject\Factories\BattleAttackFactory.cs" />
+    <Compile Include="Implementation\EmptyProject\Factories\CellObjectFactory.cs" />
+    <Compile Include="Implementation\EmptyProject\Factories\Hero.cs" />
+    <Compile Include="Implementation\EmptyProject\Factories\InventoryItemFactory.cs" />
+    <Compile Include="Implementation\EmptyProject\FactoryObjects\Grass.cs" />
+    <Compile Include="Implementation\EmptyProject\FactoryObjects\HealthPotionSmall.cs" />
+    <Compile Include="Implementation\EmptyProject\FactoryObjects\Portal.cs" />
+    <Compile Include="Implementation\EmptyProject\FactoryObjects\Stab.cs" />
+    <Compile Include="Implementation\EmptyProject\FactoryObjects\Tree.cs" />
+    <Compile Include="Implementation\EmptyProject\GameInitializer.xaml.cs">
+      <DependentUpon>GameInitializer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Implementation\Pokemon\FactoryObjects\Inanimate_objects\Portal.cs" />
     <Compile Include="Implementation\Pokemon\Areas\NewBarkTown.cs" />
     <Compile Include="Implementation\Pokemon\Areas\RouteOne.cs" />
@@ -214,6 +228,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Implementation\EmptyProject\GameInitializer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Implementation\Pokemon\GameInitializer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -230,6 +248,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Implementation\EmptyProject\Assets\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

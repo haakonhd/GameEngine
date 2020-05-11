@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace GameEngine.Implementation.EmptyProject.Factories
 {
+	/// <summary>
+	/// Gives access to all the game's cell objects
+	/// </summary>
 	class CellObjectFactory
 	{
 		// Whenever you add a new game object, add them here and in the switch below
@@ -17,6 +20,11 @@ namespace GameEngine.Implementation.EmptyProject.Factories
 			Tree
 		}
 
+		/// <summary>
+		/// Retrieve a cell object from enum
+		/// </summary>
+		/// <param name="cellObjectType"></param>
+		/// <returns></returns>
 		public static ICellObject Build(CellObjectType cellObjectType)
 		{
 			switch (cellObjectType)

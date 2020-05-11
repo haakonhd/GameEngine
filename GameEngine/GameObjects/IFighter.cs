@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace GameEngine.GameObjects
 {
+	/// <summary>
+	/// Needs to be implemented in order to do battle
+	/// </summary>
 	public interface IFighter
 	{
 		int HealthPoints { get; set; }

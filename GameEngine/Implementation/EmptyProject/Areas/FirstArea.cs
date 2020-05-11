@@ -52,6 +52,8 @@ namespace GameEngine.Implementation.EmptyProject.Areas
 
 			ICellObject _ = null;
 			ICellObject I = null;
+			//hero position
+			ICellObject x = null;
 
 			ICellObject[][] area =
 			{	//				   1				   10				 20					 30
@@ -61,7 +63,7 @@ namespace GameEngine.Implementation.EmptyProject.Areas
 				new ICellObject[]{ T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T }, //3
 				new ICellObject[]{ I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I }, //4
 				new ICellObject[]{ T,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,T }, //5
-				new ICellObject[]{ I,_,_,_,_,I,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,I }, //6
+				new ICellObject[]{ I,_,_,_,_,x,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,I }, //6
 				new ICellObject[]{ I,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,I }, //7
 				new ICellObject[]{ I,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,I }, //8
 				new ICellObject[]{ I,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,I }, //9
@@ -70,6 +72,7 @@ namespace GameEngine.Implementation.EmptyProject.Areas
 				new ICellObject[]{ I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I }  //12
 			};
 
+			//Can't touch this
 			for (int i = 0; i < areaHeight - 1; i++)
 			{
 				for (int j = 0; j <= areaWidth - 1; j++)
@@ -78,6 +81,33 @@ namespace GameEngine.Implementation.EmptyProject.Areas
 						Area.SetCellObjectGridPosition(j + 1, i + 1, area[i][j]);
 				}
 			}
+
+			/*
+			  
+					 ,-===-.     _
+					:__   __:   (#)
+		 ______     [__]=[__]    \\ _
+		'---___) ) (|  c_)  |)  ((\( 3 ))
+		   /  /     |.-=_=-.|     \  \
+		  /  /       \ \_/ /       \  \
+		 /  /__.------`---'------.__\  \
+		/      \      \ # /      /      \
+		`-------\      \#/      /-------' ))
+				 \      /  --- /
+				  \     |o    /
+				   \    |o   /
+					\   |o  /
+			  ______ >-----<_______
+		  (( \                     /
+			  \                   /
+			   \                 /
+				\   .-------.   /
+				 \   \     /   /
+				  \   \   /   /
+				 __\___\ /___/__
+				'----^-' '-^----' ))
+ 
+			 */
 		}
 	}
 }

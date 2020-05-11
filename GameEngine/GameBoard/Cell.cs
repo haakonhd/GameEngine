@@ -5,6 +5,9 @@ using System.Text;
 
 namespace GameEngine
 {
+    /// <summary>
+    /// Represents a square in the game grid. Can hold multiple cell objects
+    /// </summary>
     public class Cell
     {
         public List<ICellObject> CellObjects{ get; set; }

@@ -4,6 +4,9 @@ using GameEngine.Implementation.Pokemon.FactoryObjects;
 
 namespace GameEngine.Implementation.Pokemon.Factories
 {
+    /// <summary>
+    /// Gives access to all cell entities in the game
+    /// </summary>
     public static class CellEntityFactory
     {
         public enum entityType

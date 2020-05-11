@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace GameEngine.Implementation.EmptyProject.FactoryObjects
 {
+	/// <summary>
+	/// Cell object that triggers travel event. 
+	/// </summary>
 	class Portal : ICellObject
 	{
 		public Sprite Sprite { get; set; }
@@ -21,6 +24,14 @@ namespace GameEngine.Implementation.EmptyProject.FactoryObjects
 		public (int x, int y) StartPos { get; set; }
 		public static int count = 0;
 
+
+	/// <summary>
+	/// ALKSDASD
+	/// </summary>
+	/// <param name="newArea"></param>
+	/// <param name="startPos"></param>
+	/// <param name="eventType"></param>
+	/// <param name="isPassable"></param>
 		public Portal(Area newArea, (int x, int y) startPos, GameEvent.EventTypes eventType, bool isPassable)
 		{
 			Sprite = new Sprite("");

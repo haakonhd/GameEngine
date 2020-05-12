@@ -244,8 +244,8 @@ namespace GameEngine.GameBoard
 
 		void CoreWindow_KeyDown(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs e)
         {
-			//TODO: Can't reference Hero
-            var heroCellObject = Game.Instance.CurrentArea.GameObjects.Find(x => x.GetType() == typeof(Hero));
+            var heroCellObject = Game.Instance.PlayableCharacter;
+
 
             KeyboardInputHandler.HandleInput(e.VirtualKey, heroCellObject);
         }

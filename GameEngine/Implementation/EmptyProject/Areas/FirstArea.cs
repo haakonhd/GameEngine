@@ -34,31 +34,34 @@ namespace GameEngine.Implementation.EmptyProject.Areas
 		public FirstArea()
 		{
 			Area = new Area();
-			//Set how many cells the area should have
+			// Set how many cells the area should have
 			int areaWidth = 30;
 			int areaHeight = 12;
 			Area.SetAreaGrid(areaWidth, areaHeight);
-			//Set a sprite that will fill the entire board
+			// Set a sprite that will fill the entire board
 			Area.BackgroundCellObject = CellObjectFactory.Build(CellObjectType.Grass);
-			//Upload a tune to the assets folder and play it when the player enters the area
+			// Upload a tune to the assets folder and play it when the player enters the area
 			Area.AreaMusic = new MediaHandler("firstAreaMusic.mp3");
 
-			//To easily build an area, you can bind each object you plan to use on the screen in a single character
-			//variable. You can then draw the board using code like below. Cell objects with "null" will be empty.
+			// To easily build an area, you can bind each object you plan to use on the screen in a single character
+			// variable. You can then draw the board using code like below. Cell objects with "null" will be empty.
+			// since some objects are larger than one cell you can place empty variables in the spaces they occupy to make
+			// readability easier.
 
-			//If you want to place more than one object in a cell you can either place it into the code like so:
-			//Area.SetCellObjectGridPosition(8,8,cellObject);
-			//Or draw a new area with another two dimentional array and place it on top of the other one
+			// If you want to place more than one object in a cell you can either place it into the code like so:
+			// Area.SetCellObjectGridPosition(8,8,cellObject);
+			// Or draw a new area with another two dimentional array and place it on top of the other one
 			
-			//To move to a new area you can create a portal and select the new area like below. instead of "FirstArea" you can
-			//enter the area the portal shall lead to, the start position, how the event will be triggered and if the cell
-			//can be stepped on
-			//ICellObject P = new Portal(FirstArea.Instance.Area, (1,7), GameEvent.EventTypes.Enter, true);
+			// To move to a new area you can create a portal and select the new area like below. instead of "FirstArea" you can
+			// enter the area the portal shall lead to, the start position, how the event will be triggered and if the cell
+			// can be stepped on
+			// ICellObject P = new Portal(FirstArea.Instance.Area, (1,7), GameEvent.EventTypes.Enter, true);
 			ICellObject T = CellObjectFactory.Build(CellObjectType.Tree);
 
 			ICellObject _ = null;
+			// represents the lower side of a tree
 			ICellObject I = null;
-			//hero position
+			// hero position
 			ICellObject x = null;
 
 			ICellObject[][] area =
@@ -70,15 +73,15 @@ namespace GameEngine.Implementation.EmptyProject.Areas
 				new ICellObject[]{ I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I }, //4
 				new ICellObject[]{ T,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,T }, //5
 				new ICellObject[]{ I,_,_,_,_,x,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,I }, //6
-				new ICellObject[]{ I,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,I }, //7
+				new ICellObject[]{ T,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,T }, //7
 				new ICellObject[]{ I,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,I }, //8
-				new ICellObject[]{ I,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,I }, //9
+				new ICellObject[]{ T,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,T }, //9
 				new ICellObject[]{ I,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,I }, //10
-				new ICellObject[]{ I,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,I }, //11
+				new ICellObject[]{ T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T }, //11
 				new ICellObject[]{ I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I }  //12
 			};
 
-			//Can't touch this
+			// Can't touch this
 			for (int i = 0; i < areaHeight - 1; i++)
 			{
 				for (int j = 0; j <= areaWidth - 1; j++)
@@ -87,7 +90,6 @@ namespace GameEngine.Implementation.EmptyProject.Areas
 						Area.SetCellObjectGridPosition(j + 1, i + 1, area[i][j]);
 				}
 			}
-
 			/*
 			  
 					 ,-===-.     _

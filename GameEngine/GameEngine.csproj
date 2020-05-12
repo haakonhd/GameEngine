@@ -135,7 +135,7 @@
     <Compile Include="Implementation\EmptyProject\Areas\FirstArea.cs" />
     <Compile Include="Implementation\EmptyProject\Factories\BattleAttackFactory.cs" />
     <Compile Include="Implementation\EmptyProject\Factories\CellObjectFactory.cs" />
-    <Compile Include="Implementation\EmptyProject\Factories\Hero.cs" />
+    <Compile Include="Implementation\EmptyProject\FactoryObjects\Hero.cs" />
     <Compile Include="Implementation\EmptyProject\Factories\InventoryItemFactory.cs" />
     <Compile Include="Implementation\EmptyProject\FactoryObjects\Grass.cs" />
     <Compile Include="Implementation\EmptyProject\FactoryObjects\HealthPotionSmall.cs" />

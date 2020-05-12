@@ -5,11 +5,17 @@ using static GameEngine.Implementation.EmptyProject.Factories.CellObjectFactory;
 
 namespace GameEngine.Implementation.EmptyProject.Areas
 {
+	/// <summary>
+	/// Singleton. The first area of the game
+	/// </summary>
 	public sealed class FirstArea
 	{
 		private static readonly object padlock = new object();
 		private static FirstArea instance = null;
 		public Area Area { get; set; }
+		/// <summary>
+		/// Retrieves a static instance of firstArea
+		/// </summary>
 		public static FirstArea Instance
 		{
 			get
@@ -47,7 +53,7 @@ namespace GameEngine.Implementation.EmptyProject.Areas
 			//To move to a new area you can create a portal and select the new area like below. instead of "FirstArea" you can
 			//enter the area the portal shall lead to, the start position, how the event will be triggered and if the cell
 			//can be stepped on
-			ICellObject P = new Portal(FirstArea.Instance.Area, (1,7), GameEvent.EventTypes.Enter, true);
+			//ICellObject P = new Portal(FirstArea.Instance.Area, (1,7), GameEvent.EventTypes.Enter, true);
 			ICellObject T = CellObjectFactory.Build(CellObjectType.Tree);
 
 			ICellObject _ = null;

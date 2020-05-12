@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Controls;
 namespace GameEngine.Implementation.EmptyProject
 {
 	/// <summary>
-	/// An empty page that can be used on its own or navigated to within a Frame.
+	/// The page where a game is initialized
 	/// </summary>
 	public sealed partial class GameInitializer : Page
 	{
@@ -52,18 +52,19 @@ namespace GameEngine.Implementation.EmptyProject
 			//Set your hero to be the playable character of the game
 			newGame.PlayableCharacter = hero;
 			//Set the start position of the character in the game
-			hero.Position = (5,5);
+			hero.Position = (6,6);
 			//Start game
 			InitializeGame();
 		}
 
+		/// <summary>
+		/// Navigates to the game window where the game is run
+		/// </summary>
 		public void InitializeGame()
 		{
 			var game = Game.Instance;
 			game.CurrentArea.SetCellObjectGridPosition(game.PlayableCharacter.Position.x, game.PlayableCharacter.Position.y, game.PlayableCharacter);
-			//For some weird reason the view isn't available right after initialization, 
-			// so we need to wait for it to become available
-			//TODO: find another workaround for this
+			// The view isn't available immediately after initialization, so we need to wait for it to become available
 			Loaded += async (s, e) =>
 			{
 				await Task.Delay(100);

@@ -21,7 +21,7 @@ namespace GameEngine.Implementation.EmptyProject.Factories
 		}
 
 		/// <summary>
-		/// Retrieve a cell object from enum
+		/// Retrieve an instance of cell object from selected enum
 		/// </summary>
 		/// <param name="cellObjectType"></param>
 		/// <returns></returns>

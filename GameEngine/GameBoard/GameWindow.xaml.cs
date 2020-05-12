@@ -87,24 +87,26 @@ namespace GameEngine.GameBoard
             {
                 InitializeNewArea();
 
-				//if(mainGrid != null)
-				//MainGrid = mainG/*r*/id;
-
 				InsertAllCellObjects(Game.Instance.CurrentArea);
 				//InsertAllCellEntities(Game.Instance.CurrentArea);
-				foreach(UIElement element in Game.Instance.CustomUIElementsToBeAdded){
-					InsertCustomUIElement(element);
-					Game.Instance.CustomUIElementsInView.Add(element);
-				}
-				Game.Instance.CustomUIElementsToBeAdded.Clear();
-				foreach(UIElement element in Game.Instance.CustomUIElementsToBeDeleted)
-				{
-					RemoveCustomUIElement(element);	
-				}
-				Game.Instance.CustomUIElementsToBeDeleted.Clear();
-				//mainGrid = MainGrid;
+				UpdateCustomUIElements();
 			}
         }
+
+		private void UpdateCustomUIElements()
+		{
+			foreach (UIElement element in Game.Instance.CustomUIElementsToBeAdded)
+			{
+				InsertCustomUIElement(element);
+				Game.Instance.CustomUIElementsInView.Add(element);
+			}
+			Game.Instance.CustomUIElementsToBeAdded.Clear();
+			foreach (UIElement element in Game.Instance.CustomUIElementsToBeDeleted)
+			{
+				RemoveCustomUIElement(element);
+			}
+			Game.Instance.CustomUIElementsToBeDeleted.Clear();
+		}
 
 
         private void GenerateGrid()

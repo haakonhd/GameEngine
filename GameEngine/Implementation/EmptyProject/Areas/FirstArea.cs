@@ -55,16 +55,20 @@ namespace GameEngine.Implementation.EmptyProject.Areas
 			// To move to a new area you can create a portal and select the new area like below. instead of "FirstArea" you can
 			// enter the area the portal shall lead to, the start position, how the event will be triggered and if the cell
 			// can be stepped on
-			// ICellObject P = new Portal(FirstArea.Instance.Area, (1,7), GameEvent.EventTypes.Enter, true);
+			// ICellObject P = new Portal(SecondArea.Instance.Area, (1,7), GameEvent.EventTypes.Enter, true);
 			ICellObject T = CellObjectFactory.Build(CellObjectType.Tree);
 			ICellObject S = CellObjectFactory.Build(CellObjectType.Sign);
 
 			ICellObject _ = null;
-			// represents the lower side of a tree
+			// "I" represents the lower side of a tree
 			ICellObject I = null;
-			// hero position
+			// hero position is decided in the game initializer or when traveling. 
+			// the x shows where the hero will be placed according to the initializer
 			ICellObject x = null;
 
+
+			// Objects are placed in their top left part in the grid. 
+			// If a 2x4 object is placed at at the 1x1 space, 1x2, 1x3, 1x4, 2x2, 2x3, and 2x4 will be ocupied
 			ICellObject[][] area =
 			{	//				   1				   10				 20					 30
 				//                 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
@@ -81,6 +85,14 @@ namespace GameEngine.Implementation.EmptyProject.Areas
 				new ICellObject[]{ T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T }, //11
 				new ICellObject[]{ I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I }  //12
 			};
+
+
+
+
+
+
+
+
 
 			// Can't touch this
 			for (int i = 0; i < areaHeight - 1; i++)

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 
 namespace GameEngine.Implementation.EmptyProject.FactoryObjects
 {
@@ -37,7 +38,8 @@ namespace GameEngine.Implementation.EmptyProject.FactoryObjects
 			TextBox textBox = new TextBox();
 			textBox.Text = message;
 			textBox.Width = 200;
-			textBox.Height = 50;
+			textBox.Height = 70;
+
 			textBox.VerticalAlignment = VerticalAlignment.Center;
 			textBox.HorizontalAlignment = HorizontalAlignment.Center;
 			textBox.TextWrapping = TextWrapping.Wrap;

@@ -28,8 +28,9 @@ namespace GameEngine.Implementation.EmptyProject
 			newGame.Title = "Name your game here";
 			//Set total width of the game window in pixels
 			newGame.GameWidth = 800;
-			//Set this property to be the name of the game in your file structure
-			newGame.GamePathName = "Pokemon";
+			//Set this property to be the name of the game in your file structure. Used for finding the path 
+			// for the asset files
+			newGame.GamePathName = "EmptyProject";
 
 			// Create a singleton object in the areas folder and instanciate it here
 			Area firstArea = FirstArea.Instance.Area;

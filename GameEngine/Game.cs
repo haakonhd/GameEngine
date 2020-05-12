@@ -6,6 +6,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using GameEngine.GameBoard;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml;
 
 namespace GameEngine
 {
@@ -34,6 +36,9 @@ namespace GameEngine
         private static Game instance = null;
         private static readonly object padlock = new object();
         public Action Reload { get; set; }
+        public List<UIElement> CustomUIElementsToBeAdded { get; set; } = new List<UIElement>();
+        public List<UIElement> CustomUIElementsInView { get; set; } = new List<UIElement>();
+        public List<UIElement> CustomUIElementsToBeDeleted { get; set; } = new List<UIElement>();
 
         public static Game Instance
         {

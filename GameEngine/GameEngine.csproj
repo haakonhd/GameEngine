@@ -140,6 +140,7 @@
     <Compile Include="Implementation\EmptyProject\FactoryObjects\Grass.cs" />
     <Compile Include="Implementation\EmptyProject\FactoryObjects\HealthPotionSmall.cs" />
     <Compile Include="Implementation\EmptyProject\FactoryObjects\Portal.cs" />
+    <Compile Include="Implementation\EmptyProject\FactoryObjects\Sign.cs" />
     <Compile Include="Implementation\EmptyProject\FactoryObjects\Stab.cs" />
     <Compile Include="Implementation\EmptyProject\FactoryObjects\Tree.cs" />
     <Compile Include="Implementation\EmptyProject\GameInitializer.xaml.cs">
@@ -194,6 +195,19 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Implementation\EmptyProject\Assets\bump.mp3" />
+    <Content Include="Implementation\EmptyProject\Assets\enemy.png" />
+    <Content Include="Implementation\EmptyProject\Assets\grass.png" />
+    <Content Include="Implementation\EmptyProject\Assets\hero.png" />
+    <Content Include="Implementation\EmptyProject\Assets\house_4x2.png" />
+    <Content Include="Implementation\EmptyProject\Assets\house_4x4.png" />
+    <Content Include="Implementation\EmptyProject\Assets\house_6x4.png" />
+    <Content Include="Implementation\EmptyProject\Assets\new_bark_town.mp3" />
+    <Content Include="Implementation\EmptyProject\Assets\npc.png" />
+    <Content Include="Implementation\EmptyProject\Assets\route_one.mp3" />
+    <Content Include="Implementation\EmptyProject\Assets\shake.mp3" />
+    <Content Include="Implementation\EmptyProject\Assets\sign.png" />
+    <Content Include="Implementation\EmptyProject\Assets\tree_1x2.png" />
     <Content Include="Implementation\Pokemon\Assets\new_bark_town.mp3" />
     <Content Include="Implementation\Pokemon\Assets\bump.mp3" />
     <Content Include="Implementation\Pokemon\Assets\enemy.png" />
@@ -205,6 +219,7 @@
     <Content Include="Implementation\Pokemon\Assets\npc.png" />
     <Content Include="Implementation\Pokemon\Assets\route_one.mp3" />
     <Content Include="Implementation\Pokemon\Assets\shake.mp3" />
+    <Content Include="Implementation\Pokemon\Assets\sign.png" />
     <Content Include="Implementation\Pokemon\Assets\tree_1x2.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -249,9 +264,7 @@
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Implementation\EmptyProject\Assets\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

@@ -57,6 +57,7 @@ namespace GameEngine.Implementation.EmptyProject.Areas
 			// can be stepped on
 			// ICellObject P = new Portal(FirstArea.Instance.Area, (1,7), GameEvent.EventTypes.Enter, true);
 			ICellObject T = CellObjectFactory.Build(CellObjectType.Tree);
+			ICellObject S = CellObjectFactory.Build(CellObjectType.Sign);
 
 			ICellObject _ = null;
 			// represents the lower side of a tree
@@ -72,7 +73,7 @@ namespace GameEngine.Implementation.EmptyProject.Areas
 				new ICellObject[]{ T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T }, //3
 				new ICellObject[]{ I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I }, //4
 				new ICellObject[]{ T,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,T }, //5
-				new ICellObject[]{ I,_,_,_,_,x,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,I }, //6
+				new ICellObject[]{ I,_,_,_,_,x,_,_,_,_,S,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,I }, //6
 				new ICellObject[]{ T,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,T }, //7
 				new ICellObject[]{ I,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,I }, //8
 				new ICellObject[]{ T,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,T }, //9

@@ -92,7 +92,16 @@ namespace GameEngine.GameBoard
 
 				InsertAllCellObjects(Game.Instance.CurrentArea);
 				//InsertAllCellEntities(Game.Instance.CurrentArea);
-
+				foreach(UIElement element in Game.Instance.CustomUIElementsToBeAdded){
+					InsertCustomUIElement(element);
+					Game.Instance.CustomUIElementsInView.Add(element);
+				}
+				Game.Instance.CustomUIElementsToBeAdded.Clear();
+				foreach(UIElement element in Game.Instance.CustomUIElementsToBeDeleted)
+				{
+					RemoveCustomUIElement(element);	
+				}
+				Game.Instance.CustomUIElementsToBeDeleted.Clear();
 				//mainGrid = MainGrid;
 			}
         }
@@ -201,9 +210,14 @@ namespace GameEngine.GameBoard
 			}
 		}
 
-		public void InsertXamlControl(Control control)
+		public void InsertCustomUIElement(UIElement element)
 		{
-			OuterGrid.Children.Add(control);
+			OuterGrid.Children.Add(element);
+		}
+
+		public void RemoveCustomUIElement(UIElement element)
+		{
+			OuterGrid.Children.Remove(element);
 		}
 
 		private Image PrepareImageFromCellObject(ICellObject cellObject)

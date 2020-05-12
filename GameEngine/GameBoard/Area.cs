@@ -8,6 +8,9 @@ using GameEngine.Implementation.Pokemon.FactoryObjects;
 
 namespace GameEngine
 {
+    /// <summary>
+    /// Represents a playable area
+    /// </summary>
     public class Area
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1819:Properties should not return arrays", Justification = "Jagged array is needed for area grid to work")]
@@ -21,15 +24,28 @@ namespace GameEngine
 
         public List<ICellEntity> GameEntities = new List<ICellEntity>();
 
+        /// <summary>
+        /// Initializing an area
+        /// </summary>
         public Area()
         {
         }
 
+        /// <summary>
+        /// Initializing an area where you set the grid size in the contructor
+        /// </summary>
+        /// <param name="width">Width of the play area</param>
+        /// <param name="height">Height of the play area</param>
         public Area(int width, int height)
         {
             SetAreaGrid(width, height);
         }
 
+        /// <summary>
+        /// Sets the size of the playable area
+        /// </summary>
+        /// <param name="width">Width of the play area</param>
+        /// <param name="height">Height of the play area</param>
         public void SetAreaGrid(int width, int height)
         {
             int y = 0;
@@ -48,6 +64,12 @@ namespace GameEngine
             Height = height;
         }
 
+        /// <summary>
+        /// Places an object in the grid
+        /// </summary>
+        /// <param name="xCoordinate">X coordinates</param>
+        /// <param name="yCoordinate">Y Coordinates</param>
+        /// <param name="cellObject">The object to placed in the grid</param>
         public void SetCellObjectGridPosition(int xCoordinate, int yCoordinate, ICellObject cellObject)
         {
 

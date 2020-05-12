@@ -7,9 +7,16 @@ using Windows.System;
 
 namespace GameEngine.GameBoard
 {
+    /// <summary>
+    /// A class to handle all the keyboard inputs
+    /// </summary>
     public class KeyboardInputHandler
     {
-
+        /// <summary>
+        /// A function to send the keyboard input to the right classes based on what state the game is in
+        /// </summary>
+        /// <param name="eVirtualKey">Keyboard input</param>
+        /// <param name="cellObject">The object that is going to me manipulated</param>
         public static void HandleInput(VirtualKey eVirtualKey, ICellObject cellObject)
         {
             switch (Game.Instance.CurrentGameState)

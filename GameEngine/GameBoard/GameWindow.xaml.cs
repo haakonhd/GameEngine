@@ -70,6 +70,7 @@ namespace GameEngine.GameBoard
 
         private void InitializeNewArea()
         {
+			var game = Game.Instance;
             if (Game.Instance.CurrentArea == Game.Instance.NextArea)
                 return;
 
@@ -83,9 +84,10 @@ namespace GameEngine.GameBoard
 
             Game.Instance.CurrentArea = Game.Instance.NextArea;
             DrawBoard();
+			Game.Instance.CurrentArea.SetCellObjectGridPosition(game.PlayableCharacter.Position.x, game.PlayableCharacter.Position.y, game.PlayableCharacter);
 		}
 
-        private void CompositionTarget_Rendering(object sender, object e)
+		private void CompositionTarget_Rendering(object sender, object e)
 		{
 			//preventing functions from being run twice at the same time
 			if (!renderIsInProgress)

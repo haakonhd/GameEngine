@@ -21,14 +21,18 @@ namespace GameEngine.GameObjects
 		public (int x, int y) StartPos { get; set; }
 		public static int count = 0;
 
-		public Portal(Area newArea, (int x, int y) startPos, GameEvent.EventTypes eventType, bool isPassable)
+		public Portal(Area newArea, (int x, int y) startPos, GameEvent.EventTypes eventType, bool isPassable, IAreaSingleton areaSingleton)
 		{
 			Sprite = new Sprite("");
 			IsPassable = isPassable;
 			CellWidth = 1;
 			CellHeight = 1;
 			NewArea = newArea;
-			void travel() { HelperMethods.Travel(startPos, newArea); }
+			void travel() {
+				areaSingleton.resetArea();
+				newArea = areaSingleton.Area;
+				HelperMethods.Travel(startPos, newArea); 
+			}
 			EventTriggers.Add(new GameEvent(1, travel, eventType));
 			StartPos = startPos;
 		}

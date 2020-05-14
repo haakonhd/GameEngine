@@ -7,10 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using GameEngine.Events;
 using static GameEngine.Implementation.Pokemon.Factories.CellObjectFactory;
+using GameEngine.GameBoard;
 
 namespace GameEngine.Implementation.Pokemon.Areas
 {
-	public sealed class RouteOne
+	public sealed class RouteOne : IAreaSingleton
 	{
 		private static readonly object padlock = new object();
 		private static RouteOne instance = null;
@@ -24,7 +25,7 @@ namespace GameEngine.Implementation.Pokemon.Areas
 					if (instance == null)
 					{
 						instance = new RouteOne();
-						instance.setInstanceValues();
+						instance.resetArea();
 					}
 					return instance;
 				}
@@ -35,7 +36,7 @@ namespace GameEngine.Implementation.Pokemon.Areas
 		{
 		}
 
-		private void setInstanceValues()
+		public void resetArea()
 		{
 			Area = new Area();
 			int areaWidth = 30;
@@ -51,7 +52,8 @@ namespace GameEngine.Implementation.Pokemon.Areas
 			ICellObject M = CellObjectFactory.Build(CellObjectType.MediumHouse);
 			ICellObject B = CellObjectFactory.Build(CellObjectType.BigHouse);
 			ICellObject T = CellObjectFactory.Build(CellObjectType.Tree);
-			ICellObject P = new Portal(NewBarkTown.Instance.Area, (1, 7), GameEvent.EventTypes.Enter, true);
+			ICellObject P = new Portal(NewBarkTown.Instance.Area, (2, 7), GameEvent.EventTypes.Enter, true, NewBarkTown.Instance);
+			ICellObject p = new Portal(NewBarkTown.Instance.Area, (2, 8), GameEvent.EventTypes.Enter, true, NewBarkTown.Instance);
 			ICellObject _ = null;
 			ICellObject x = null;
 			ICellObject I = null;
@@ -66,7 +68,7 @@ namespace GameEngine.Implementation.Pokemon.Areas
 				new ICellObject[]{ T,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,T }, //5
 				new ICellObject[]{ I,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,I }, //6
 				new ICellObject[]{ I,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,P }, //7
-				new ICellObject[]{ I,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,P }, //8
+				new ICellObject[]{ I,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,p }, //8
 				new ICellObject[]{ I,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,I }, //9
 				new ICellObject[]{ I,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,I }, //10
 				new ICellObject[]{ I,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,I }, //11
@@ -83,5 +85,6 @@ namespace GameEngine.Implementation.Pokemon.Areas
 				}
 			}
 		}
+
 	}
 }

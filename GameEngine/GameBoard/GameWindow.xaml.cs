@@ -76,6 +76,11 @@ namespace GameEngine.GameBoard
             if (MainGrid.Children.Count != 0)
                 MainGrid.Children.Clear();
 
+			MainGrid.ColumnDefinitions.Clear();
+			MainGrid.RowDefinitions.Clear();
+
+			firstRender = true;
+
             Game.Instance.CurrentArea = Game.Instance.NextArea;
             DrawBoard();
 		}

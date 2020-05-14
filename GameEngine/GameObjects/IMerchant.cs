@@ -9,7 +9,7 @@ namespace GameEngine.GameObjects
 	/// <summary>
 	/// Entity that can sell items
 	/// </summary>
-	interface IMerchant
+	interface IMerchant : ICellObject
 	{
 		/// <summary>
 		/// List of items available to sell

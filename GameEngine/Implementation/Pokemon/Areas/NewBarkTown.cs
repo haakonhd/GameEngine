@@ -26,6 +26,7 @@ namespace GameEngine.Implementation.Pokemon.Areas
 					if (instance == null)
 					{
 						instance = new NewBarkTown();
+						instance.setInstanceValues();
 					}
 					return instance;
 				}
@@ -33,6 +34,10 @@ namespace GameEngine.Implementation.Pokemon.Areas
 		}
 
 		public NewBarkTown()
+		{
+		}
+
+		private void setInstanceValues()
 		{
 			Area = new Area();
 			int areaWidth = 20;
@@ -48,7 +53,7 @@ namespace GameEngine.Implementation.Pokemon.Areas
 			ICellObject M = CellObjectFactory.Build(CellObjectType.MediumHouse);
 			ICellObject B = CellObjectFactory.Build(CellObjectType.BigHouse);
 			ICellObject T = CellObjectFactory.Build(CellObjectType.Tree);
-			ICellObject P = new Portal(RouteOne.Instance.Area, (6,6), GameEvent.EventTypes.Enter, true);
+			ICellObject P = new Portal(RouteOne.Instance.Area, (6, 6), GameEvent.EventTypes.Enter, true);
 			ICellObject _ = null;
 			ICellObject x = null;
 			ICellObject I = null;
@@ -72,14 +77,15 @@ namespace GameEngine.Implementation.Pokemon.Areas
 					new ICellObject[]{ I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I }  //14
 				};
 
-			for(int i = 0; i < areaHeight-1; i++)
+			for (int i = 0; i < areaHeight - 1; i++)
 			{
-				for(int j = 0; j <= areaWidth - 1; j++)
+				for (int j = 0; j <= areaWidth - 1; j++)
 				{
 					if (area[i][j] != null)
-						Area.SetCellObjectGridPosition(j+1, i+1, area[i][j]);
+						Area.SetCellObjectGridPosition(j + 1, i + 1, area[i][j]);
 				}
 			}
 		}
+
 	}
 }

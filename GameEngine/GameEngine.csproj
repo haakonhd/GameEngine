@@ -164,6 +164,7 @@
     <Compile Include="Implementation\Pokemon\FactoryObjects\People\Hero.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Inanimate_objects\MediumHouse.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\MessageBox.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\People\Merchant.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\People\Npc.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameBoard\Area.cs" />

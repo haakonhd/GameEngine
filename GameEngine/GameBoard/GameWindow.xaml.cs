@@ -254,10 +254,6 @@ namespace GameEngine.GameBoard
 			if (area == null) 
                 return;
 
-			//OuterGrid.Children.Clear();
-			//MainGrid = new Grid();
-			//OuterGrid.Children.Add(MainGrid);
-            //MainGrid.Children.Clear();
 			GenerateGrid();
 
             if(area.BackgroundCellObject != null)

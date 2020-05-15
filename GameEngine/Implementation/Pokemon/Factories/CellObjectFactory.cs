@@ -1,5 +1,6 @@
 ﻿using GameEngine.GameObjects;
 using GameEngine.Implementation.Pokemon.FactoryObjects;
+using GameEngine.Implementation.Pokemon.FactoryObjects.People;
 
 namespace GameEngine.Implementation.Pokemon.Factories
 {
@@ -14,7 +15,8 @@ namespace GameEngine.Implementation.Pokemon.Factories
 			SmallHouse,
 			MediumHouse,
 			BigHouse,
-			Tree
+			Tree,
+			Merchant
 		}
 
 		public static ICellObject Build(CellObjectType cellObjectType)
@@ -37,6 +39,8 @@ namespace GameEngine.Implementation.Pokemon.Factories
 					return new BigHouse();
 				case CellObjectType.Tree:
 					return new Tree();
+				case CellObjectType.Merchant:
+					return new Merchant();
 				//TODO: make default throw exception
 				default:
 					return null;

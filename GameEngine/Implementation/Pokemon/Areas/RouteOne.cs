@@ -52,8 +52,8 @@ namespace GameEngine.Implementation.Pokemon.Areas
 			ICellObject M = CellObjectFactory.Build(CellObjectType.MediumHouse);
 			ICellObject B = CellObjectFactory.Build(CellObjectType.BigHouse);
 			ICellObject T = CellObjectFactory.Build(CellObjectType.Tree);
-			ICellObject P = new Portal(NewBarkTown.Instance.Area, (2, 7), GameEvent.EventTypes.Enter, true, NewBarkTown.Instance);
-			ICellObject p = new Portal(NewBarkTown.Instance.Area, (2, 8), GameEvent.EventTypes.Enter, true, NewBarkTown.Instance);
+			ICellObject P = new Portal(NewBarkTown.Instance.Area, (1, 7), GameEvent.EventTypes.Enter, true, NewBarkTown.Instance);
+			ICellObject p = new Portal(NewBarkTown.Instance.Area, (1, 8), GameEvent.EventTypes.Enter, true, NewBarkTown.Instance);
 			ICellObject _ = null;
 			ICellObject x = null;
 			ICellObject I = null;

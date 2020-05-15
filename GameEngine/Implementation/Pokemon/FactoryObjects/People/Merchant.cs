@@ -1,5 +1,6 @@
 ﻿using GameEngine.Events;
 using GameEngine.GameObjects;
+using GameEngine.Implementation.Pokemon.Factories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,28 +11,30 @@ namespace GameEngine.Implementation.Pokemon.FactoryObjects.People
 {
 	class Merchant : IMerchant
 	{
-		public List<IInventoryItem> ItemInventory { get; set; }
+		public List<IInventoryItem> ItemInventory { get; set; } = new List<IInventoryItem>();
 		public Sprite Sprite { get; set; }
 		public bool IsPassable { get; set; }
-		public List<GameEvent> EventTriggers { get; set; }
+		public List<GameEvent> EventTriggers { get; set; } = new List<GameEvent>();
 		public (int x, int y) Position { get; set; }
 		public int CellWidth { get; set; }
 		public int CellHeight { get; set; }
 
-		public Merchant(List<IInventoryItem> itemInventory, Sprite sprite, bool isPassable, List<GameEvent> eventTriggers, (int x, int y) position, int cellWidth, int cellHeight)
+		public Merchant()
 		{
-			ItemInventory = itemInventory ?? throw new ArgumentNullException(nameof(itemInventory));
-			Sprite = sprite ?? throw new ArgumentNullException(nameof(sprite));
-			IsPassable = isPassable;
-			EventTriggers = eventTriggers ?? throw new ArgumentNullException(nameof(eventTriggers));
-			Position = position;
-			CellWidth = cellWidth;
-			CellHeight = cellHeight;
+			Sprite = new Sprite("merch");
+			IsPassable = false;
+			EventTriggers.Add(new GameEvent(1, startTrade, GameEvent.EventTypes.Interaction));
+			ItemInventory.Add(InventoryItemFactory.Build(InventoryItemFactory.ItemName.SmallHealthPotion));
+			CellWidth = 1;
+			CellHeight = 1;
 		}
+
+		//TODO: create trading logic
+		private void startTrade(){}
 
 		public void SetSprite()
 		{
-			throw new NotImplementedException();
+			Sprite = new Sprite("merch.png");
 		}
 	}
 }

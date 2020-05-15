@@ -210,7 +210,6 @@
     <Content Include="Implementation\EmptyProject\Assets\shake.mp3" />
     <Content Include="Implementation\EmptyProject\Assets\sign.png" />
     <Content Include="Implementation\EmptyProject\Assets\tree_1x2.png" />
-    <Content Include="Implementation\Pokemon\Assets\merch.png" />
     <Content Include="Implementation\Pokemon\Assets\new_bark_town.mp3" />
     <Content Include="Implementation\Pokemon\Assets\bump.mp3" />
     <Content Include="Implementation\Pokemon\Assets\enemy.png" />

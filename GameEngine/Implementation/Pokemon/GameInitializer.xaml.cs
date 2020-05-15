@@ -43,11 +43,16 @@ namespace GameEngine.Implementation.Pokemon
 
             pokemon.PlayableCharacter = red;
             red.Position = (10, 8);
+            //newBarkTown.SetCellObjectGridPosition(10, 8, red);
 
-            InitializeGame();
+            //pokemon.CurrentArea = newBarkTown;
+
+            //pokemon.InitializeGame = InitializeGame;
+
+            InitializeGameFirstTime();
         }
 
-        public void InitializeGame()
+        public void InitializeGameFirstTime()
         {
             var game = Game.Instance;
             game.CurrentArea.SetCellObjectGridPosition(game.PlayableCharacter.Position.x, game.PlayableCharacter.Position.y, game.PlayableCharacter);
@@ -59,6 +64,14 @@ namespace GameEngine.Implementation.Pokemon
                 await Task.Delay(100);
                 Frame.Navigate(typeof(GameWindow), game);
             };
+        }
+
+        public void InitializeGame()
+        {
+            GameWindow.renderIsInProgress = true;
+            var game = Game.Instance;
+            //game.CurrentArea.SetCellObjectGridPosition(game.PlayableCharacter.Position.x, game.PlayableCharacter.Position.y, game.PlayableCharacter);
+            Frame.Navigate(typeof(GameWindow), game);
         }
     }
 }

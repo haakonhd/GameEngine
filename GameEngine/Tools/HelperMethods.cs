@@ -30,10 +30,6 @@ namespace GameEngine.Tools
 
 			game.PlayableCharacter.Position = startPos;
 			game.NextArea = newArea;
-			//game.PlayableCharacter.SetSprite();
-			//newBarkTown.SetCellObjectGridPosition(10, 8, red);
-			//game.NextArea.SetCellObjectGridPosition(startPos.x, startPos.y, game.PlayableCharacter);
-			//game.Reload();
 		}
 	}
 }

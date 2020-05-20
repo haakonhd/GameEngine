@@ -45,8 +45,8 @@ namespace GameEngine.Implementation.Pokemon.Areas
 			int areaHeight = 14;
 			Area.SetAreaGrid(areaWidth, areaHeight);
 			Area.BackgroundCellObject = CellObjectFactory.Build(CellObjectType.Grass);
-			//Area.AreaMusic = new MediaHandler("new_bark_town.mp3");
-			Area.AreaMusic = new MediaHandler("");
+			Area.AreaMusic = new MediaHandler("new_bark_town.mp3");
+			//Area.AreaMusic = new MediaHandler("");
 
 			ICellObject N = CellObjectFactory.Build(CellObjectType.Npc);
 			ICellObject E = CellObjectFactory.Build(CellObjectType.Enemy);
@@ -56,8 +56,10 @@ namespace GameEngine.Implementation.Pokemon.Areas
 			ICellObject T = CellObjectFactory.Build(CellObjectType.Tree);
 			ICellObject V = CellObjectFactory.Build(CellObjectType.Merchant);
 			ICellObject R = CellObjectFactory.Build(CellObjectType.Sign);
+			ICellObject F = CellObjectFactory.Build(CellObjectType.Flower);
 			ICellObject P = new Portal(RouteOne.Instance.Area, (30, 7), GameEvent.EventTypes.Enter, true, RouteOne.Instance);
 			ICellObject p = new Portal(RouteOne.Instance.Area, (30, 8), GameEvent.EventTypes.Enter, true, RouteOne.Instance);
+			ICellObject e = new Portal(ElmsLab.Instance.Area, (5, 7), GameEvent.EventTypes.Collision, true, ElmsLab.Instance);
 			ICellObject _ = null;
 			ICellObject x = null;
 			ICellObject I = null;
@@ -68,8 +70,8 @@ namespace GameEngine.Implementation.Pokemon.Areas
 					//                 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0
 					new ICellObject[]{ T,T,T,T,T,T,B,x,x,x,x,x,T,T,T,T,T,T,T,T }, //1
 					new ICellObject[]{ I,I,I,I,I,I,x,_,_,_,_,x,I,I,I,I,I,I,I,I }, //2
-					new ICellObject[]{ T,T,T,_,_,_,x,_,_,_,_,x,_,_,M,x,x,x,T,T }, //3
-					new ICellObject[]{ I,I,_,_,_,_,x,x,x,x,x,x,_,_,x,_,_,x,I,I }, //4
+					new ICellObject[]{ T,T,T,F,F,F,x,_,_,_,_,x,_,_,M,x,x,x,T,T }, //3
+					new ICellObject[]{ I,I,_,F,_,_,x,x,e,x,x,x,_,_,x,_,_,x,I,I }, //4
 					new ICellObject[]{ T,T,_,_,_,_,N,_,_,_,_,_,_,_,x,_,_,x,_,T }, //5
 					new ICellObject[]{ I,I,_,_,_,_,_,_,_,_,_,_,_,R,x,x,x,x,_,I }, //6
 					new ICellObject[]{ P,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,T }, //7
@@ -77,12 +79,12 @@ namespace GameEngine.Implementation.Pokemon.Areas
 					new ICellObject[]{ T,T,T,T,S,x,x,x,_,_,_,_,_,_,_,_,_,_,T,T }, //9
 					new ICellObject[]{ I,I,I,I,x,x,x,x,_,_,_,_,S,x,x,x,_,_,I,I }, //10
 					new ICellObject[]{ T,T,_,V,_,_,_,_,_,_,_,_,x,x,x,x,_,_,T,T }, //11
-					new ICellObject[]{ I,I,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,I,I }, //12
+					new ICellObject[]{ I,I,_,_,_,_,_,_,_,_,_,_,_,_,F,_,_,_,I,I }, //12
 					new ICellObject[]{ T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T }, //13
 					new ICellObject[]{ I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I }  //14
 				};
 
-			for (int i = 0; i < areaHeight - 1; i++)
+			for (int i = 0; i < areaHeight ; i++)
 			{
 				for (int j = 0; j <= areaWidth - 1; j++)
 				{

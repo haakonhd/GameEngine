@@ -141,12 +141,16 @@
     <Compile Include="Implementation\EmptyProject\FactoryObjects\Grass.cs" />
     <Compile Include="Implementation\EmptyProject\FactoryObjects\HealthPotionSmall.cs" />
     <Compile Include="Implementation\EmptyProject\FactoryObjects\Portal.cs" />
-    <Compile Include="Implementation\EmptyProject\FactoryObjects\Sign.cs" />
     <Compile Include="Implementation\EmptyProject\FactoryObjects\Stab.cs" />
     <Compile Include="Implementation\EmptyProject\FactoryObjects\Tree.cs" />
     <Compile Include="Implementation\EmptyProject\GameInitializer.xaml.cs">
       <DependentUpon>GameInitializer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Implementation\Pokemon\Areas\ElmsLab.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\Inanimate_objects\Bookshelf.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\Inanimate_objects\FancyHouse.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\Inanimate_objects\Floor.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\Inanimate_objects\Flower.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Inanimate_objects\Portal.cs" />
     <Compile Include="Implementation\Pokemon\Areas\NewBarkTown.cs" />
     <Compile Include="Implementation\Pokemon\Areas\RouteOne.cs" />
@@ -159,7 +163,9 @@
     <Compile Include="Implementation\Pokemon\Factories\BattleAttackFactory.cs" />
     <Compile Include="Implementation\Pokemon\Factories\CellObjectFactory.cs" />
     <Compile Include="Implementation\Pokemon\Factories\InventoryItemFactory.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\Inanimate_objects\Rug.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Inanimate_objects\Sign.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\LabThing.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\People\Enemy.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Inanimate_objects\Grass.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\HealthPotionSmall.cs" />
@@ -211,6 +217,11 @@
     <Content Include="Implementation\EmptyProject\Assets\shake.mp3" />
     <Content Include="Implementation\EmptyProject\Assets\sign.png" />
     <Content Include="Implementation\EmptyProject\Assets\tree_1x2.png" />
+    <Content Include="Implementation\Pokemon\Assets\bookshelf_2x1.png" />
+    <Content Include="Implementation\Pokemon\Assets\floor.png" />
+    <Content Include="Implementation\Pokemon\Assets\flower_1x1.png" />
+    <Content Include="Implementation\Pokemon\Assets\house_5x4.png" />
+    <Content Include="Implementation\Pokemon\Assets\lab_thing_2x1.png" />
     <Content Include="Implementation\Pokemon\Assets\merch.png" />
     <Content Include="Implementation\Pokemon\Assets\new_bark_town.mp3" />
     <Content Include="Implementation\Pokemon\Assets\bump.mp3" />
@@ -222,7 +233,9 @@
     <Content Include="Implementation\Pokemon\Assets\house_6x4.png" />
     <Content Include="Implementation\Pokemon\Assets\npc.png" />
     <Content Include="Implementation\Pokemon\Assets\route_one.mp3" />
+    <Content Include="Implementation\Pokemon\Assets\rug_2x1.png" />
     <Content Include="Implementation\Pokemon\Assets\shake.mp3" />
+    <Content Include="Implementation\Pokemon\Assets\shop.mp3" />
     <Content Include="Implementation\Pokemon\Assets\sign.png" />
     <Content Include="Implementation\Pokemon\Assets\tree_1x2.png" />
     <Content Include="Properties\Default.rd.xml" />

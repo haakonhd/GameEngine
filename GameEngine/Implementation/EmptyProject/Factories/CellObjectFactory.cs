@@ -18,7 +18,6 @@ namespace GameEngine.Implementation.EmptyProject.Factories
 			Hero,
 			Grass,
 			Tree,
-			Sign
 		}
 
 		/// <summary>
@@ -36,8 +35,6 @@ namespace GameEngine.Implementation.EmptyProject.Factories
 					return new Grass();
 				case CellObjectType.Tree:
 					return new Tree();
-				case CellObjectType.Sign:
-					return new Sign("This is a custom view. Touch the sign again to remove this message");
 				default:
 					return null;
 			}

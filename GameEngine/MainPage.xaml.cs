@@ -24,8 +24,8 @@ namespace GameEngine
             Loaded += async (s, e) =>
             {
                 await Task.Delay(100);
-                Frame.Navigate(typeof(Implementation.Pokemon.GameInitializer));
-                //Frame.Navigate(typeof(Implementation.EmptyProject.GameInitializer));
+                //Frame.Navigate(typeof(Implementation.Pokemon.GameInitializer));
+                Frame.Navigate(typeof(Implementation.EmptyProject.GameInitializer));
             };
         }
     }

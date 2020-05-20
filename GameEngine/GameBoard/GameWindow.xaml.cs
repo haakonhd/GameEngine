@@ -59,8 +59,6 @@ namespace GameEngine.GameBoard
             ChatBox.Visibility = Visibility.Collapsed;
 
 			game.StopWatch.Start();
-			game.CurrentlyPlayingMusic = game.CurrentArea?.AreaMusic;
-			game.CurrentlyPlayingMusic?.SoundPlayer.Play();
 
 			DrawBoard();
 
@@ -249,6 +247,9 @@ namespace GameEngine.GameBoard
 		// whipes the current board and draws a new one from area object
 		public void DrawBoard()
 		{
+			Game.Instance.CurrentlyPlayingMusic?.SoundPlayer.Dispose();
+			Game.Instance.CurrentlyPlayingMusic = Game.Instance.CurrentArea?.AreaMusic;
+			Game.Instance.CurrentlyPlayingMusic?.SoundPlayer.Play();
 			var area = Game.Instance.CurrentArea;
 
 			if (area == null) 

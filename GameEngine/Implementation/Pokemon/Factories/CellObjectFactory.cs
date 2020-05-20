@@ -16,7 +16,8 @@ namespace GameEngine.Implementation.Pokemon.Factories
 			MediumHouse,
 			BigHouse,
 			Tree,
-			Merchant
+			Merchant,
+			Sign
 		}
 
 		public static ICellObject Build(CellObjectType cellObjectType)
@@ -41,6 +42,8 @@ namespace GameEngine.Implementation.Pokemon.Factories
 					return new Tree();
 				case CellObjectType.Merchant:
 					return new Merchant();
+				case CellObjectType.Sign:
+					return new Sign("This is a custom view. Touch the sign again to close this message.");
 				//TODO: make default throw exception
 				default:
 					return null;

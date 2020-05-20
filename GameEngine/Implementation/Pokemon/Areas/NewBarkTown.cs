@@ -55,6 +55,7 @@ namespace GameEngine.Implementation.Pokemon.Areas
 			ICellObject B = CellObjectFactory.Build(CellObjectType.BigHouse);
 			ICellObject T = CellObjectFactory.Build(CellObjectType.Tree);
 			ICellObject V = CellObjectFactory.Build(CellObjectType.Merchant);
+			ICellObject R = CellObjectFactory.Build(CellObjectType.Sign);
 			ICellObject P = new Portal(RouteOne.Instance.Area, (30, 7), GameEvent.EventTypes.Enter, true, RouteOne.Instance);
 			ICellObject p = new Portal(RouteOne.Instance.Area, (30, 8), GameEvent.EventTypes.Enter, true, RouteOne.Instance);
 			ICellObject _ = null;
@@ -70,7 +71,7 @@ namespace GameEngine.Implementation.Pokemon.Areas
 					new ICellObject[]{ T,T,T,_,_,_,x,_,_,_,_,x,_,_,M,x,x,x,T,T }, //3
 					new ICellObject[]{ I,I,_,_,_,_,x,x,x,x,x,x,_,_,x,_,_,x,I,I }, //4
 					new ICellObject[]{ T,T,_,_,_,_,N,_,_,_,_,_,_,_,x,_,_,x,_,T }, //5
-					new ICellObject[]{ I,I,_,_,_,_,_,_,_,_,_,_,_,_,x,x,x,x,_,I }, //6
+					new ICellObject[]{ I,I,_,_,_,_,_,_,_,_,_,_,_,R,x,x,x,x,_,I }, //6
 					new ICellObject[]{ P,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,T }, //7
 					new ICellObject[]{ p,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,E,_,_,I }, //8
 					new ICellObject[]{ T,T,T,T,S,x,x,x,_,_,_,_,_,_,_,_,_,_,T,T }, //9

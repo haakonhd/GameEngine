@@ -159,6 +159,7 @@
     <Compile Include="Implementation\Pokemon\Factories\BattleAttackFactory.cs" />
     <Compile Include="Implementation\Pokemon\Factories\CellObjectFactory.cs" />
     <Compile Include="Implementation\Pokemon\Factories\InventoryItemFactory.cs" />
+    <Compile Include="Implementation\Pokemon\FactoryObjects\Inanimate_objects\Sign.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\People\Enemy.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\Inanimate_objects\Grass.cs" />
     <Compile Include="Implementation\Pokemon\FactoryObjects\HealthPotionSmall.cs" />

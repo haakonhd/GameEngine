@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family: sans-serif">
+	<h1> GameEngine </h1>
+	<h2>Setting up Visual studio </h2>
+	<p>To use the game engine you have to download <a href="https://visualstudio.microsoft.com/downloads/">Visual studio 2019</a>. 2017 should work as well, but it has not been tested. Use the Visual Studio Installer to modify your Visual studio installation to include Universal Windows Development under the "workloads" tab. You may need to turn on developer mode in windows to run UWP applications. If you are using Mac, you can follow <a href="https://docs.microsoft.com/en-us/windows/uwp/porting/setting-up-your-mac-with-windows-10">this tutorial</a>.
+	</p>
+	<h2>Running the project</h2>
+	<p>At the root of the project folder structure, there is a file called GameEngine.snl. Double-clicking this should open project with Visual Studio.
+	To run the game, select "debug" or "release", and "x64" next to the play button on the top of the page. The play button will launch the game. </p>
+	<h2>Selecting games</h2>
+	<p>When the game starts, it starts by running the MainPage.xaml.cs file. From here you can select which game implementation to run in the Navigate function.In this project, we have two implementations, the Empty Project, and Pokemon. These games can be found in the "implementation" folder.</p>
+	<h2>Creating a game</h2>
+	<p>When creating a game, it is recommended to use the empty project, and change the sample code to fit your game, and expand from there. This project contains detailed descriptions in the code on what what steps are needed to create a basic game, and how different functionalities of the engine work. The game is set up in the GameInitializer.xaml.cs file. </p>
+</body>
+</html>
